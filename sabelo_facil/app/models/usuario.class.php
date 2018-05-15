@@ -12,6 +12,7 @@ class Usuario extends Validator{
 	private $id_tipo_doc_admin =  null;
 	private $estado =  null;
 	private $imagen_url =  null;
+	private $fecha_nac = null;
 	//Métodos para sobrecarga de propiedades
 	public function setId($value){
 		if($this->validateId($value)){
@@ -48,6 +49,42 @@ class Usuario extends Validator{
 	}
 	public function getDireccion(){
 		return $this->direccion;
+	}
+
+	public function setFechaNac($value){
+		if($this->validateDate($value)){
+			$this->fecha_nac = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getFechaNac(){
+		return $this->fecha_nac;
+	}
+
+	public function setDocumento($value){
+		if($this->validateId($value)){
+			$this->documento = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getDocumento(){
+		return $this->documento;
+	}
+
+	public function setTipoDocumento($value){
+		if($this->validateId($value)){
+			$this->id_tipo_doc_admin = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getTipoDocumento(){
+		return $this->id_tipo_doc_admin;
 	}
 
 	public function setApellidos($value){
@@ -143,8 +180,8 @@ class Usuario extends Validator{
 	}
 	public function createUsuario(){
 		$hash = password_hash($this->clave, PASSWORD_DEFAULT);
-		$sql = "INSERT INTO administrador(nombre, apellido,fecha_nac,correo, contrasena,imagen_url,direccion,documento,username,FK_ID_tipo_doc,estado) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
-		$params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $hash);
+		$sql = "INSERT INTO administrador(nombre, apellido, fecha_nac, correo, contrasena, imagen_url, direccion, documento, username, FK_ID_tipo_doc, estado) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+		$params = array($this->nombres, $this->apellidos, $this->fecha_nac, $this->correo, $hash, 'no hay imagen', $this->direccion, $this->documento, $this->alias, $this->id_tipo_doc_admin, 1);
 		return Database::executeRow($sql, $params);
 	}
 	public function readUsuario(){

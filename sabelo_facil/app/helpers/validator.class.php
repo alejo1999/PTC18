@@ -34,6 +34,15 @@ class Validator{
 		return $fields;
 	}
 
+	public function validateDate($date){
+		$values = explode('/', $date);
+		if(checkdate($values[1], $values[2], $values[0])){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 	public function validateId($value){
 		if(filter_var($value, FILTER_VALIDATE_INT, array('min_range' => 1))){
 			return true;

@@ -20,7 +20,7 @@ class Page extends Component{
 			</head>
 			<body>
 		");
-		if(isset($_SESSION['id_usuario'])){
+		if(isset($_SESSION['ID_admin'])){
 			print("
 				<header class='navbar-fixed'>
 					<nav class='brown'>
@@ -31,7 +31,7 @@ class Page extends Component{
 								<li><a href='../producto'><i class='material-icons left'>shop</i>Productos</a></li>
 								<li><a href='../categoria'><i class='material-icons left'>shop_two</i>Categorías</a></li>
 								<li><a href='../usuario'><i class='material-icons left'>group</i>Usuarios</a></li>
-								<li><a href='#' class='dropdown-button' data-activates='dropdown'><i class='material-icons left'>verified_user</i>Cuenta: <b>$_SESSION[alias_usuario]</b></a></li>
+								<li><a href='#' class='dropdown-button' data-activates='dropdown'><i class='material-icons left'>verified_user</i>Cuenta: <b>$_SESSION[username]</b></a></li>
 							</ul>
 							<ul id='dropdown' class='dropdown-content'>
 								<li><a href='../account/profile.php'><i class='material-icons'>face</i>Editar perfil</a></li>
@@ -45,7 +45,7 @@ class Page extends Component{
 					<li><a href='../producto'><i class='material-icons'>shop</i>Productos</a></li>
 					<li><a href='../categoria'><i class='material-icons'>shop_two</i>Categorías</a></li>
 					<li><a href='../usuario'><i class='material-icons'>group</i>Usuarios</a></li>
-					<li><a class='dropdown-button' href='#' data-activates='dropdown-mobile'><i class='material-icons'>verified_user</i>Cuenta: <b>$_SESSION[alias_usuario]</b></a></li>
+					<li><a class='dropdown-button' href='#' data-activates='dropdown-mobile'><i class='material-icons'>verified_user</i>Cuenta: <b>$_SESSION[username]</b></a></li>
 				</ul>
 				<ul id='dropdown-mobile' class='dropdown-content'>
 					<li><a href='../account/profile.php'>Editar perfil</a></li>
