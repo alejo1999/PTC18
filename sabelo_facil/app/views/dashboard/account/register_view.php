@@ -18,7 +18,17 @@
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>person_pin</i>
             <input id='alias' type='text' name='alias' class='validate' value='<?php print($usuario->getAlias()) ?>' required/>
-            <label for='alias'>Alias</label>
+            <label for='alias'>Nombre de usuario</label>
+        </div>
+        <div class='input-field col s12 m6'>
+        <i class="material-icons prefix">insert_invitation</i>
+            <input id="fecha_nac" name="fecha_nac" type="text" class="datepicker">
+            <label for="fecha_nac">Fecha de nacimiento</label>
+        </div>
+        <div class='input-field col s12 m6'>
+          	<i class='material-icons prefix'>call_split</i>
+          	<input id='direccion_admin' type='text' name='direccion_admin' class='validate' value='<?php print($usuario->getDireccion()) ?>' required/>
+          	<label for='direccion_admin'>Direccion</label>
         </div>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>security</i>
@@ -30,8 +40,11 @@
             <input id='clave2' type='password' name='clave2' class='validate' value='<?php print($usuario->getClave()) ?>' required/>
             <label for='clave2'>Confirmar clave</label>
         </div>
+       
     </div>
     <div class='row center-align'>
  	    <button type='submit' name='registrar' class='btn waves-effect blue'><i class='material-icons'>send</i></button>
     </div>
+
+    
 </form>

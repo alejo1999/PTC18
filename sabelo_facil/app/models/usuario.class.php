@@ -7,7 +7,11 @@ class Usuario extends Validator{
 	private $correo = null;
 	private $alias = null;
 	private $clave = null;
-
+	private $direccion =  null;
+	private $documento =  null;
+	private $id_tipo_doc_admin =  null;
+	private $estado =  null;
+	private $imagen_url =  null;
 	//Métodos para sobrecarga de propiedades
 	public function setId($value){
 		if($this->validateId($value)){
@@ -31,6 +35,19 @@ class Usuario extends Validator{
 	}
 	public function getNombres(){
 		return $this->nombres;
+	}
+
+
+	public function setDireccion($value){
+		if($this->validateAlphabetic($value, 1, 50)){
+			$this->direccion = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getDireccion(){
+		return $this->direccion;
 	}
 
 	public function setApellidos($value){
@@ -126,7 +143,7 @@ class Usuario extends Validator{
 	}
 	public function createUsuario(){
 		$hash = password_hash($this->clave, PASSWORD_DEFAULT);
-		$sql = "INSERT INTO usuarios(nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario, clave_usuario) VALUES(?, ?, ?, ?, ?)";
+		$sql = "INSERT INTO administrador(nombre, apellido,fecha_nac,correo, contrasena,imagen_url,direccion,documento,username,FK_ID_tipo_doc,estado) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 		$params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $hash);
 		return Database::executeRow($sql, $params);
 	}
