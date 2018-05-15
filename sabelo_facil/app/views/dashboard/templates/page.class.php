@@ -23,7 +23,7 @@ class Page extends Component{
 		if(isset($_SESSION['ID_admin'])){
 			print("
 				<header class='navbar-fixed'>
-					<nav class='brown'>
+					<nav class='teal'>
 						<div class='nav-wrapper'>
 							<a href='../account/' class='brand-logo'><img src='../../web/img/logo.png' height='60'></a>
 							<a href='#' class='button-collapse' data-activates='mobile'><i class='material-icons'>menu</i></a>

@@ -11,3 +11,8 @@ main {
 .parallax-container {
     height: 300px;
 }
+
+
+*{
+    font-family: Calibri Light;
+}
