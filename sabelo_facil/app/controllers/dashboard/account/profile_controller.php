@@ -2,7 +2,7 @@
 require_once("../../app/models/usuario.class.php");
 try{
     $usuario = new Usuario;
-    if($usuario->setId($_SESSION['id_usuario'])){
+    if($usuario->setId($_SESSION['ID_admin'])){
         if($usuario->readUsuario()){
             if(isset($_POST['editar'])){
                 $_POST = $usuario->validateForm($_POST);
@@ -10,11 +10,24 @@ try{
                     if($usuario->setApellidos($_POST['apellidos'])){
                         if($usuario->setCorreo($_POST['correo'])){
                             if($usuario->setAlias($_POST['alias'])){
-                                if($usuario->updateUsuario()){
-                                    $_SESSION['alias_usuario'] = $usuario->getAlias();
-                                    Page::showMessage(1, "Perfil modificado", "index.php");
+                                if($usuario->setFechaNac($_POST['fecha_nac'])){
+                                    if($usuario->setDireccion($_POST['direccion_admin'])){
+                                        if($usuario->setDocumento($_POST['documento_admin'])){
+                                            if($usuario->updateUsuario()){
+                                                $_SESSION['alias_usuario'] = $usuario->getAlias();
+                                                Page::showMessage(1, "Perfil modificado", "index.php");
+                                            }else{
+                                                throw new Exception(Database::getException());
+                                            }
+                                        }
+                                        else{
+                                            throw new Exception("Documento Incorrecto");
+                                        }   
+                                    }else{
+                                        throw new Exception("Direccion Incorrecta");
+                                    }    
                                 }else{
-                                    throw new Exception(Database::getException());
+                                    throw new Exception("Fecha de nacimiento incorrecta");
                                 }
                             }else{
                                 throw new Exception("Alias incorrecto");

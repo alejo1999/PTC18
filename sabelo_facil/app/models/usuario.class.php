@@ -60,7 +60,11 @@ class Usuario extends Validator{
 		}
 	}
 	public function getFechaNac(){
-		return $this->fecha_nac;
+		$cadena = $this->fecha_nac;
+		$buscar = '-';
+		$reemplazar = '/';
+		
+		return str_replace($buscar, $reemplazar, $cadena);;
 	}
 
 	public function setDocumento($value){
@@ -185,26 +189,29 @@ class Usuario extends Validator{
 		return Database::executeRow($sql, $params);
 	}
 	public function readUsuario(){
-		$sql = "SELECT nombre, apellido, correo, username FROM administrador WHERE ID_admin = ?";
+		$sql = "SELECT nombre, apellido, correo, username, fecha_nac, direccion, documento FROM administrador WHERE ID_admin = ?";
 		$params = array($this->id);
 		$user = Database::getRow($sql, $params);
 		if($user){
-			$this->nombres = $user['nombres'];
+			$this->nombres = $user['nombre'];
 			$this->apellidos = $user['apellido'];
 			$this->correo = $user['correo'];
 			$this->alias = $user['username'];
+			$this->fecha_nac = $user['fecha_nac'];
+			$this->direccion = $user['direccion'];
+			$this->documento = $user['documento'];
 			return true;
 		}else{
 			return null;
 		}
 	}
 	public function updateUsuario(){
-		$sql = "UPDATE usuarios SET nombres_usuario = ?, apellidos_usuario = ?, correo_usuario = ?, alias_usuario = ? WHERE id_usuario = ?";
-		$params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $this->id);
+		$sql = "UPDATE administrador SET nombre = ?, apellido = ?, correo = ?, username = ?, fecha_nac =? , direccion=?, documento=? WHERE ID_admin = ?";
+		$params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $this->fecha_nac,$this->direccion,$this->documento, $this->id);
 		return Database::executeRow($sql, $params);
 	}
 	public function deleteUsuario(){
-		$sql = "DELETE FROM usuarios WHERE id_usuario = ?";
+		$sql = "DELETE FROM administrador WHERE ID_admin = ?";
 		$params = array($this->id);
 		return Database::executeRow($sql, $params);
 	}
