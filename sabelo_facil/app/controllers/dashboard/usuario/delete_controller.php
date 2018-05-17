@@ -2,7 +2,7 @@
 require_once("../../app/models/usuario.class.php");
 try{
 	if(isset($_GET['id'])){
-		if($_GET['id'] != $_SESSION['id_usuario']){
+		if($_GET['id'] != $_SESSION['ID_admin']){
 			$usuario = new Usuario;
 			if($usuario->setId($_GET['id'])){
 				if($usuario->readUsuario()){

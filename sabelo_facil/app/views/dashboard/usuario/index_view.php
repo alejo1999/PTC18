@@ -28,13 +28,13 @@
 	foreach($data as $row){
 		print("
 		<tr>
-			<td>$row[apellidos_usuario]</td>
-			<td>$row[nombres_usuario]</td>
-			<td>$row[correo_usuario]</td>
-			<td>$row[alias_usuario]</td>
+			<td>$row[apellido]</td>
+			<td>$row[nombre]</td>
+			<td>$row[correo]</td>
+			<td>$row[username]</td>
 			<td>
-				<a href='update.php?id=$row[id_usuario]' class='blue-text'><i class='material-icons'>mode_edit</i></a>
-				<a href='delete.php?id=$row[id_usuario]' class='red-text'><i class='material-icons'>delete</i></a>
+				<a href='update.php?id=$row[ID_admin]' class='blue-text'><i class='material-icons'>mode_edit</i></a>
+				<a href='delete.php?id=$row[ID_admin]' class='red-text'><i class='material-icons'>delete</i></a>
 			</td>
 		</tr>
 		");

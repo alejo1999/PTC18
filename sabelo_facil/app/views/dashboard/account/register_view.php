@@ -1,3 +1,7 @@
+<div class='centerlog'>
+<p id='login_pritxt'>Bienvenido</p>
+<span id='login_subtxt'><small>a continuacón se te registrara en el sistema.</small></span>
+</div>
 <form method='post'>
     <div class='row'>
         <div class='input-field col s12 m6'>

@@ -15,6 +15,7 @@ class Page extends Component{
 				<link type='text/css' rel='stylesheet' href='../../web/css/materialize.min.css'/>
 				<link type='text/css' rel='stylesheet' href='../../web/css/material_icons.css'/>
 				<link type='text/css' rel='stylesheet' href='../../web/css/dashboard.css'/>
+				<link type='text/css' rel='stylesheet' href='../../web/css/sabeloflat.css'/>
 				<script type='text/javascript' src='../../web/js/sweetalert.min.js'></script>
 				<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
 			</head>
@@ -58,11 +59,11 @@ class Page extends Component{
 		}else{
 			print("
 				<header class='navbar-fixed'>
-					<nav class='brown'>
+					<!--<nav class='teal'>
 						<div class='nav-wrapper'>
 							<a href='login.php' class='brand-logo'><i class='material-icons'>dashboard</i></a>
 						</div>
-					</nav>
+					</nav>-->
 				</header>
 				<main class='container'>
 			");
@@ -72,7 +73,7 @@ class Page extends Component{
 				self::templateFooter();
 				exit;
 			}else{
-				print("<h3 class='center-align'>$title</h3>");
+				print("<!--<h3 class='center-align'>$title</h3>-->");
 			}
 		}
 	}

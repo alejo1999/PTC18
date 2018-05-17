@@ -1,3 +1,7 @@
+<div class='centerlog'>
+<p id='login_pritxt'>Iniciar Sesión</p>
+<span id='login_subtxt'>Bienvenido</span>
+</div>
 <form method='post'>
 	<div class='row'>
 		<div class='input-field col s12 m6 offset-m3'>

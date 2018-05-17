@@ -10,10 +10,26 @@ try{
                     if($usuario->setAlias($_POST['alias'])){
                         if($_POST['clave1'] == $_POST['clave2']){
                             if($usuario->setClave($_POST['clave1'])){
-                                if($usuario->createUsuario()){
-                                    Page::showMessage(1, "Usuario creado", "index.php");
+                                if($usuario->setFechaNac($_POST['fecha_nac'])){
+                                    if($usuario->setDireccion($_POST['direccion_admin'])){                            
+                                        if($usuario->setDocumento($_POST['documento_admin'])){
+                                            if($usuario->setTipoDocumento($_POST['tipo_documento'])){
+                                                if($usuario->createUsuario()){
+                                                    Page::showMessage(1, "Usuario creado", "index.php");
+                                                }else{
+                                                    throw new Exception(Database::getException());
+                                                }
+                                            }else{
+                                                throw new Exception("tipo documento");
+                                            }
+                                        }else{
+                                            throw new Exception("documento");
+                                        } 
+                                    }else{
+                                        throw new Exception("direccion");
+                                    }
                                 }else{
-                                    throw new Exception(Database::getException());
+                                    throw new Exception("Fecha");
                                 }
                             }else{
                                 throw new Exception("Clave menor a 6 caracteres");
