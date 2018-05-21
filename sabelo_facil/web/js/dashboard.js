@@ -22,3 +22,22 @@ $(document).ready(function(){
       });
 });
 
+
+//Editar el SIDE NAV DE MATERIALIZE
+$(document).ready(function(){
+    $(".button-collapse").sideNav();
+  $('.button-collapse').sideNav({
+      menuWidth: 350, // Default is 300
+      edge: 'right', // Choose the horizontal origin
+      closeOnClick: true, 
+      draggable: true, 
+      onOpen: function(el) {  }, 
+    }
+  );
+        
+  });
+
+
+  function cerrar_sesion(){
+    window.location.href='../../dashboard/account/logout.php';
+  }

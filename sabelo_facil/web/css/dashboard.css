@@ -2,8 +2,16 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: rgb(30, 30, 30)
 }
-
+#title_flat{
+    color: white;
+    font-size: 3.2em;
+    margin-top: 20px;
+    padding-top: 20px;
+    line-height: 22px;
+    
+}
 main {
     flex: 1 0 auto;
 }
@@ -26,4 +34,210 @@ main {
 
   *{
       font-family: Calibri Light;
+  }
+
+
+/* Text inputs */
+input:not([type]),
+input[type=text]:not(.browser-default),
+input[type=password]:not(.browser-default),
+input[type=email]:not(.browser-default),
+input[type=url]:not(.browser-default),
+input[type=time]:not(.browser-default),
+input[type=date]:not(.browser-default),
+input[type=datetime]:not(.browser-default),
+input[type=datetime-local]:not(.browser-default),
+input[type=tel]:not(.browser-default),
+input[type=number]:not(.browser-default),
+input[type=search]:not(.browser-default),
+textarea.materialize-textarea {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #878787db;
+  border-radius: 0;
+  outline: none;
+  height: 2.6rem;
+  
+  font-size: 1.3rem;
+  margin: 10 10 20px 0;
+  
+  color: rgb(230, 230, 230);
+  caret-color: rgb(175, 175, 175);
+  
+
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+@font-face {
+    font-family: 'Calibri Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Calibri Light'), url('../fonts/calibril.woff') format('woff');
+    }
+
+   
+    table.highlight > tbody > tr:hover {
+        background-color: #3d5e4c;
+      }
+      thead {
+        border-bottom: 1px solid #6c8d70;
+      }
+
+th{
+    color: white;
+}      
+td{
+    color: white;
+}
+
+#clocky{
+    color:white;
+    line-height: 28px;
+    font-size: 1.7em;
+}
+
+.navbar-fixed {
+    position: relative;
+    height: 40px;
+    z-index: 500;
+    
+  }
+  
+  .navbar-fixed nav {
+    position: fixed;
+    
+  }
+
+@media only screen and (min-width: 601px) {
+    nav.nav-extended .nav-wrapper {
+      min-height: 40px;
+    }
+    nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+      height: 40px;
+      line-height: 40px;
+      
+    }
+    .navbar-fixed {
+      height: 40px;
+    }
+  }
+
+  .navpers{
+      background-color: rgba(135, 199, 82, 0);
+      border: none;
+      box-shadow: 0px 0px transparent;
+  }
+
+
+  #SIDE_contenedor_user{
+    width: 100%;
+    height: auto;
+   margin-bottom: 30px;
+  }
+  
+  #SIDE_cu_1{
+  
+  
+  padding-left: 4vh;
+  border-right: gray solid 1px;
+  height: 100px;
+  
+  }
+  #head_sides{
+    width: 100%;
+    text-align: right;
+    padding-bottom: 3rem;
+    padding-top: 0.7rem;
+    padding-right: 1.2em;
+    
+  }
+  #imagen_side_user{
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    margin-left: 10px;
+    margin-top: 5px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.446);
+  }
+  
+  #nombre_user_ingresed{
+    margin: 0;
+    padding: 0;
+    font-size: 1.4em;
+    text-align: right;
+    margin-right: 12px;
+  }
+  #tipo_user_ingresed{
+    margin: 0;
+    padding: 0;
+    font-size: 0.95em;
+    text-align: right;
+    margin-right: 12px;
+    color: rgb(44, 84, 160);
+    line-height: 8px;
+    margin-bottom: 7px;
+  }
+  
+  .opc_user_side
+  {
+    margin: 0;
+    padding: 0;
+    float: right;
+    color: rgb(0, 0, 0);
+    font-size: 1.02em;
+    margin-right: 12px;
+    cursor: pointer;
+    transition: 0.4s;
+  }
+  .opc_user_side:hover{
+  background-color: rgba(237, 237, 237, 0.583);
+  box-shadow: 0 0 20px rgba(7, 7, 7, 0.481);
+  width: 300px;
+  text-align: right;
+  margin-right: 10px;
+  padding-right: 10px;
+  }
+  
+  #SIDE_notificaciones{
+    width: 85%;
+    max-width: 90%;
+  
+    height: 100px;
+    
+    margin-left: 10%;
+    
+  }
+
+  a{
+    cursor: pointer;
+  }
+  .lbl_simply{
+    margin: 0;
+    padding: 0;
+    line-height: 11px;
+    color: rgb(73, 73, 73);
+  }
+
+  #sidenav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120vh;
+    background-color: rgba(0, 0, 0, 0.487);
+    z-index: 200;
+    will-change: opacity;
+  }
+
+  #a_nav{
+    color: rgb(196, 216, 205);
+    cursor: pointer;
+  }
+  #a_nav:hover{
+    color: white;
   }

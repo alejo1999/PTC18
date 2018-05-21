@@ -3,7 +3,7 @@
         <div class='input-field col s6 m4'>
             <i class='material-icons prefix'>search</i>
             <input id='buscar' type='text' name='busqueda'/>
-            <label for='buscar'>Buscador</label>
+            <label for='buscar'>Escribe para buscar</label>
         </div>
         <div class='input-field col s6 m4'>
             <button type='submit' name='buscar' class='btn waves-effect green tooltipped' data-tooltip='Buscar por nombre o apellido'><i class='material-icons'>check_circle</i></button>
@@ -16,11 +16,11 @@
 <table class='highlight'>
 	<thead>
 		<tr>
-			<th>APELLIDOS</th>
-			<th>NOMBRES</th>
-			<th>CORREO</th>
-			<th>ALIAS</th>
-			<th>ACCIÓN</th>
+			<th>Apellidos</th>
+			<th>Nombres</th>
+			<th>Correo</th>
+			<th>Nombre de usuario</th>
+			<th>Ediciones</th>
 		</tr>
 	</thead>
 	<tbody>

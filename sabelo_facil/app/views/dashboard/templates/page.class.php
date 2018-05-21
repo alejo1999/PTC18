@@ -19,28 +19,77 @@ class Page extends Component{
 				<script type='text/javascript' src='../../web/js/sweetalert.min.js'></script>
 				<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
 			</head>
-			<body>
+			<body id='black_body'>
 		");
 		if(isset($_SESSION['ID_admin'])){
 			print("
 				<header class='navbar-fixed'>
-					<nav class='teal'>
+					<nav class='navpers'>
 						<div class='nav-wrapper'>
 							<a href='../account/' class='brand-logo'><img src='../../web/img/logo.png' height='60'></a>
 							<a href='#' class='button-collapse' data-activates='mobile'><i class='material-icons'>menu</i></a>
 							<ul class='right hide-on-med-and-down'>
+							
 								<li><a href='../producto'><i class='material-icons left'>shop</i>Productos</a></li>
 								<li><a href='../categoria'><i class='material-icons left'>shop_two</i>Categorías</a></li>
 								<li><a href='../usuario'><i class='material-icons left'>group</i>Usuarios</a></li>
 								<li><a href='#' class='dropdown-button' data-activates='dropdown'><i class='material-icons left'>verified_user</i>Cuenta: <b>$_SESSION[username]</b></a></li>
+								<p id='a_nav' href='#' data-activates='slide-out' class='button-collapse headersd'> Notificaciones | Menú </p>
 							</ul>
-							<ul id='dropdown' class='dropdown-content'>
-								<li><a href='../account/profile.php'><i class='material-icons'>face</i>Editar perfil</a></li>
-								<li><a href='../account/password.php'><i class='material-icons'>lock</i>Cambiar clave</a></li>
-								<li><a href='../account/logout.php'><i class='material-icons'>clear</i>Salir</a></li>
-							</ul>
+						
 						</div>
 					</nav>
+
+				
+
+
+
+						<ul style='color:black' id='slide-out' class='side-nav'>
+							
+						<div class='row' id='SIDE_contenedor_user'>
+							<div id='head_sides' ><a style='color:black'>Notificaciones | Menú</a></div>
+							<div id='SIDE_cu_1' class='col s7 m7 l7'>
+								<p id='nombre_user_ingresed'>Eduardo Nuñez</p>
+								<p id='tipo_user_ingresed'>Administrador</p>
+								
+								<div class='row' style='padding:0; margin:0;'>
+									<a href='../account/profile.php' class='opc_user_side'>Ver Perfil</a>
+								</div>
+								
+								<div class='row' style='padding:0; margin:0;'>
+									<a href='../account/password.php' class='opc_user_side'>Editar contraseña</a>
+								</div>
+								<a href='../account/logout.php' class='opc_user_side' style='margin-top:10px;'>Cerrar sesión</a>
+
+								
+								
+							</div>
+
+							<div id='SIDE_cu_2' class='col s5 m5 l5'>
+							<img src='' id='imagen_side_user'>
+							</div>
+						</div>
+
+						<div class='row' id='SIDE_notificaciones'>
+							<h4 style='color:rgb(40,40,40); font-size:1.7em; '>Notificaciones</h4>
+							<p class='lbl_simply'>Recientes</p>
+
+							<div class='row'>
+								<div class='col s1' id='colis1'>
+								<img src='../../web/img/icons/NewSmsICO_Small.png' >
+								</div>
+								<div class='col s1' id='colis2'>
+								+1
+								</div>
+								<div class='col s10 right-align' id='colis3'>
+								<a style='color:black;'> Actualizar</a>
+								</div>
+							</div>
+							<div class='divider'></div>														
+							
+						
+						</div>
+						</ul>
 				</header>
 				<ul class='side-nav' id='mobile'>
 					<li><a href='../producto'><i class='material-icons'>shop</i>Productos</a></li>
@@ -54,7 +103,7 @@ class Page extends Component{
 					<li><a href='../account/logout.php'>Salir</a></li>
 				</ul>
 				<main class='container'>
-					<h3 class='center-align'>$title</h3>
+					<h3 id='title_flat' class='center-align'>$title</h3>
 			");
 		}else{
 			print("
@@ -73,7 +122,7 @@ class Page extends Component{
 				self::templateFooter();
 				exit;
 			}else{
-				print("<!--<h3 class='center-align'>$title</h3>-->");
+				print("<!--<h3 id='title_flat' class='center-align'>$title</h3>-->");
 			}
 		}
 	}

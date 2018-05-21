@@ -1,8 +1,14 @@
+#black_body{
+    
+}
+
+
+
 #login_subtxt{
     font-size: 2em;
     margin: 0;
     padding: 0;
-    
+    color: white;
 
 }
 #login_pritxt{
@@ -10,6 +16,7 @@
     margin: 0;
     padding: 0;
     line-height: 32px;
+    color: white;
     
 }
 .centerlog{
