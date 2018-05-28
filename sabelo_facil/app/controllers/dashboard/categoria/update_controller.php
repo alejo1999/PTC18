@@ -8,20 +8,23 @@ try{
                 if(isset($_POST['actualizar'])){
                     $_POST = $categoria->validateForm($_POST);
                     if($categoria->setNombre($_POST['nombre'])){
-                        if($categoria->setDescripcion($_POST['descripcion'])){
-                            if(is_uploaded_file($_FILES['archivo']['tmp_name'])){
-                                if(!$categoria->setImagen($_FILES['archivo'])){
-                                    throw new Exception($producto->getImageError());
+                        if(is_uploaded_file($_FILES['archivo']['tmp_name'])){
+                            if($categoria->setImagen($_FILES['archivo'])){
+                                if($categoria->updateCategoria()){
+                                    Page::showMessage(1, "Categoría modificada", "index.php");
+                                }else{
+                                    if($categoria->unsetImagen()){
+                                        throw new Exception(Database::getException());
+                                    }else{
+                                        throw new Exception("Elimine la imagen manualmente");
+                                    }
                                 }
-                            }
-                            if($categoria->updateCategoria()){
-                                Page::showMessage(1, "Categoría modificada", "index.php");
                             }else{
-                                throw new Exception(Database::getException());
+                                throw new Exception($categoria->getImageError());
                             }
                         }else{
-                            throw new Exception("Descripción incorrecta");
-                        }                        
+                            throw new Exception("Seleccione una imagen");
+                        }                       
                     }else{
                         throw new Exception("Nombre incorrecto");
                     }                    

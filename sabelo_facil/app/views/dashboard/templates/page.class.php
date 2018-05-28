@@ -34,6 +34,9 @@ class Page extends Component{
 						<li class='baldosa'><a href='../categoria'><i class='material-icons al left'>shop_two</i>Categorías</a></li>
 						<li class='baldosa'><a href='../usuario'><i class='material-icons al left'>group</i>Usuarios</a></li>
 						<li class='baldosa'><a href='../usuario'><i class='material-icons al left'>group</i>Usuarios</a></li>
+						<li class='baldosa'><a href='../materia'><i class='material-icons al left'>group</i>Materias</a></li>
+						<li class='baldosa'><a href='../categoria'><i class='material-icons al left'>group</i>Categorias</a></li>
+						<li class='baldosa'><a href='../proveedor'><i class='material-icons al left'>group</i>Proveedores</a></li>
 					
 						
 						</ul>

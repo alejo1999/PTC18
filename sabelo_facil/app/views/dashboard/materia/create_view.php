@@ -2,17 +2,13 @@
     <div class='row'>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>note_add</i>
-            <input id='nombre' type='text' name='nombre' class='validate' value='<?php print($categoria->getNombre()) ?>' required/>
+            <input id='nombre' type='text' name='nombre' class='validate' value='<?php print($Materia->getNombre()) ?>' required/>
             <label for='nombre'>Nombre</label>
         </div>
-        <div class='file-field input-field col s12 m6'>
-            <div class='btn waves-effect'>
-                <span><i class='material-icons'>image</i></span>
-                <input type='file' name='archivo' required/>
-            </div>
-            <div class='file-path-wrapper'>
-                <input type='text' class='file-path validate' placeholder='Seleccione una imagen'/>
-            </div>
+        <div class='input-field col s12 m6'>
+            <i class='material-icons prefix'>note_add</i>
+            <input id='descripcion' type='text' name='descripcion' class='validate' value='<?php print($Materia->getDescripcion()) ?>' required/>
+            <label for='descripcion'>Descripción</label>
         </div>
     </div>
     <div class='row center-align'>
