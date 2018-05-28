@@ -40,7 +40,7 @@ class Usuario extends Validator{
 
 
 	public function setDireccion($value){
-		if($this->validateAlphabetic($value, 1, 50)){
+		if($this->validateAlphabetic($value, 1, 100)){
 			$this->direccion = $value;
 			return true;
 		}else{

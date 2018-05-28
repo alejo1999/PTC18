@@ -33,7 +33,7 @@ class Page extends Component{
 						<li class='baldosa'><a href='../producto'><i class='material-icons al left'>shop</i>Productos</a></li>
 						<li class='baldosa'><a href='../categoria'><i class='material-icons al left'>shop_two</i>Categorías</a></li>
 						<li class='baldosa'><a href='../usuario'><i class='material-icons al left'>group</i>Usuarios</a></li>
-						<li class='baldosa'><a href='../usuario'><i class='material-icons al left'>group</i>Usuarios</a></li>
+						<li class='baldosa'><a href='../comercios'><i class='material-icons al left'>shop</i>Comercios</a></li>
 					
 						
 						</ul>
