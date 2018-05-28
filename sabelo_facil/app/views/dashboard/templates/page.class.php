@@ -33,9 +33,16 @@ class Page extends Component{
 						<li class='baldosa'><a href='../producto'><i class='material-icons al left'>shop</i>Productos</a></li>
 						<li class='baldosa'><a href='../categoria'><i class='material-icons al left'>shop_two</i>Categorías</a></li>
 						<li class='baldosa'><a href='../usuario'><i class='material-icons al left'>group</i>Usuarios</a></li>
+<<<<<<< HEAD
 						<li class='baldosa'><a href='../comercios'><i class='material-icons al left'>shop</i>Comercios</a></li>
 					
 						
+=======
+						<li class='baldosa'><a href='../materia'><i class='material-icons al left'>group</i>Materias</a></li>
+						<li class='baldosa'><a href='../proveedor'><i class='material-icons al left'>group</i>Proveedores</a></li>
+						<li class='baldosa'><a href='../marca'><i class='material-icons al left'>group</i>Marcas</a></li>
+
+>>>>>>> 862513c6033a69d50aa080396e7dd9150dae4a64
 						</ul>
 						
 					</div>				
