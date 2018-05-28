@@ -32,6 +32,9 @@
 		<tr>
 			<td><img src='../../web/img/marcas/$row[imagen_url]' class='materialboxed' width='100' height='100'></td>
 			<td>$row[nombre_marca]</td>
+			<td>$row[correo]</td>
+			<td>$row[telefono]</td>
+			<td>$row[direccion]</td>
 			<td><i class='material-icons'>".($row['estado']?"visibility":"visibility_off")."</i></td>
 			<td>
 				<a href='update.php?id=$row[ID_marca]' class='blue-text'><i class='material-icons'>mode_edit</i></a>
