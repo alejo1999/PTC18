@@ -11,12 +11,12 @@
           	<label for='correo'>Correo electronico</label>
         </div>
         <div class='input-field col s12 m6'>
-          	<i class='material-icons prefix'>call/i>
+          	<i class='material-icons prefix'>call</i>
           	<input id='telefono' type='text' name='telefono' class='validate' value='<?php print($Proveedor->getTelefono()) ?>' required/>
           	<label for='telefono'>Telefono</label>
         </div>
         <div class='input-field col s12 m6'>
-          	<i class='material-icons prefix'>call_split/i>
+          	<i class='material-icons prefix'>call_split</i>
           	<input id='direccion' type='text' name='direccion' class='validate' value='<?php print($Proveedor->getDireccion()) ?>' required/>
           	<label for='direccion'>Dirección</label>
         </div>
