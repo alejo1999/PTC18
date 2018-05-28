@@ -16,11 +16,15 @@ main {
     flex: 1 0 auto;
 }
 
+footer{
+  z-index: 200;
+}
 .sf_bottom_bar{
     width: 100%;
     height: 24px;
     background-color: rgba(42, 90, 77, 0.535);
     transition: background-color 1s;
+    
   }
   #sf_bottom_bar_text{
   width: 100%;
@@ -213,6 +217,7 @@ td{
     
   }
 
+
   a{
     cursor: pointer;
   }
@@ -237,7 +242,74 @@ td{
   #a_nav{
     color: rgb(196, 216, 205);
     cursor: pointer;
+    height: 30px;
+    
+    width: 140px;
+    margin: 0;
+    padding: 0;
+    float: right;
   }
   #a_nav:hover{
     color: white;
   }
+
+  
+  #menu_plegable{
+  
+  
+  z-index: 800;
+  width: 100%;
+  height: 200px;
+  position: relative;
+  top: -200px;
+  }
+  
+  #menu_overlay{
+    position: absolute;  
+    background-color: rgba(0, 0, 0, 0.0);
+    z-index: 150;
+    width: 100%;
+    height: 100%;
+    padding-bottom: -500px;
+    }
+    
+    #container_block{
+      position: absolute;  
+  background-color: rgba(0, 0, 0, 0.562);
+  z-index: 700;
+  width: 100%;
+  height: 100vh;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 20px;
+    }
+
+    .al{
+      color: white;
+      
+    }
+  a{
+    color: white;
+  }
+  i{
+    color: white;
+  }
+  .baldosa{
+    width: 20vh;
+    height: 20vh;
+    float: left;
+    background-color: rgb(58, 115, 141);
+    color: white;
+
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+
+  #return_btn{
+    color: white;
+    border-left: solid 2px white;
+    font-size: 2.12em;
+    padding-left: 10px; 
+  }
+
+  

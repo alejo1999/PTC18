@@ -41,3 +41,19 @@ $(document).ready(function(){
   function cerrar_sesion(){
     window.location.href='../../dashboard/account/logout.php';
   }
+
+
+
+  function ocultar_panel_superior(){
+    $("#menu_plegable").css({'display':'none','top':'-200px'});
+    $("#menu_overlay").css({'display':'none'});
+    $("#container_block").css({'display':'none'});
+  }
+
+  function mostrar_panel_superior(){
+    
+    $("#menu_overlay").css({'display':'block'});
+    $("#container_block").css({'display':'block'});
+    $("#menu_plegable").css({'display':'block','top':'0px'});
+
+  }

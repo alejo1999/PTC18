@@ -23,6 +23,24 @@ class Page extends Component{
 		");
 		if(isset($_SESSION['ID_admin'])){
 			print("
+				<div id='menu_overlay' style='display:none;'>overlay</div>
+
+				<div id='container_block' style='display:none;'>
+					<div id='menu_plegable'style='display:none;'>
+					<a id='return_btn' onclick='ocultar_panel_superior();'>Regresar</a>	
+						<ul>
+
+						<li class='baldosa'><a href='../producto'><i class='material-icons al left'>shop</i>Productos</a></li>
+						<li class='baldosa'><a href='../categoria'><i class='material-icons al left'>shop_two</i>Categorías</a></li>
+						<li class='baldosa'><a href='../usuario'><i class='material-icons al left'>group</i>Usuarios</a></li>
+						<li class='baldosa'><a href='../usuario'><i class='material-icons al left'>group</i>Usuarios</a></li>
+					
+						
+						</ul>
+						
+					</div>				
+				</div>
+
 				<header class='navbar-fixed'>
 					<nav class='navpers'>
 						<div class='nav-wrapper'>
@@ -30,11 +48,9 @@ class Page extends Component{
 							<a href='#' class='button-collapse' data-activates='mobile'><i class='material-icons'>menu</i></a>
 							<ul class='right hide-on-med-and-down'>
 							
-								<li><a href='../producto'><i class='material-icons left'>shop</i>Productos</a></li>
-								<li><a href='../categoria'><i class='material-icons left'>shop_two</i>Categorías</a></li>
-								<li><a href='../usuario'><i class='material-icons left'>group</i>Usuarios</a></li>
-								<li><a href='#' class='dropdown-button' data-activates='dropdown'><i class='material-icons left'>verified_user</i>Cuenta: <b>$_SESSION[username]</b></a></li>
-								<p id='a_nav' href='#' data-activates='slide-out' class='button-collapse headersd'> Notificaciones | Menú </p>
+							
+								<p id='a_nav' href='#' data-activates='slide-out' class='button-collapse headersd'> Notificaciones </p>
+								<p id='a_nav' onclick='mostrar_panel_superior();'  class=' headersd'> Menú de opciones </p>
 							</ul>
 						
 						</div>
@@ -49,7 +65,7 @@ class Page extends Component{
 						<div class='row' id='SIDE_contenedor_user'>
 							<div id='head_sides' ><a style='color:black'>Notificaciones | Menú</a></div>
 							<div id='SIDE_cu_1' class='col s7 m7 l7'>
-								<p id='nombre_user_ingresed'>Eduardo Nuñez</p>
+								<p id='nombre_user_ingresed'></p>
 								<p id='tipo_user_ingresed'>Administrador</p>
 								
 								<div class='row' style='padding:0; margin:0;'>
