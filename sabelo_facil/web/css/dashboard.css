@@ -17,7 +17,7 @@ main {
 }
 
 footer{
-  z-index: 200;
+  z-index: 999;
 }
 .sf_bottom_bar{
     width: 100%;
@@ -34,8 +34,22 @@ footer{
   padding-right: 1cm;
   color: white;
   }
-
-
+#info_baldosita{
+  position: relative;
+  float: left;
+  color: white;
+  border-left: 1px solid white;
+  padding-left: 13px;
+  width: 88%;
+}
+#sepline{
+  margin-top: 30px;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(248, 248, 248, 0.219);
+  position: relative;
+  float: left;
+}
   *{
       font-family: Calibri Light;
   }
@@ -259,7 +273,7 @@ td{
   
   z-index: 800;
   width: 100%;
-  height: 200px;
+  height: 100%;
   position: relative;
   top: -200px;
   }
@@ -269,16 +283,19 @@ td{
     background-color: rgba(0, 0, 0, 0.0);
     z-index: 150;
     width: 100%;
-    height: 100%;
+    height: auto;
     padding-bottom: -500px;
+    opacity: 0;
+    transition: opacity 2s;
     }
     
     #container_block{
       position: absolute;  
-  background-color: rgba(0, 0, 0, 0.562);
+  background-color: rgba(18, 19, 19, 0.849);
   z-index: 700;
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  overflow: visible;
   padding-left: 10%;
   padding-right: 10%;
   padding-top: 20px;
@@ -286,7 +303,14 @@ td{
 
     .al{
       color: white;
+     
       
+    }
+
+    .inter_bald{
+      background-color: red;
+      width: 20vh;
+      height: 20vh;
     }
   a{
     color: white;
@@ -295,16 +319,36 @@ td{
     color: white;
   }
   .baldosa{
+    text-align: center;
     width: 20vh;
     height: 20vh;
     float: left;
-    background-color: rgb(58, 115, 141);
+    background-color: rgb(58, 141, 90);
     color: white;
-
-    margin-right: 10px;
-    margin-bottom: 10px;
+    font-size: 1.1em;
+    margin-right: 5px;
+    margin-bottom: 5px; 
+    padding-top: 3vh;
+    transition: transform 0.3s, border 0.3s, box-shadow 0.3s, text-shadow 0.4s ;
+    transform: scale(1);
+    border: 1px solid rgba(0, 0, 0,0);
+    
   }
 
+  .baldosa:hover{
+    transform: scale(1.03);
+    box-shadow: 0px 0px 40px rgba(3, 3, 3, 0.514);
+    border: 1px solid rgba(247, 247, 247, 0.932);
+    text-shadow: -5px 5px 10px rgba(0, 0, 0, 0.863);
+  }
+
+.plac_let{
+  
+  line-height: 1em;
+  font-size: 3.6em;
+  padding: 0;
+  margin: 0;
+}
   #return_btn{
     color: white;
     border-left: solid 2px white;

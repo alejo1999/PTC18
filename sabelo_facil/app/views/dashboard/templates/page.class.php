@@ -27,24 +27,21 @@ class Page extends Component{
 
 				<div id='container_block' style='display:none;'>
 					<div id='menu_plegable'style='display:none;'>
-					<a id='return_btn' onclick='ocultar_panel_superior();'>Regresar</a>	
-						<ul>
+						<a id='return_btn' onclick='ocultar_panel_superior();'>Regresar</a>	
+							<ul>
 
-						<li class='baldosa'><a href='../producto'><i class='material-icons al left'>shop</i>Productos</a></li>
-						<li class='baldosa'><a href='../categoria'><i class='material-icons al left'>shop_two</i>Categorías</a></li>
-						<li class='baldosa'><a href='../usuario'><i class='material-icons al left'>group</i>Usuarios</a></li>
-<<<<<<< HEAD
-						<li class='baldosa'><a href='../comercios'><i class='material-icons al left'>shop</i>Comercios</a></li>
-					
-						
-=======
-						<li class='baldosa'><a href='../materia'><i class='material-icons al left'>group</i>Materias</a></li>
-						<li class='baldosa'><a href='../proveedor'><i class='material-icons al left'>group</i>Proveedores</a></li>
-						<li class='baldosa'><a href='../marca'><i class='material-icons al left'>group</i>Marcas</a></li>
+							<li onmouseover='bal_over=1; show_info_baldosa();'><a class='baldosa' href='../usuario'>		<p class='plac_let'>A</p>Administradores</a></li>
+							<li onmouseover='bal_over=2; show_info_baldosa();'><a class='baldosa' href='../categoria'>	<p class='plac_let'>C</p>Categorías</a></li>
+							<li onmouseover='bal_over=3; show_info_baldosa();'><a class='baldosa' href='../producto'>		<p class='plac_let'>P</p>Productos</a></li></a>
+							<li onmouseover='bal_over=4; show_info_baldosa();'><a class='baldosa' href='../comercios'>	<p class='plac_let'>C</p>Comercios</a></li>
+							<li onmouseover='bal_over=5; show_info_baldosa();'><a class='baldosa' href='../materia'>		<p class='plac_let'>M</p>Materias</a></li>
+							<li onmouseover='bal_over=6; show_info_baldosa();'><a class='baldosa' href='../proveedor'>	<p class='plac_let'>P</p>Proveedores</a></li>
+							<li onmouseover='bal_over=7; show_info_baldosa();'><a class='baldosa' href='../marca'>		<p class='plac_let'>M</p>Marcas</a></li>
 
->>>>>>> 862513c6033a69d50aa080396e7dd9150dae4a64
-						</ul>
-						
+							</ul>
+
+							<div id='sepline'> </div>
+							<p id='info_baldosita'>Al pasar el puntero del mouse sobre una baldosa se mostrara una pequeña descripcion de lo que realiza la opción</p>
 					</div>				
 				</div>
 
