@@ -48,13 +48,13 @@ class Page extends Component{
 				<header class='navbar-fixed'>
 					<nav class='navpers'>
 						<div class='nav-wrapper'>
-							<a href='../account/' class='brand-logo'><img src='../../web/img/logo.png' height='60'></a>
+							<a href='../account/' class='brand-logo'><img src='../../web/img/logo.png' height='20'></a>
 							<a href='#' class='button-collapse' data-activates='mobile'><i class='material-icons'>menu</i></a>
 							<ul class='right hide-on-med-and-down'>
 							
 							
 								<p id='a_nav' href='#' data-activates='slide-out' class='button-collapse headersd'> Notificaciones </p>
-								<p id='a_nav' onclick='mostrar_panel_superior();'  class=' headersd'> Menú de opciones </p>
+								<p id='a_nav_2' onclick='mostrar_panel_superior();'  class=' headersd lok'> Menú de opciones </p>
 							</ul>
 						
 						</div>
@@ -69,7 +69,7 @@ class Page extends Component{
 						<div class='row' id='SIDE_contenedor_user'>
 							<div id='head_sides' ><a style='color:black'>Notificaciones | Menú</a></div>
 							<div id='SIDE_cu_1' class='col s7 m7 l7'>
-								<p id='nombre_user_ingresed'></p>
+								<p id='nombre_user_ingresed'>$_SESSION[username]</p>
 								<p id='tipo_user_ingresed'>Administrador</p>
 								
 								<div class='row' style='padding:0; margin:0;'>

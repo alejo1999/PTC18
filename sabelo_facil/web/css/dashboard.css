@@ -113,12 +113,54 @@ td{
     color: white;
 }
 
-#clocky{
-    color:white;
-    line-height: 28px;
-    font-size: 1.7em;
+.lok{
+  background-color: rgb(58, 110, 89);
+  text-align: center;
+  
+}
+#clock_verg{
+  
+  border-bottom: 1px solid rgb(99, 99, 99);
+  width: 230px;
+  padding: 0;
+  margin: 0;
+  padding-top: 28%;
+  
+}
+#clockyd{
+    color:rgb(99, 99, 99);
+    line-height: 40px;
+    font-size: 6.7em;
+    padding: 0;
+}
+#clockyt{
+  color:rgb(99, 99, 99);
+  
+  
+  line-height: 0px;
+  font-size: 1.8em;
+  margin: 0;
+  padding: 0;
+  padding-left: 40px;
+  margin-top: 6px;
+}
+#divisorr{
+  width: 30%;
+  height: 1px;
+  color:rgb(99, 99, 99);
 }
 
+#clockym{
+  color:rgb(99, 99, 99);
+  line-height: 10px;
+  font-size: 2.2em;
+  padding: 0;
+}
+#clockyy{
+  color:rgb(99, 99, 99);
+  line-height: 28px;
+  font-size: 2.6em;
+}
 .navbar-fixed {
     position: relative;
     height: 40px;
@@ -261,12 +303,30 @@ td{
     width: 140px;
     margin: 0;
     padding: 0;
+    padding-left: 10px;
+    
     float: right;
   }
   #a_nav:hover{
     color: white;
   }
-
+  #a_nav_2{
+    color: rgb(196, 216, 205);
+    cursor: pointer;
+    height: 37px;
+    
+    width: 140px;
+    margin: 0;
+    padding: 0;
+    float: right;
+    transition: 0.4s;
+    border-right: 10px solid rgb(30, 30, 30);
+  }
+  #a_nav_2:hover{
+    color: white;
+    height: 42px;
+    box-shadow: -10px 4px 20px rgba(0, 0, 0, 0.74);
+  }
   
   #menu_plegable{
   
@@ -288,7 +348,21 @@ td{
     opacity: 0;
     transition: opacity 2s;
     }
+  #welcom_text{
+    font-family: Calibri Light;
+     
+      color: rgb(168, 168, 168);
+      font-size: 1.25em;
+      line-height: 1em;
+    width: 80%;
     
+    }
+    .container {
+      margin: 0 auto;
+      max-width: 1280px;
+      width: 85%;
+    }
+
     #container_block{
       position: absolute;  
   background-color: rgba(18, 19, 19, 0.849);
