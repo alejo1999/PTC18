@@ -1,42 +1,39 @@
 <?php
-require_once("../../app/models/categoria.class.php");
+require_once("../../app/models/Tipo_usuario.class.php");
 try{
     if(isset($_GET['id'])){
-        $categoria = new Categoria;
-        if($categoria->setId($_GET['id'])){
-            if($categoria->readCategoria()){
+        $Tipo_usuario = new Tipo_usuario;
+        if($Tipo_usuario->setId($_GET['id'])){
+            if($Tipo_usuario->readTipo_usuarios()){
                 if(isset($_POST['actualizar'])){
-                    $_POST = $categoria->validateForm($_POST);
-                    if($categoria->setNombre($_POST['nombre'])){
-                        if($categoria->setDescripcion($_POST['descripcion'])){
-                            if(is_uploaded_file($_FILES['archivo']['tmp_name'])){
-                                if(!$categoria->setImagen($_FILES['archivo'])){
-                                    throw new Exception($producto->getImageError());
+                    $_POST = $Tipo_usuario->validateForm($_POST);
+                    if($Tipo_usuario->setNombre($_POST['nombre'])){
+                        
+                            if($Tipo_usuario->updateTipo_usuarios()){
+                                Page::showMessage(1, "Categoria modificada", "index.php");
+                            }else{
+                                if($Tipo_usuario->unsetImagen()){
+                                    throw new Exception(Database::getException());
+                                }else{
+                                    throw new Exception("Elimine la imagen manualmente");
                                 }
                             }
-                            if($categoria->updateCategoria()){
-                                Page::showMessage(1, "Categoría modificada", "index.php");
-                            }else{
-                                throw new Exception(Database::getException());
-                            }
-                        }else{
-                            throw new Exception("Descripción incorrecta");
-                        }                        
+                                            
                     }else{
                         throw new Exception("Nombre incorrecto");
                     }                    
                 }
             }else{
-                Page::showMessage(2, "Categoría inexistente", "index.php");
+                Page::showMessage(2, "Categoria inexistente", "index.php");
             }
         }else{
-            Page::showMessage(2, "Categoría incorrecta", "index.php");
+            Page::showMessage(2, "Categoria incorrecta", "index.php");
         }        
     }else{
-        Page::showMessage(3, "Seleccione categoría", "index.php");
+        Page::showMessage(3, "Seleccione Categoria", "index.php");
     }
 }catch(Exception $error){
     Page::showMessage(2, $error->getMessage(), null);
 }
-require_once("../../app/views/dashboard/categoria/update_view.php");
+require_once("../../app/views/dashboard/Tipo_usuario/update_view.php");
 ?>

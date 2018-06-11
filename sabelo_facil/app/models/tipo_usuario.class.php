@@ -1,10 +1,9 @@
 <?php
-class Categoria extends Validator{
+class Tipo_usuario extends Validator{
 	//Declaración de propiedades
 	private $id = null;
 	private $nombre = null;
-	private $imagen = null;
-	private $descripcion = null;
+	
 
 	//Métodos para sobrecarga de propiedades
 	public function setId($value){
@@ -31,79 +30,46 @@ class Categoria extends Validator{
 		return $this->nombre;
 	}
 
-	public function setImagen($file){
-		if($this->validateImage($file, $this->imagen, "../../web/img/categorias/", 300, 300)){
-			$this->imagen = $this->getImageName();
-			return true;
-		}else{
-			return false;
-		}
-	}
-	public function getImagen(){
-		return $this->imagen;
-	}
-	public function unsetImagen(){
-		if(unlink("../../web/img/categorias/".$this->imagen)){
-			$this->imagen = null;
-			return true;
-		}else{
-			return false;
-		}
-	}
+	
 
-	public function setDescripcion($value){
-		if($value){
-			if($this->validateAlphanumeric($value, 1, 200)){
-				$this->descripcion = $value;
-				return true;
-			}else{
-				return false;
-			}
-		}else{
-			$this->descripcion = null;
-			return true;
-		}		
-	}
-	public function getDescripcion(){
-		return $this->descripcion;
-	}
+
 
 	//Metodos para el manejo del CRUD
-	public function getCategorias(){
-		$sql = "SELECT id_categoria, nombre_categoria, imagen_categoria, descripcion_categoria FROM categorias ORDER BY nombre_categoria";
+	public function getTipo_usuarios(){
+		$sql = "SELECT ID_tipo_usuario, nombre_tipo FROM Tipo_usuario ORDER BY nombre_tipo";
 		$params = array(null);
 		return Database::getRows($sql, $params);
 	}
-	public function searchCategoria($value){
-		$sql = "SELECT * FROM categorias WHERE nombre_categoria LIKE ? OR descripcion_categoria LIKE ? ORDER BY nombre_categoria";
-		$params = array("%$value%", "%$value%");
+	public function searchTipo_usuarios($value){
+		$sql = "SELECT ID_tipo_usuario, nombre_tipo
+				FROM Tipo_usuario WHERE nombre_tipo LIKE ? ORDER BY nombre_tipo";
+		$params = array("%$value%");
 		return Database::getRows($sql, $params);
 	}
-	public function createCategoria(){
-		$sql = "INSERT INTO categorias(nombre_categoria, imagen_categoria, descripcion_categoria) VALUES(?, ?, ?)";
-		$params = array($this->nombre, $this->imagen, $this->descripcion);
+	public function createTipo_usuarios(){
+		$sql = "INSERT INTO Tipo_usuario(nombre_tipo ) VALUES(?)";
+		$params = array($this->nombre);	
 		return Database::executeRow($sql, $params);
 	}
-	public function readCategoria(){
-		$sql = "SELECT nombre_categoria, imagen_categoria, descripcion_categoria FROM categorias WHERE id_categoria = ?";
+	public function readTipo_usuarios(){
+		$sql = "SELECT nombre_tipo  FROM Tipo_usuario WHERE ID_tipo_usuario = ?";
 		$params = array($this->id);
-		$categoria = Database::getRow($sql, $params);
-		if($categoria){
-			$this->nombre = $categoria['nombre_categoria'];
-			$this->imagen = $categoria['imagen_categoria'];
-			$this->descripcion = $categoria['descripcion_categoria'];
+		$Tipo_usuario = Database::getRow($sql, $params);
+		if($Tipo_usuario){
+			$this->nombre = $Tipo_usuario['nombre_tipo'];
+			
 			return true;
 		}else{
 			return null;
 		}
 	}
-	public function updateCategoria(){
-		$sql = "UPDATE categorias SET nombre_categoria = ?, imagen_categoria = ?, descripcion_categoria = ? WHERE id_categoria = ?";
-		$params = array($this->nombre, $this->imagen, $this->descripcion, $this->id);
+	public function updateTipo_usuarios(){
+		$sql = "UPDATE Tipo_usuario SET nombre_tipo = ? WHERE ID_tipo_usuario = ?";
+		$params = array($this->nombre, $this->id);
 		return Database::executeRow($sql, $params);
 	}
-	public function deleteCategoria(){
-		$sql = "DELETE FROM categorias WHERE id_categoria = ?";
+	public function deleteTipo_usuarios(){
+		$sql = "DELETE FROM Tipo_usuario WHERE ID_tipo_usuario = ?";
 		$params = array($this->id);
 		return Database::executeRow($sql, $params);
 	}
