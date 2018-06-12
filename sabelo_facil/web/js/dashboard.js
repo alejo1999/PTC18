@@ -25,6 +25,7 @@ $(document).ready(function(){
 
 //Editar el SIDE NAV DE MATERIALIZE
 $(document).ready(function(){
+  mover_login();
     $(".button-collapse").sideNav();
   $('.button-collapse').sideNav({
       menuWidth: 350, // Default is 300
@@ -37,11 +38,15 @@ $(document).ready(function(){
         
   });
 
+  function mover_login(){
+    $('#container2').css({'margin-left':'6%','opacity':'1'});
+  }
 
   function cerrar_sesion(){
     window.location.href='../../dashboard/account/logout.php';
   }
 
+  
 
 
   function ocultar_panel_superior(){

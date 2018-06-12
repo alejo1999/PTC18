@@ -49,9 +49,9 @@ class Page extends Component{
 				<header class='navbar-fixed'>
 					<nav class='navpers'>
 						<div class='nav-wrapper'>
-							<a href='../account/' class='brand-logo'><img src='../../web/img/logo.png' height='20'></a>
-							<a href='#' class='button-collapse' data-activates='mobile'><i class='material-icons'>menu</i></a>
-							<ul class='right hide-on-med-and-down'>
+							
+						<a href='../account/' class='left'><img src='../../web/img/logo.png' height='20'></a>
+							<ul class='right '>
 							
 							
 								<p id='a_nav' href='#' data-activates='slide-out' class='button-collapse headersd'> Notificaciones </p>
@@ -112,29 +112,14 @@ class Page extends Component{
 						</div>
 						</ul>
 				</header>
-				<ul class='side-nav' id='mobile'>
-					<li><a href='../producto'><i class='material-icons'>shop</i>Productos</a></li>
-					<li><a href='../categoria'><i class='material-icons'>shop_two</i>Categorías</a></li>
-					<li><a href='../usuario'><i class='material-icons'>group</i>Usuarios</a></li>
-					<li><a class='dropdown-button' href='#' data-activates='dropdown-mobile'><i class='material-icons'>verified_user</i>Cuenta: <b>$_SESSION[username]</b></a></li>
-				</ul>
-				<ul id='dropdown-mobile' class='dropdown-content'>
-					<li><a href='../account/profile.php'>Editar perfil</a></li>
-					<li><a href='../account/password.php'>Cambiar clave</a></li>
-					<li><a href='../account/logout.php'>Salir</a></li>
-				</ul>
+				
+			
 				<main class='container'>
 					<h3 id='title_flat' class='center-align'>$title</h3>
 			");
 		}else{
 			print("
-				<header class='navbar-fixed'>
-					<!--<nav class='teal'>
-						<div class='nav-wrapper'>
-							<a href='login.php' class='brand-logo'><i class='material-icons'>dashboard</i></a>
-						</div>
-					</nav>-->
-				</header>
+			
 				<main class='container'>
 			");
 			$filename = basename($_SERVER['PHP_SELF']);

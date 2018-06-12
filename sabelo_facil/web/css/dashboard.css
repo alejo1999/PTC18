@@ -363,6 +363,9 @@ td{
       width: 85%;
     }
 
+    div.drag-target{
+    display: none;
+    }
     #container_block{
       position: absolute;  
   background-color: rgba(18, 19, 19, 0.849);
@@ -430,4 +433,9 @@ td{
     padding-left: 10px; 
   }
 
-  
+.prefix_log{
+  color: white;
+  margin: 0;
+  padding: 0;
+line-height: 10px;
+}
