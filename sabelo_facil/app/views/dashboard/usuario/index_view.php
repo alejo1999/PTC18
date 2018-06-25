@@ -1,5 +1,5 @@
 <div class='row'>   
-    <form method='post'>
+    <form method='post'enctype='multipart/form-data'>
         <div class='input-field col s6 m4'>
             <i class='material-icons prefix'>search</i>
             <input id='buscar' type='text' name='busqueda'/>
@@ -16,6 +16,7 @@
 <table class='highlight'>
 	<thead>
 		<tr>
+			<th>Imagen</th>
 			<th>Apellidos</th>
 			<th>Nombres</th>
 			<th>Correo</th>
@@ -28,6 +29,7 @@
 	foreach($data as $row){
 		print("
 		<tr>
+			<td><img src='../../web/img/usuarios/$row[imagen_url]' class='materialboxed' width='100' height='100'></td>
 			<td>$row[apellido]</td>
 			<td>$row[nombre]</td>
 			<td>$row[correo]</td>

@@ -1,6 +1,6 @@
 
 
-<h3 style="display:none;" id='name'><?php print($_SESSION['username']) ?> </h3> 
+<h3 style="display:none;" id='name'><?php print($_SESSION['nombre']) ?> </h3> 
 <div style="">
 	<div class="row" id="clock_verg">
 		<div class="col">

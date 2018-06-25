@@ -14,6 +14,12 @@ try{
                                     if($usuario->setFechaNac($_POST['fecha_nac'])){
                                         if($usuario->setDireccion($_POST['direccion_admin'])){
                                             if($usuario->setDocumento($_POST['documento_admin'])){
+                                                if(is_uploaded_file($_FILES['archivo']['tmp_name'])){
+                                                    if(!$usuario->setImagen($_FILES['archivo'])){
+                                                        throw new Exception($usuario->getImageError());
+                                                    }
+                                                    print($usuario->getImagen());
+                                                }
                                                 if($usuario->updateUsuario()){
                                                     $_SESSION['alias_usuario'] = $usuario->getAlias();
                                                     Page::showMessage(1, "Usuario modificado", "index.php");

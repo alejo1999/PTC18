@@ -2,6 +2,7 @@
 require_once("../../app/models/database.class.php");
 require_once("../../app/helpers/validator.class.php");
 require_once("../../app/helpers/component.class.php");
+
 class Page extends Component{
 	public static function templateHeader($title){
 		session_start();
@@ -70,7 +71,7 @@ class Page extends Component{
 						<div class='row' id='SIDE_contenedor_user'>
 							<div id='head_sides' ><a style='color:black'>Notificaciones | Menú</a></div>
 							<div id='SIDE_cu_1' class='col s7 m7 l7'>
-								<p id='nombre_user_ingresed'>$_SESSION[username]</p>
+								<p id='nombre_user_ingresed'>$_SESSION[nombre]</p>
 								<p id='tipo_user_ingresed'>Administrador</p>
 								
 								<div class='row' style='padding:0; margin:0;'>
@@ -87,7 +88,7 @@ class Page extends Component{
 							</div>
 
 							<div id='SIDE_cu_2' class='col s5 m5 l5'>
-							<img src='' id='imagen_side_user'>
+							<img src='../../web/img/usuarios/$_SESSION[imagen_url]' id='imagen_side_user'>
 							</div>
 						</div>
 

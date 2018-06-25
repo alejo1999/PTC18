@@ -11,6 +11,8 @@ try{
 						if($object->checkPassword()){
 							$_SESSION['ID_admin'] = $object->getId();
 							$_SESSION['username'] = $object->getAlias();
+							$_SESSION['imagen_url'] = $object->getImagen();
+							$_SESSION['nombre'] = $object->getNombres();
 							Page::showMessage(1, "Autenticación correcta", "index.php");
 						}else{
 							throw new Exception("Clave inexistente");

@@ -9,9 +9,9 @@ class Usuario extends Validator{
 	private $clave = null;
 	private $direccion =  null;
 	private $documento =  null;
-	private $id_tipo_doc_admin =  null;
+	private $tipo_documento =  null;
 	private $estado =  null;
-	private $imagen_url =  null;
+	private $imagen =  null;
 	private $fecha_nac = null;
 	//Métodos para sobrecarga de propiedades
 	public function setId($value){
@@ -79,18 +79,6 @@ class Usuario extends Validator{
 		return $this->documento;
 	}
 
-	public function setTipoDocumento($value){
-		if($this->validateId($value)){
-			$this->id_tipo_doc_admin = $value;
-			return true;
-		}else{
-			return false;
-		}
-	}
-	public function getTipoDocumento(){
-		return $this->id_tipo_doc_admin;
-	}
-
 	public function setApellidos($value){
 		if($this->validateAlphabetic($value, 1, 50)){
 			$this->apellidos = $value;
@@ -139,6 +127,38 @@ class Usuario extends Validator{
 		return $this->clave;
 	}
 
+	public function setImagen($file){
+		if($this->validateImage($file, $this->imagen, "../../web/img/usuarios/", 3000, 3000)){
+			$this->imagen = $this->getImageName();
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getImagen(){
+		return $this->imagen;
+	}
+	public function unsetImagen(){
+		if(unlink("../../web/img/usuarios/".$this->imagen)){
+			$this->imagen = null;
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function setTipoDocumento($value){
+		if($this->validateId($value)){
+			$this->tipo_documento = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getTipoDocumento(){
+		return $this->tipo_documento;
+	}
+
 	//Métodos para manejar la sesión del usuario
 	public function checkAlias(){
 		$sql = "SELECT ID_admin FROM administrador WHERE username = ?";
@@ -152,10 +172,12 @@ class Usuario extends Validator{
 		}
 	}
 	public function checkPassword(){
-		$sql = "SELECT contrasena FROM administrador WHERE ID_admin = ?";
+		$sql = "SELECT contrasena, imagen_url, nombre FROM administrador WHERE ID_admin = ?";
 		$params = array($this->id);
 		$data = Database::getRow($sql, $params);
 		if(password_verify($this->clave, $data['contrasena'])){
+			$this->nombres = $data['nombre'];
+			$this->imagen = $data['imagen_url'];
 			return true;
 		}else{
 			return false;
@@ -172,24 +194,30 @@ class Usuario extends Validator{
 	}
 
 	//Metodos para manejar el CRUD
+	public function getTipoDocumentos(){
+		$sql = "SELECT id_tipo_doc, nombre_tipo_doc FROM tipo_doc";
+		$params = array(null);
+		return Database::getRows($sql, $params);
+	}
+
 	public function getUsuarios(){
-		$sql = "SELECT ID_admin, nombre, apellido, correo, username FROM administrador ORDER BY apellido";
+		$sql = "SELECT ID_admin, nombre, apellido, correo, username,imagen_url FROM administrador ORDER BY apellido";
 		$params = array(null);
 		return Database::getRows($sql, $params);
 	}
 	public function searchUsuario($value){
-		$sql = "SELECT ID_admin, nombre, apellido, correo, username FROM administrador WHERE apellido LIKE ? OR nombre LIKE ? ORDER BY apellido";
+		$sql = "SELECT ID_admin, nombre, apellido, correo, username, imagen_url FROM administrador WHERE apellido LIKE ? OR nombre LIKE ? ORDER BY apellido";
 		$params = array("%$value%", "%$value%");
 		return Database::getRows($sql, $params);
 	}
 	public function createUsuario(){
 		$hash = password_hash($this->clave, PASSWORD_DEFAULT);
 		$sql = "INSERT INTO administrador(nombre, apellido, fecha_nac, correo, contrasena, imagen_url, direccion, documento, username, FK_ID_tipo_doc, estado) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
-		$params = array($this->nombres, $this->apellidos, $this->fecha_nac, $this->correo, $hash, 'no hay imagen', $this->direccion, $this->documento, $this->alias, $this->id_tipo_doc_admin, 1);
+		$params = array($this->nombres, $this->apellidos, $this->fecha_nac, $this->correo, $hash,  $this->imagen , $this->direccion, $this->documento, $this->alias, $this->tipo_documento, 1);
 		return Database::executeRow($sql, $params);
 	}
 	public function readUsuario(){
-		$sql = "SELECT nombre, apellido, correo, username, fecha_nac, direccion, documento FROM administrador WHERE ID_admin = ?";
+		$sql = "SELECT nombre, apellido, correo, username, fecha_nac, direccion, documento, imagen_url FROM administrador WHERE ID_admin = ?";
 		$params = array($this->id);
 		$user = Database::getRow($sql, $params);
 		if($user){
@@ -200,14 +228,15 @@ class Usuario extends Validator{
 			$this->fecha_nac = $user['fecha_nac'];
 			$this->direccion = $user['direccion'];
 			$this->documento = $user['documento'];
+			$this->imagen = $user['imagen_url'];
 			return true;
 		}else{
 			return null;
 		}
 	}
 	public function updateUsuario(){
-		$sql = "UPDATE administrador SET nombre = ?, apellido = ?, correo = ?, username = ?, fecha_nac =? , direccion=?, documento=? WHERE ID_admin = ?";
-		$params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $this->fecha_nac,$this->direccion,$this->documento, $this->id);
+		$sql = "UPDATE administrador SET nombre = ?, apellido = ?, correo = ?, username = ?, fecha_nac =? , direccion=?, documento=?, imagen_url=? WHERE ID_admin = ?";
+		$params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $this->fecha_nac,$this->direccion,$this->documento, $this->imagen, $this->id);
 		return Database::executeRow($sql, $params);
 	}
 	public function deleteUsuario(){

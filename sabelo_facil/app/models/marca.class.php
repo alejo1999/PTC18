@@ -91,17 +91,12 @@ class Marca extends Validator{
 	}
 
 	public function setEstado($value){
-		if($value){
-			if($this->validateAlphanumeric($value, 1, 200)){
-				$this->estado = $value;
-				return true;
-			}else{
-				return false;
-			}
-		}else{
-			$this->estado = null;
+		if($value == "1" || $value == "0"){
+			$this->estado = $value;
 			return true;
-		}		
+		}else{
+			return false;
+		}
 	}
 	public function getEstado(){
 		return $this->estado;
@@ -127,14 +122,14 @@ class Marca extends Validator{
 	public function readMarcas(){
 		$sql = "SELECT nombre_marca, correo, telefono, direccion, imagen_url, estado FROM marca WHERE ID_marca = ?";
 		$params = array($this->id);
-		$categoria = Database::getRow($sql, $params);
-		if($categoria){
-			$this->nombre = $marca['nombre_marca'];
-			$this->correo = $marca['correo'];
-			$this->telefono = $marca['telefono'];
-			$this->direccion = $marca['direccion'];
-			$this->imagen = $marca['imagen_url'];
-			$this->estado = $marca['estado'];
+		$Marca = Database::getRow($sql, $params);
+		if($Marca){
+			$this->nombre = $Marca['nombre_marca'];
+			$this->correo = $Marca['correo'];
+			$this->telefono = $Marca['telefono'];
+			$this->direccion = $Marca['direccion'];
+			$this->imagen = $Marca['imagen_url'];
+			$this->estado = $Marca['estado'];
 			return true;
 		}else{
 			return null;
