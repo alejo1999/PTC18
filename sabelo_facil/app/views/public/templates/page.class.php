@@ -47,32 +47,37 @@ class Page extends Component{
 	public static function templateFooter(){
 		print("
 				</main>
-				<footer class='page-footer green'>
-					<div class='container'>
-						<div class='row'>
-							<div class='col s12 m6 l6'>
-								<h5 class='white-text'>Nosotros</h5>
-								<p>
-									<blockquote><a href='#mision' class='modal-trigger white-text'><b>Misión</b></a> | <a href='#vision' class='modal-trigger white-text'><b>Visión</b></a> | <a href='#valores' class='modal-trigger white-text'><b>Valores</b></a></blockquote>
-									<blockquote><a href='#terminos' class='modal-trigger white-text'><b>Términos y condiciones</b></a></blockquote>
-								</p>
-							</div>
-							<div class='col s12 m6 l6'>
-								<h5 class='white-text'>Contáctanos</h5>
-								<p>
-									<blockquote><a class='white-text' href='https://www.facebook.com/' target='_blank'><b>facebook</b></a> | <a class='white-text' href='https://twitter.com/' target='_blank'><b>twitter</b></a></blockquote>
-									<blockquote><a class='white-text' href='https://www.instagram.com/' target='_blank'><b>instagram</b></a> | <a class='white-text' href='https://www.youtube.com/' target='_blank'><b>youtube</b></a></blockquote>
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class='footer-copyright'>
-						<div class='container'>
-							<span>© CoffeeCode, todos los derechos reservados.</span>
-							<span class='grey-text text-lighten-4 right'>Diseñado con <b><a class='red-text text-accent-1' href='http://materializecss.com/' target='_blank'>Materialize</a></b></span>
-						</div>
-					</div>
-				</footer>
+				<footer class='#00bfa5 teal darken-1' style='margin-top:15vh;' id='footer_pub'>
+        <a href=''> <div class='row' id='anuncio_block'>
+            Seccion del anuncio.
+         </div>
+         </a>
+         
+         <div class='container'>
+             <div class='row'>
+                 <div class='col s12 m7 l6' style='padding-right:20px;'>
+                     <h5 id='des'>Sabelofacil</h5>
+                     <p class='grey-text text-lighten-4'>Los mejores productos a los mejores precios, el sitio perfecto para consulta de información y compra en línea.</p>
+                     <a class='btn_menu_action' style='color:white;'>Leer más</a> 
+                 </div>
+                 <div class='col s12 m3 l3'>
+                     <h5 id='des'>Contactanos</h5>
+                     <p class='grey-text text-lighten-4'>Sabelo_facil@gmail.com</p>
+                     <p class='grey-text text-lighten-4'>+503 2230-4875</p>
+                 </div>
+                 <div class='col s12 m2 l3'>
+                     <h5 id='des' style='white-space:pri; font-size:1.4em;'>¿Deseas Promocionarte?</h5>
+                     <p class='grey-text text-lighten-4'>Rellena un formulario con la información y estaremos en contacto!</p>
+                     <a class='btn_menu_action' style='color:white;'>Registrar comercio</a> 
+                 </div>
+             </div>
+         </div>
+         <div class='footer-copyright' style='margin-top:50px;'>
+             <div class='container'>
+                 
+             </div>
+         </div>
+     </footer>
 				<script type='text/javascript' src='../web/js/jquery-3.2.1.min.js'></script>
 				<script type='text/javascript' src='../web/js/materialize.min.js'></script>
 				<script type='text/javascript' src='../web/js/public.js'></script>
