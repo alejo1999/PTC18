@@ -1,29 +1,29 @@
 <?php
-require_once("../../app/models/materia.class.php");
+require_once("../../app/models/marca.class.php");
 try{
 	if(isset($_GET['id'])){
-		$Materia = new Materia;
-		if($Materia->setId($_GET['id'])){
-			if($Materia->readMaterias()){
+		$Marca = new Marca;
+		if($Marca->setId($_GET['id'])){
+			if($Marca->readMarcas()){
 				if(isset($_POST['eliminar'])){
-					if($Materia->deleteMaterias()){
-							Page::showMessage(1, "Materia eliminada", "index.php");
+					if($Marca->deleteMarcas()){
+							Page::showMessage(1, "Marca eliminada", "index.php");
 					}else{
 						throw new Exception(Database::getException());
 					}
 				}
 				
 			}else{
-				throw new Exception("Materia inexistente");
+				throw new Exception("Marca inexistente");
 			}
 		}else{
-			throw new Exception("Materia incorrecta");
+			throw new Exception("Marca incorrecta");
 		}
 	}else{
-		Page::showMessage(3, "Seleccione Materia", "index.php");
+		Page::showMessage(3, "Seleccione Marca", "index.php");
 	}
 }catch(Exception $error){
 	Page::showMessage(2, $error->getMessage(), "index.php");
 }
-require_once("../../app/views/dashboard/materia/delete_view.php");
+require_once("../../app/views/dashboard/Marca/delete_view.php");
 ?>

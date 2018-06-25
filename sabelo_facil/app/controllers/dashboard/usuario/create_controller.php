@@ -14,42 +14,50 @@ try{
                                     if($usuario->setDireccion($_POST['direccion_admin'])){                            
                                         if($usuario->setDocumento($_POST['documento_admin'])){
                                             if($usuario->setTipoDocumento($_POST['tipo_documento'])){
-                                                if($usuario->createUsuario()){
-                                                    Page::showMessage(1, "Usuario creado", "index.php");
+                                                if(is_uploaded_file($_FILES['archivo']['tmp_name'])){
+                                                    if($usuario->setImagen($_FILES['archivo'])){
+                                                    if($usuario->createUsuario()){
+                                                        Page::showMessage(1, "Usuario creado", "index.php");
+                                                            }else{
+                                                                throw new Exception(Database::getException());
+                                                            }
+                                                        }else{
+                                                            throw new Exception($usuario->getImageError());
+                                                        }
+                                                    }else {
+                                                        throw new Exception("Imagen incorrecta");
+                                                    }
                                                 }else{
-                                                    throw new Exception(Database::getException());
+                                                    throw new Exception("tipo documento");
                                                 }
                                             }else{
-                                                throw new Exception("tipo documento");
-                                            }
+                                                throw new Exception("documento");
+                                            } 
                                         }else{
-                                            throw new Exception("documento");
-                                        } 
+                                            throw new Exception("direccion");
+                                        }
                                     }else{
-                                        throw new Exception("direccion");
+                                        throw new Exception("Fecha");
                                     }
                                 }else{
-                                    throw new Exception("Fecha");
+                                    throw new Exception("Clave menor a 6 caracteres");
                                 }
                             }else{
-                                throw new Exception("Clave menor a 6 caracteres");
-                            }
+                                throw new Exception("Claves diferentes");
+                            }                        
                         }else{
-                            throw new Exception("Claves diferentes");
-                        }                        
+                            throw new Exception("Alias incorrecto");
+                        }
                     }else{
-                        throw new Exception("Alias incorrecto");
+                        throw new Exception("Correo incorrecto");
                     }
                 }else{
-                    throw new Exception("Correo incorrecto");
+                    throw new Exception("Apellidos incorrectos");
                 }
             }else{
-                throw new Exception("Apellidos incorrectos");
+                throw new Exception("Nombres incorrectos");
             }
-        }else{
-            throw new Exception("Nombres incorrectos");
         }
-    }
 }catch(Exception $error){
     Page::showMessage(2, $error->getMessage(), null);
 }

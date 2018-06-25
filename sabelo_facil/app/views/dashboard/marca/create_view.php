@@ -23,12 +23,21 @@
         <div class='file-field input-field col s12 m6'>
             <div class='btn waves-effect'>
                 <span><i class='material-icons'>image</i></span>
-                <input type='file' name='archivo' required/>
+                <input type='file' name='archivo'/>
             </div>
             <div class='file-path-wrapper'>
                 <input type='text' class='file-path validate' placeholder='Seleccione una imagen'/>
-            </div>
+            </div> 
         </div>
+            <div class='switch white-text'>
+              <span>Estado:</span>
+                <label>
+                    <i class='material-icons'>visibility_off</i>
+                    <input type='checkbox' name='estado' <?php print($Marca->getEstado()?"checked":"") ?>/>
+                    <span class='lever'></span>
+                    <i class='material-icons'>visibility</i>
+                </label>
+            </div>
     </div>
     <div class='row center-align'>
         <a href='index.php' class='btn waves-effect grey tooltipped' data-tooltip='Cancelar'><i class='material-icons'>cancel</i></a>
