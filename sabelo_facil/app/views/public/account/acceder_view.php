@@ -20,15 +20,30 @@
 					<label for='apellidos'>Apellidos</label>
 				</div>
 				<div class='input-field col s12 m6'>
+					<i class='material-icons prefix'>account_box</i>
+					<input id='alias' type='text' name='alias' class='validate'>
+					<label for='alias'>Alias</label>
+				</div>
+				<div class='input-field col s12 m6'>
 					<i class='material-icons prefix'>email</i>
 					<input id='correo' type='email' name='correo' class='validate'>
 					<label for='correo' data-error='Error' data-success='Bien'>Correo</label>
 				</div>
 				<div class='input-field col s12 m6'>
-					<i class='material-icons prefix'>phone</i>
-					<input id='telefono' type='text' name='telefono' class='validate'>
-					<label for='telefono' data-error='Error' data-success='Bien'>Teléfono</label>
-				</div>
+        			<i class="material-icons prefix">insert_invitation</i>
+            		<input id="fecha_nac" name="fecha_nac" type="text" class="datepicker">
+            		<label for="fecha_nac">Fecha de nacimiento</label>
+        		</div>
+				<div class='input-field col s12 m6'>
+					<?php
+						Page::showSelect("Tipo de documento", "tipo_documento", $cliente->getTipoDocumento(), $cliente->getTipoDocumentos());
+					?>
+        		</div>
+				<div class='input-field col s12 m6'>
+          			<i class='material-icons prefix'>import_contacts</i>
+          			<input id='documento_admin' type='text' name='documento' class='validate'/>
+          			<label for='documento_admin'>Documento</label>
+        		</div>
 				<div class='input-field col s12 m6'>
 					<i class='material-icons prefix'>security</i>
 					<input id='clave1' type='password' name='clave1' class='validate'>

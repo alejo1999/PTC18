@@ -39,7 +39,7 @@ class Page extends Component{
 							<li onmouseover='bal_over=6; show_info_baldosa();'><a class='baldosa' href='../proveedor'>	<p class='plac_let'>P</p>Proveedores</a></li>
 							<li onmouseover='bal_over=7; show_info_baldosa();'><a class='baldosa' href='../marca'>		<p class='plac_let'>M</p>Marcas</a></li>
 							<li onmouseover='bal_over=7; show_info_baldosa();'><a class='baldosa' href='../tipo_usuario'>		<p class='plac_let'>T</p>Tipo de Usuario</a></li>
-
+							<li onmouseover='bal_over=7; show_info_baldosa();'><a class='baldosa' href='../cliente'>		<p class='plac_let'>C</p>Clientes</a></li>
 							</ul>
 
 							<div id='sepline'> </div>
