@@ -27,7 +27,7 @@ footer{
     
   }
   #sf_bottom_bar_text{
-  width: 100%;
+  width: auto;
   text-align: right;
   margin-top: 2px;
   float: right;

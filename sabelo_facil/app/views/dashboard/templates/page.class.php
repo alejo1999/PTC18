@@ -144,7 +144,8 @@ class Page extends Component{
     </div>
     
     <div class='sf_bottom_bar' id='foot_col'>
-        <a href='#!' id='sf_bottom_bar_text' >Sabelofacil Dashboard  |   2018</a>
+		<a href='#!' id='sf_bottom_bar_text' >Sabelofacil Dashboard  |   2018</a>
+		<a href='../../../../../../PTC18/sabelo_facil/public/' id='sf_bottom_bar_text' >Sitio Publico</a>
     </div>
 
 </footer>
