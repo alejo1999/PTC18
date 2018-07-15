@@ -38,13 +38,12 @@
           	<label for='documento_admin'>Documento</label>
         </div>
         <div class='input-field col s12 m6'>
-          	<i class='material-icons prefix'>import_contacts</i>
                 <div class='input-field col s12 m6'>
                     <?php
                     Page::showSelect("Tipo de documento", "tipo_documento", $cliente->getTipoDocumento(), $cliente->getTipoDocumentos());
                     ?>
                 </div>
-          	<label for='tipo_documento'>Tipo</label>
+          	
         </div>
 
         <div class='input-field col s12 m6'>
@@ -66,6 +65,20 @@
                 <input type='text' class='file-path validate' placeholder='Seleccione una imagen'/>
             </div> 
         </div>
+        <div class='col s12 m6'>
+            <p>
+                <div class='switch white-text'>
+                    <span>Estado:</span>
+                    <label>
+                        <i class='material-icons'>visibility_off</i>
+                        <input type='checkbox' name='estado' <?php print($cliente->getEstado()?"checked":"") ?>/>
+                        <span class='lever'></span>
+                        <i class='material-icons'>visibility</i>
+                    </label>
+                </div>
+            </p>
+        </div>
+    </div>
     </div>
     <div class='row center-align'>
         <a href='index.php' class='btn waves-effect grey tooltipped' data-tooltip='Cancelar'><i class='material-icons'>cancel</i></a>

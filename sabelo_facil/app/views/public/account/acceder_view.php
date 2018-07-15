@@ -77,12 +77,12 @@
 			<div class='row'>
 				<div class='input-field col s12 m6 offset-m3'>
 					<i class='material-icons prefix'>email</i>
-					<input id='usuario' type='email' name='usuario' class='validate'>
-					<label for='usuario' data-error='Error' data-success='Bien'>Correo</label>
+					<input id='usuario' type='text' name='alias_usuario' class='validate'>
+					<label for='usuario' data-error='Error' data-success='Bien'>Alias</label>
 				</div>
 				<div class='input-field col s12 m6 offset-m3'>
 					<i class='material-icons prefix'>security</i>
-					<input id='clave' type='password' name='clave' class='validate'>
+					<input id='clave' type='password' name='clave_usuario' class='validate'>
 					<label for='clave' data-error='Error' data-success='Bien'>Contraseña</label>
 				</div>
 			</div>

@@ -45,8 +45,20 @@
             <div class='file-path-wrapper'>
                 <input class='file-path validate' type='text' placeholder='Seleccione una imagen'/>
             </div>
-        
     </div>
+    <div class='col s12 m6'>
+            <p>
+                <div class='switch white-text'>
+                    <span>Estado:</span>
+                    <label>
+                        <i class='material-icons'>visibility_off</i>
+                        <input type='checkbox' name='estado' <?php print($cliente->getEstado()?"checked":"") ?>/>
+                        <span class='lever'></span>
+                        <i class='material-icons'>visibility</i>
+                    </label>
+                </div>
+            </p>
+        </div>
     <div class='row center-align'>
         <a href='index.php' class='btn waves-effect grey tooltipped' data-tooltip='Cancelar'><i class='material-icons'>cancel</i></a>
         <button type='submit' name='actualizar' class='btn waves-effect blue tooltipped' data-tooltip='Actualizar'><i class='material-icons'>save</i></button>

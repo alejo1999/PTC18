@@ -2,7 +2,7 @@
 require_once("../../app/models/cliente.class.php");
 try{
 	if(isset($_GET['id'])){
-		if($_GET['id'] != $_SESSION['ID_admin']){
+		
 			$cliente = new cliente;
 			if($cliente->setId($_GET['id'])){
 				if($cliente->readcliente()){
@@ -19,9 +19,7 @@ try{
 			}else{
 				throw new Exception("cliente incorrecto");
 			}
-		}else{
-			throw new Exception("No se puede eliminar a sí mismo");
-		}
+		
 	}else{
 		Page::showMessage(3, "Seleccione cliente", "index.php");
 	}

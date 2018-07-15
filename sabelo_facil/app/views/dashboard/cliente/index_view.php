@@ -20,8 +20,8 @@
 			<th>Apellidos</th>
 			<th>Nombres</th>
 			<th>Correo</th>
-			<th>Nombre de cliente</th>
-			<th>Ediciones</th>
+			<th>Estado</th>
+			<th>Modificar</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -33,10 +33,9 @@
 			<td>$row[apellido]</td>
 			<td>$row[nombre]</td>
 			<td>$row[correo]</td>
-			<td>$row[username]</td>
+			<td><i class='material-icons'>".($row['estado']?"visibility":"visibility_off")."</i></td>
 			<td>
 				<a href='update.php?id=$row[ID_cliente]' class='blue-text'><i class='material-icons'>mode_edit</i></a>
-				<a href='delete.php?id=$row[ID_cliente]' class='red-text'><i class='material-icons'>delete</i></a>
 			</td>
 		</tr>
 		");
