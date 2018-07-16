@@ -12,6 +12,7 @@ try{
                             if($cliente->setCorreo($_POST['correo'])){
                                 if($cliente->setAlias($_POST['alias'])){
                                     if($cliente->setFechaNac($_POST['fecha_nac'])){
+                                        if($cliente->setEstado(isset($_POST['estado'])?1:0)){
                                         if($cliente->setDireccion($_POST['direccion_cliente'])){
                                             if($cliente->setDocumento($_POST['documento_cliente'])){
                                                 if(is_uploaded_file($_FILES['archivo']['tmp_name'])){
@@ -32,7 +33,10 @@ try{
                                             }   
                                         }else{
                                             throw new Exception("Direccion Incorrecta");
-                                        }    
+                                        }
+                                    }else{
+                                        throw new Exception("Estado no valido");
+                                    }     
                                     }else{
                                         throw new Exception("Fecha de nacimiento incorrecta");
                                     }

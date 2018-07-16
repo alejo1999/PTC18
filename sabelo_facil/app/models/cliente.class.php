@@ -12,7 +12,7 @@ class Cliente extends Validator{
 	private $tipo_documento =  null;
 	private $estado =  null;
 	private $imagen =  null;
-	private $fecha_nac = null;
+	private $fecha_nacimiento = null;
 	//Métodos para sobrecarga de propiedades
 	
 	public function setId($value){
@@ -54,14 +54,14 @@ class Cliente extends Validator{
 
 	public function setFechaNac($value){
 		if($this->validateDate($value)){
-			$this->fecha_nac = $value;
+			$this->fecha_nacimiento = $value;
 			return true;
 		}else{
 			return false;
 		}
 	}
 	public function getFechaNac(){
-		$cadena = $this->fecha_nac;
+		$cadena = $this->fecha_nacimiento;
 		$buscar = '-';
 		$reemplazar = '/';
 		
@@ -159,6 +159,18 @@ class Cliente extends Validator{
 	public function getTipoDocumento(){
 		return $this->tipo_documento;
 	}
+	public function setEstado($value){
+		if($value == "1" || $value == "0"){
+			$this->estado = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getEstado(){
+		return $this->estado;
+	}
+
 
 	//Métodos para manejar la sesión del Cliente
 	public function checkAlias(){
@@ -173,8 +185,8 @@ class Cliente extends Validator{
 		}
 	}
 	public function checkPassword(){
-		$sql = "SELECT contrasena, imagen_url, nombre FROM cliente WHERE ID_cliente = ?";
-		$params = array($this->id);
+		$sql = "SELECT contrasena, imagen_url, nombre FROM cliente WHERE username = ?";
+		$params = array($this->alias);
 		$data = Database::getRow($sql, $params);
 		if(password_verify($this->clave, $data['contrasena'])){
 			$this->nombres = $data['nombre'];
@@ -202,7 +214,7 @@ class Cliente extends Validator{
 	}
 
 	public function getClientes(){
-		$sql = "SELECT ID_cliente, nombre, apellido, correo, username, imagen_url FROM cliente ORDER BY apellido";
+		$sql = "SELECT ID_cliente, nombre, apellido, correo, username, imagen_url, estado FROM cliente ORDER BY estado DESC";
 		$params = array(null);
 		return Database::getRows($sql, $params);
 	}
@@ -213,12 +225,12 @@ class Cliente extends Validator{
 	}
 	public function createCliente(){
 		$hash = password_hash($this->clave, PASSWORD_DEFAULT);
-		$sql = "INSERT INTO cliente(nombre, apellido, fecha_nacimiento, correo, contrasena, direccion, documento, username, FK_ID_tipo_doc, estado) VALUES(?,?,?,?,?,?,?,?,?,?)";
-		$params = array($this->nombres, $this->apellidos, $this->fecha_nac, $this->correo, $hash, $this->direccion, $this->documento, $this->alias, $this->tipo_documento, 1);
+		$sql = "INSERT INTO cliente(nombre, apellido, fecha_nacimiento, correo, contrasena, direccion, documento, username, FK_ID_tipo_doc, imagen_url) VALUES(?,?,?,?,?,?,?,?,?,?)";
+		$params = array($this->nombres, $this->apellidos, $this->fecha_nacimiento, $this->correo, $hash, $this->direccion, $this->documento, $this->alias, $this->tipo_documento, $this->imagen);
 		return Database::executeRow($sql, $params);
 	}
 	public function readCliente(){
-		$sql = "SELECT nombre, apellido, correo, username, fecha_nac, direccion, documento, imagen_url FROM cliente WHERE ID_cliente = ?";
+		$sql = "SELECT nombre, apellido, correo, username, fecha_nacimiento, direccion, documento, imagen_url, estado FROM cliente WHERE ID_cliente = ?";
 		$params = array($this->id);
 		$user = Database::getRow($sql, $params);
 		if($user){
@@ -226,22 +238,23 @@ class Cliente extends Validator{
 			$this->apellidos = $user['apellido'];
 			$this->correo = $user['correo'];
 			$this->alias = $user['username'];
-			$this->fecha_nac = $user['fecha_nac'];
+			$this->fecha_nacimiento = $user['fecha_nacimiento'];
 			$this->direccion = $user['direccion'];
 			$this->documento = $user['documento'];
 			$this->imagen = $user['imagen_url'];
+			$this->estado = $user['estado'];
 			return true;
 		}else{
 			return null;
 		}
 	}
 	public function updateCliente(){
-		$sql = "UPDATE cliente SET nombre = ?, apellido = ?, correo = ?, username = ?, fecha_nac =? , direccion=?, documento=?, imagen_url=? WHERE ID_cliente = ?";
-		$params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $this->fecha_nac,$this->direccion,$this->documento, $this->imagen, $this->id);
+		$sql = "UPDATE cliente SET nombre = ?, apellido = ?, correo = ?, username = ?, fecha_nacimiento =? , direccion=?, documento=?, imagen_url=?, estado=? WHERE ID_cliente = ? ";
+		$params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $this->fecha_nacimiento,$this->direccion,$this->documento, $this->imagen, $this->estado, $this->id);
 		return Database::executeRow($sql, $params);
 	}
 	public function deleteCliente(){
-		$sql = "DELETE FROM cliente WHERE ID_lciente = ?";
+		$sql = "DELETE FROM cliente WHERE ID_cliente = ?";
 		$params = array($this->id);
 		return Database::executeRow($sql, $params);
 	}
