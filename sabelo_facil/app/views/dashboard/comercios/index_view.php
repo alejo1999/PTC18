@@ -1,3 +1,4 @@
+<main class='container'>
 <div class='row'>   
     <form method='post'>
         <div class='input-field col s6 m4'>
@@ -45,3 +46,4 @@
 	?>
 	</tbody>
 </table>
+</main>

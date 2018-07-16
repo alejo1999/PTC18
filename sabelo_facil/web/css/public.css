@@ -45,3 +45,29 @@ main {
     text-align: center;
     padding-top: 12vh;
 }
+
+
+input[type="radio"] {
+    display: none;
+  }
+  
+  label {
+    color: grey;
+    font-size: 40px;
+  }
+  
+  .clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+  }
+  
+  label:hover,
+  label:hover ~ label {
+    color: orange;
+    cursor: pointer;
+  }
+  
+  input[type="radio"]:checked ~ label {
+    color: orange;
+  }
+  

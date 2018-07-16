@@ -7,6 +7,8 @@ class Producto extends Validator{
 	private $precio = null;
 	private $imagen = null;
 	private $categoria = null;
+	private $proveedor = null;
+	private $marca = null;
 	private $estado = null;
 
 	//Métodos para sobrecarga de propiedades
@@ -109,7 +111,12 @@ class Producto extends Validator{
 		return Database::getRows($sql, $params);
 	}
 	public function getProductos(){
-		$sql = "SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, nombre_categoria, estado_producto FROM productos INNER JOIN categorias USING(id_categoria) ORDER BY nombre_producto";
+		$sql = "SELECT producto.ID_producto, producto.imagen_url, producto.nombre_producto, producto.descripcion, producto.precio, categoria.nombre_categoria, producto.estado 
+		FROM producto 
+		INNER JOIN categoria ON producto.FK_ID_Categoria =categoria.ID_categoria 
+		INNER JOIN proveedor ON producto.FK_ID_proveedor = proveedor.ID_proveedor
+		INNER JOIN marca ON producto.FK_ID_marca = marca.ID_marca
+		ORDER BY producto.nombre_producto";
 		$params = array(null);
 		return Database::getRows($sql, $params);
 	}
@@ -119,7 +126,8 @@ class Producto extends Validator{
 		return Database::getRows($sql, $params);
 	}
 	public function getCategorias(){
-		$sql = "SELECT id_categoria, nombre_categoria FROM categorias";
+		$sql = "SELECT categoria.ID_categoria , categoria.nombre_categoria 
+		FROM categoria ";
 		$params = array(null);
 		return Database::getRows($sql, $params);
 	}
@@ -129,16 +137,19 @@ class Producto extends Validator{
 		return Database::executeRow($sql, $params);
 	}
 	public function readProducto(){
-		$sql = "SELECT nombre_producto, descripcion_producto, precio_producto, imagen_producto, id_categoria, estado_producto FROM productos WHERE id_producto = ?";
+		$sql = "SELECT producto.nombre_producto, producto.descripcion, producto.precio, producto.imagen_url, producto.FK_ID_Categoria,producto.FK_ID_marca,producto.FK_ID_proveedor,producto.estado 
+		FROM producto WHERE producto.ID_producto = ?";
 		$params = array($this->id);
 		$producto = Database::getRow($sql, $params);
 		if($producto){
 			$this->nombre = $producto['nombre_producto'];
-			$this->descripcion = $producto['descripcion_producto'];
-			$this->precio = $producto['precio_producto'];
-			$this->imagen = $producto['imagen_producto'];
-			$this->categoria = $producto['id_categoria'];
-			$this->estado = $producto['estado_producto'];
+			$this->descripcion = $producto['descripcion'];
+			$this->precio = $producto['precio'];
+			$this->imagen = $producto['imagen_url'];
+			$this->categoria = $producto['FK_ID_Categoria'];
+			$this->proveedor = $producto['FK_ID_proveedor'];
+			$this->marca = $producto['FK_ID_marca'];
+			$this->estado = $producto['estado'];
 			return true;
 		}else{
 			return null;

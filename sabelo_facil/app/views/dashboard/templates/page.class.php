@@ -17,6 +17,7 @@ class Page extends Component{
 				<link type='text/css' rel='stylesheet' href='../../web/css/material_icons.css'/>
 				<link type='text/css' rel='stylesheet' href='../../web/css/dashboard.css'/>
 				<link type='text/css' rel='stylesheet' href='../../web/css/sabeloflat.css'/>
+				<script type='text/javascript' src='../../web/js/Chart.bundle.js'></script>
 				<script type='text/javascript' src='../../web/js/sweetalert.min.js'></script>
 				<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
 			</head>
@@ -40,6 +41,8 @@ class Page extends Component{
 							<li onmouseover='bal_over=7; show_info_baldosa();'><a class='baldosa' href='../marca'>		<p class='plac_let'>M</p>Marcas</a></li>
 							<li onmouseover='bal_over=7; show_info_baldosa();'><a class='baldosa' href='../tipo_usuario'>		<p class='plac_let'>T</p>Tipo de Usuario</a></li>
 							<li onmouseover='bal_over=7; show_info_baldosa();'><a class='baldosa' href='../cliente'>		<p class='plac_let'>C</p>Clientes</a></li>
+							<li onmouseover='bal_over=7; show_info_baldosa();'><a class='baldosa' href='../Estadistica'>		<p class='plac_let'>E</p>Estadistica</a></li>
+							<li onmouseover='bal_over=7; show_info_baldosa();'><a class='baldosa' href='../Reportes'>		<p class='plac_let'>R</p>Reportes</a></li>
 							</ul>
 
 							<div id='sepline'> </div>
@@ -115,7 +118,7 @@ class Page extends Component{
 				</header>
 				
 			
-				<main class='container'>
+				<main class=''>
 					<h3 id='title_flat' class='center-align'>$title</h3>
 			");
 		}else{
@@ -145,7 +148,7 @@ class Page extends Component{
     
     <div class='sf_bottom_bar' id='foot_col'>
 		<a href='#!' id='sf_bottom_bar_text' >Sabelofacil Dashboard  |   2018</a>
-		<a href='../../../../../../PTC18/sabelo_facil/public/' id='sf_bottom_bar_text' >Sitio Publico</a>
+		<a href='../../public/index.php' id='sf_bottom_bar_text' >Sitio Publico</a>
     </div>
 
 </footer>

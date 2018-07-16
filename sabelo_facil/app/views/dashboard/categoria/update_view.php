@@ -5,7 +5,11 @@
             <input id='nombre' type='text' name='nombre' class='validate' value='<?php print($categoria->getNombre()) ?>' required/>
             <label for='nombre'>Nombre</label>
         </div>
-        
+        <div class='input-field col s12 m6'>
+            <i class='material-icons prefix'>description</i>
+            <input id='descripcion' type='text' name='descripcion' class='validate' value='<?php print($categoria->getDescripcion()) ?>'/>
+            <label for='descripcion'>Descripción</label>
+        </div>
         <div class='file-field input-field col s12 m6'>
             <div class='btn waves-effect'>
                 <span><i class='material-icons'>image</i></span>
