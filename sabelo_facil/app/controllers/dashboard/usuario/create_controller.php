@@ -29,7 +29,7 @@ try{
                                         throw new Exception("direccion");
                                     }
                                 }else{
-                                    throw new Exception("Fecha");
+                                    throw new Exception("Fecha incorrecta");
                                 }
                             }else{
                                 throw new Exception("Clave menor a 6 caracteres");

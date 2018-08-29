@@ -22,7 +22,7 @@
         </div>
 
          <div class='input-field col s12 m6'>
-        <i class="material-icons prefix">insert_invitation</i>
+            <i class="material-icons prefix">insert_invitation</i>
             <input id="fecha_nac" name="fecha_nac" type="text" value='<?php print($usuario->getFechaNac()) ?>' class="datepicker">
             <label for="fecha_nac">Fecha de nacimiento</label>
         </div>

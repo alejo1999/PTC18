@@ -2,11 +2,13 @@
 class Producto extends Validator{
 	//Declaración de propiedades
 	private $id = null;
+	private $id_marca = null;
+	private $id_categoria = null;
+    private $id_proveedor = null;	
 	private $nombre = null;
-	private $descripcion = null;
 	private $precio = null;
 	private $imagen = null;
-	private $categoria = null;
+	private $descripcion = null;
 	private $estado = null;
 
 	//Métodos para sobrecarga de propiedades
@@ -21,7 +23,47 @@ class Producto extends Validator{
 	public function getId(){
 		return $this->id;
 	}
+
+	public function setMarca($value){
+		if($this->validateId($value)){
+			$this->id_marca = $value;
+			return true;
+		}else{
+			return false;
+		}
+
+	}
+	public function getMarca(){
+		return $this->id_marca;
+	}
+
+	public function setCategoria($value){
+		if($this->validateId($value)){
+			$this->id_categoria = $value;
+			return true;
+		}else{
+			return false;
+		}
+
+	}
+	public function getCategoria(){
+		return $this->id_ctegoria;
+	}
 	
+	
+	public function setProveedor($value){
+		if($this->validateId($value)){
+			$this->id_proveedor = $value;
+			return true;
+		}else{
+			return false;
+		}
+
+	}
+	public function getProveedor(){
+		return $this->id_proveedor;
+	}
+
 	public function setNombre($value){
 		if($this->validateAlphanumeric($value, 1, 50)){
 			$this->nombre = $value;
@@ -33,6 +75,7 @@ class Producto extends Validator{
 	public function getNombre(){
 		return $this->nombre;
 	}
+	
 
 	public function setDescripcion($value){
 		if($this->validateAlphanumeric($value, 1, 200)){
@@ -59,7 +102,7 @@ class Producto extends Validator{
 	}
 
 	public function setImagen($file){
-		if($this->validateImage($file, $this->imagen, "../../web/img/productos/", 500, 500)){
+		if($this->validateImage($file, $this->imagen, "../../web/img/productos/", 800, 800)){
 			$this->imagen = $this->getImageName();
 			return true;
 		}else{
@@ -77,19 +120,6 @@ class Producto extends Validator{
 			return false;
 		}
 	}
-
-	public function setCategoria($value){
-		if($this->validateId($value)){
-			$this->categoria = $value;
-			return true;
-		}else{
-			return false;
-		}
-	}
-	public function getCategoria(){
-		return $this->categoria;
-	}
-
 	public function setEstado($value){
 		if($value == "1" || $value == "0"){
 			$this->estado = $value;
@@ -119,6 +149,16 @@ class Producto extends Validator{
 		return Database::getRows($sql, $params);
 	}
 	public function getCategorias(){
+		$sql = "SELECT ID_categoria, nombre_categoria FROM categoria";
+		$params = array(null);
+		return Database::getRows($sql, $params);
+	}
+	public function getMarcas(){
+		$sql = "SELECT id_categoria, nombre_categoria FROM categorias";
+		$params = array(null);
+		return Database::getRows($sql, $params);
+	}
+	public function getProveedores(){ 
 		$sql = "SELECT id_categoria, nombre_categoria FROM categorias";
 		$params = array(null);
 		return Database::getRows($sql, $params);

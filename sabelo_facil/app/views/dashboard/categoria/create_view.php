@@ -1,12 +1,12 @@
 <form method='post' enctype='multipart/form-data'>
     <div class='row'>
         <div class='input-field col s12 m6'>
-            <i class='material-icons prefix'>note_add</i>
+            <i class='material-icons white-text prefix'>note_add</i>
             <input id='nombre' type='text' name='nombre' class='validate' value='<?php print($categoria->getNombre()) ?>' required/>
             <label for='nombre'>Nombre</label>
         </div>
         <div class='input-field col s12 m6'>
-            <i class='material-icons prefix'>description</i>
+            <i class='material-icons white-text prefix'>description</i>
             <input id='descripcion' type='text' name='descripcion' class='validate' value='<?php print($categoria->getDescripcion()) ?>'/>
             <label for='descripcion'>Descripción</label>
         </div>

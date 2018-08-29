@@ -1,7 +1,7 @@
 <div class="row">
     <div class='col s12 m12 l12 '>
             <div class="col s12 m4 l3">
-                <h4>Categorias</h4>
+                <h4>Cupones</h4>
             </div>
             <form method='post'>
                 <div class="col s10 m5 l5 ">
@@ -26,14 +26,19 @@
     </div>
 </div> 
 
-<table class=' highlight responsive-table centered '>
+<table class=' highlight responsive-table centered ' id='mi_tabla' >
     <thead>
         <tr>
-			
-		    <th>imagen</th>
             <th>Nombre</th>
-            <th>Descripcion</th>
-            <th>Accion</th> 
+            <th>Categoria</th>
+            <th>Comercio</th>
+            <th>Precio</th>
+			<th>Existencia</th>
+			<th>Fecha inicio</th>
+            <th>Fecha fin</th>
+            <th>Estado</th>
+            <th>Accion</th>
+            
         </tr>
     </thead>
     <tbody>
@@ -41,13 +46,20 @@
 	foreach($data as $row){
 		print("
 		<tr>
-			<td><img src='../../web/img/categoria/$row[imagen_url]' class='materialboxed' width='100' height='100'></td>
-			<td>$row[nombre_categoria]</td>
-			<td>$row[descripcion_categoria]</td>
+            <td>$row[nombre]</td>
+            <td>$row[nombre_categoria]</td>
+            <td>$row[nombre]</td>
+            <td>$row[precio]</td>
+            <td>$row[existencia]</td>
+			<td>$row[fecha_inicio]</td>
+			<td>$row[fecha_final]</td>
+            <td><i class='material-icons'>".($row['estado']?"visibility":"visibility_off")."</i></td>
             <td>
-                <a href='update.php?id=$row[ID_categoria]' class='waves-effect waves-light'><i class='material-icons white-text'>create</i></a>
-                <a href='delete.php?id=$row[ID_categoria]' id='space'onclick='borrar_producto()' class='waves-effect waves-light'href='#'><i class='material-icons red-text'>delete</i></a>
-			</td>
+                <a href='update.php?id=$row[ID_cupon]' class='waves-effect waves-light'><i class='material-icons white-text'>create</i></a>
+                
+                <a href='delete.php?id=$row[ID_cupon]' id='space' class='waves-effect waves-light'href='#'><i class='material-icons red-text'>delete</i></a>
+            </td>
+            
 		</tr>
 		");
 	}

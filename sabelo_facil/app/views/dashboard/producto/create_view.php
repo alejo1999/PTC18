@@ -6,18 +6,33 @@
           	<label for='nombre'>Nombre</label>
         </div>
         <div class='input-field col s12 m6'>
-          	<i class='material-icons prefix'>shopping_cart</i>
-          	<input id='precio' type='number' name='precio' class='validate' max='999.99' min='0.01' step='any' value='<?php print($producto->getPrecio()) ?>' required/>
-          	<label for='precio'>Precio ($)</label>
-        </div>
-        <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>description</i>
           	<input id='descripcion' type='text' name='descripcion' class='validate' value='<?php print($producto->getDescripcion()) ?>' required/>
           	<label for='descripcion'>Descripción</label>
         </div>
         <div class='input-field col s12 m6'>
+          	<i class="material-icons prefix">monetization_on</i>
+          	<input id='precio' type='number' name='precio' class='validate' max='999.99' min='0.01' step='any' value='<?php print($producto->getPrecio()) ?>' required/>
+          	<label for='precio'>Precio ($)</label>
+        </div>
+        <div class='input-field col s12 m6'>
             <?php
             Page::showSelect("Categoría", "categoria", $producto->getCategoria(), $producto->getCategorias());
+            ?>
+        </div>
+        <div class='input-field col s12 m3'>
+          	<i class='material-icons prefix'>loupe</i>
+          	<input id='existencia' type='number' name='existencia' class='validate' max='999' min='1' step='any' value='<?php print($producto->getExistencia()) ?>' required/>
+          	<label for='existencia'>Existencia</label>
+        </div>
+        <div class='input-field col s12 m3'>
+          	<i class='material-icons prefix'>money_off</i>
+          	<input id='descuento' type='number' name='descuento' class='validate' max='999.99' min='0.00' step='any' value='<?php print($producto->getDescuento()) ?>' required/>
+          	<label for='descuento'>Descuento</label>
+        </div>
+        <div class='input-field col s12 m6'>
+            <?php
+            Page::showSelect("Proveedor", "proveedor", $producto->getProveedor(), $producto->getProveedores());
             ?>
         </div>
       	<div class='file-field input-field col s12 m6'>
@@ -43,8 +58,10 @@
             </p>
         </div>
     </div>
-    <div class='row center-align'>
-        <a href='index.php' class='btn waves-effect grey tooltipped' data-tooltip='Cancelar'><i class='material-icons'>cancel</i></a>
-        <button type='submit' name='crear' class='btn waves-effect blue tooltipped' data-tooltip='Crear'><i class='material-icons'>save</i></button>
+    <div class='row right'>
+       
+
+        <a href="index.php" data-tooltip='Cancelar' class="waves-effect waves-light btn  # ef5350 red aligera-2"><i class=" material-icons">cancel</i></a>
+        <button type='submit'  name='crear' data-tooltip='Crear' class=" waves-effect waves-light btn # 66bb6a green aligera-2 tooltipped"><i class=" material-icons">check_circle</i></button>
     </div>
 </form>
