@@ -1,4 +1,4 @@
-<form method='post'>
+<form method='post'enctype='multipart/form-data'>
     <div class='row'>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>person</i>
@@ -39,7 +39,11 @@
         </div>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>import_contacts</i>
-          	<input id='tipo_documento' type='text' name='tipo_documento' class='validate' value='<?php print($usuario->getTipoDocumento()) ?>' required/>
+                <div class='input-field col s12 m6'>
+                    <?php
+                    Page::showSelect("Tipo de documento", "tipo_documento", $usuario->getTipoDocumento(), $usuario->getTipoDocumentos());
+                    ?>
+                </div>
           	<label for='tipo_documento'>Tipo</label>
         </div>
 
@@ -52,6 +56,15 @@
             <i class='material-icons prefix'>security</i>
             <input id='clave2' type='password' name='clave2' class='validate' value='<?php print($usuario->getClave()) ?>' required/>
             <label for='clave2'>Confirmar clave</label>
+        </div>
+        <div class='file-field input-field col s12 m6'>
+            <div class='btn waves-effect'>
+                <span><i class='material-icons'>image</i></span>
+                <input type='file' name='archivo'/>
+            </div>
+            <div class='file-path-wrapper'>
+                <input type='text' class='file-path validate' placeholder='Seleccione una imagen'/>
+            </div> 
         </div>
     </div>
     <div class='row center-align'>

@@ -2,6 +2,7 @@
 require_once("../../app/models/database.class.php");
 require_once("../../app/helpers/validator.class.php");
 require_once("../../app/helpers/component.class.php");
+
 class Page extends Component{
 	public static function templateHeader($title){
 		session_start();
@@ -16,6 +17,7 @@ class Page extends Component{
 				<link type='text/css' rel='stylesheet' href='../../web/css/material_icons.css'/>
 				<link type='text/css' rel='stylesheet' href='../../web/css/dashboard.css'/>
 				<link type='text/css' rel='stylesheet' href='../../web/css/sabeloflat.css'/>
+				<script type='text/javascript' src='../../web/js/Chart.bundle.js'></script>
 				<script type='text/javascript' src='../../web/js/sweetalert.min.js'></script>
 				<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
 			</head>
@@ -27,30 +29,37 @@ class Page extends Component{
 
 				<div id='container_block' style='display:none;'>
 					<div id='menu_plegable'style='display:none;'>
-					<a id='return_btn' onclick='ocultar_panel_superior();'>Regresar</a>	
-						<ul>
+						<a id='return_btn' onclick='ocultar_panel_superior();'>Regresar</a>	
+							<ul>
 
-						<li class='baldosa'><a href='../producto'><i class='material-icons al left'>shop</i>Productos</a></li>
-						<li class='baldosa'><a href='../categoria'><i class='material-icons al left'>shop_two</i>Categorías</a></li>
-						<li class='baldosa'><a href='../usuario'><i class='material-icons al left'>group</i>Usuarios</a></li>
-						<li class='baldosa'><a href='../usuario'><i class='material-icons al left'>group</i>Usuarios</a></li>
-					
-						
-						</ul>
-						
+							<li onmouseover='bal_over=1; show_info_baldosa();'><a class='baldosa' href='../usuario'>		<p class='plac_let'>A</p>Administradores</a></li>
+							<li onmouseover='bal_over=2; show_info_baldosa();'><a class='baldosa' href='../categoria'>	<p class='plac_let'>C</p>Categorías</a></li>
+							<li onmouseover='bal_over=3; show_info_baldosa();'><a class='baldosa' href='../producto'>		<p class='plac_let'>P</p>Productos</a></li></a>
+							<li onmouseover='bal_over=4; show_info_baldosa();'><a class='baldosa' href='../comercios'>	<p class='plac_let'>C</p>Comercios</a></li>
+							<li onmouseover='bal_over=5; show_info_baldosa();'><a class='baldosa' href='../materia'>		<p class='plac_let'>M</p>Materias</a></li>
+							<li onmouseover='bal_over=6; show_info_baldosa();'><a class='baldosa' href='../proveedor'>	<p class='plac_let'>P</p>Proveedores</a></li>
+							<li onmouseover='bal_over=7; show_info_baldosa();'><a class='baldosa' href='../marca'>		<p class='plac_let'>M</p>Marcas</a></li>
+							<li onmouseover='bal_over=7; show_info_baldosa();'><a class='baldosa' href='../tipo_usuario'>		<p class='plac_let'>T</p>Tipo de Usuario</a></li>
+							<li onmouseover='bal_over=7; show_info_baldosa();'><a class='baldosa' href='../cliente'>		<p class='plac_let'>C</p>Clientes</a></li>
+							<li onmouseover='bal_over=7; show_info_baldosa();'><a class='baldosa' href='../Estadistica'>		<p class='plac_let'>E</p>Estadistica</a></li>
+							<li onmouseover='bal_over=7; show_info_baldosa();'><a class='baldosa' href='../Reportes'>		<p class='plac_let'>R</p>Reportes</a></li>
+							</ul>
+
+							<div id='sepline'> </div>
+							<p id='info_baldosita'>Al pasar el puntero del mouse sobre una baldosa se mostrara una pequeña descripcion de lo que realiza la opción</p>
 					</div>				
 				</div>
 
 				<header class='navbar-fixed'>
 					<nav class='navpers'>
 						<div class='nav-wrapper'>
-							<a href='../account/' class='brand-logo'><img src='../../web/img/logo.png' height='60'></a>
-							<a href='#' class='button-collapse' data-activates='mobile'><i class='material-icons'>menu</i></a>
-							<ul class='right hide-on-med-and-down'>
+							
+						<a href='../account/' class='left'><img src='../../web/img/logo.png' height='20'></a>
+							<ul class='right '>
 							
 							
 								<p id='a_nav' href='#' data-activates='slide-out' class='button-collapse headersd'> Notificaciones </p>
-								<p id='a_nav' onclick='mostrar_panel_superior();'  class=' headersd'> Menú de opciones </p>
+								<p id='a_nav_2' onclick='mostrar_panel_superior();'  class=' headersd lok'> Menú de opciones </p>
 							</ul>
 						
 						</div>
@@ -65,7 +74,7 @@ class Page extends Component{
 						<div class='row' id='SIDE_contenedor_user'>
 							<div id='head_sides' ><a style='color:black'>Notificaciones | Menú</a></div>
 							<div id='SIDE_cu_1' class='col s7 m7 l7'>
-								<p id='nombre_user_ingresed'></p>
+								<p id='nombre_user_ingresed'>$_SESSION[nombre]</p>
 								<p id='tipo_user_ingresed'>Administrador</p>
 								
 								<div class='row' style='padding:0; margin:0;'>
@@ -82,7 +91,7 @@ class Page extends Component{
 							</div>
 
 							<div id='SIDE_cu_2' class='col s5 m5 l5'>
-							<img src='' id='imagen_side_user'>
+							<img src='../../web/img/usuarios/$_SESSION[imagen_url]' id='imagen_side_user'>
 							</div>
 						</div>
 
@@ -107,29 +116,14 @@ class Page extends Component{
 						</div>
 						</ul>
 				</header>
-				<ul class='side-nav' id='mobile'>
-					<li><a href='../producto'><i class='material-icons'>shop</i>Productos</a></li>
-					<li><a href='../categoria'><i class='material-icons'>shop_two</i>Categorías</a></li>
-					<li><a href='../usuario'><i class='material-icons'>group</i>Usuarios</a></li>
-					<li><a class='dropdown-button' href='#' data-activates='dropdown-mobile'><i class='material-icons'>verified_user</i>Cuenta: <b>$_SESSION[username]</b></a></li>
-				</ul>
-				<ul id='dropdown-mobile' class='dropdown-content'>
-					<li><a href='../account/profile.php'>Editar perfil</a></li>
-					<li><a href='../account/password.php'>Cambiar clave</a></li>
-					<li><a href='../account/logout.php'>Salir</a></li>
-				</ul>
-				<main class='container'>
+				
+			
+				<main class=''>
 					<h3 id='title_flat' class='center-align'>$title</h3>
 			");
 		}else{
 			print("
-				<header class='navbar-fixed'>
-					<!--<nav class='teal'>
-						<div class='nav-wrapper'>
-							<a href='login.php' class='brand-logo'><i class='material-icons'>dashboard</i></a>
-						</div>
-					</nav>-->
-				</header>
+			
 				<main class='container'>
 			");
 			$filename = basename($_SERVER['PHP_SELF']);
@@ -153,7 +147,8 @@ class Page extends Component{
     </div>
     
     <div class='sf_bottom_bar' id='foot_col'>
-        <a href='#!' id='sf_bottom_bar_text' >Sabelofacil Dashboard  |   2018</a>
+		<a href='#!' id='sf_bottom_bar_text' >Sabelofacil Dashboard  |   2018</a>
+		<a href='../../public/index.php' id='sf_bottom_bar_text' >Sitio Publico</a>
     </div>
 
 </footer>

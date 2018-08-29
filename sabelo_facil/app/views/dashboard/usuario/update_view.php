@@ -1,4 +1,4 @@
-<form method='post'>
+<form method='post' enctype='multipart/form-data'>
     <div class='row'>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>person</i>
@@ -37,10 +37,21 @@
           	<input id='documento_admin' type='text' name='documento_admin' class='validate' value='<?php print($usuario->getDocumento()) ?>' required/>
           	<label for='documento_admin'>Documento</label>
         </div>
+        <div class='file-field input-field col s12 m6'>
+            <div class='btn waves-effect'>
+                <span><i class='material-icons'>image</i></span>
+                <input type='file' name='archivo'/>
+            </div>
+            <div class='file-path-wrapper'>
+                <input class='file-path validate' type='text' placeholder='Seleccione una imagen'/>
+            </div>
         
     </div>
     <div class='row center-align'>
         <a href='index.php' class='btn waves-effect grey tooltipped' data-tooltip='Cancelar'><i class='material-icons'>cancel</i></a>
         <button type='submit' name='actualizar' class='btn waves-effect blue tooltipped' data-tooltip='Actualizar'><i class='material-icons'>save</i></button>
+    </div>
+    <div>
+        <img src='../../web/img/usuarios/<?php print($usuario->getImagen()) ?>' class='materialboxed' width='150' height='150'>
     </div>
 </form>

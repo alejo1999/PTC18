@@ -17,7 +17,7 @@ main {
 }
 
 footer{
-  z-index: 200;
+  z-index: 999;
 }
 .sf_bottom_bar{
     width: 100%;
@@ -27,15 +27,29 @@ footer{
     
   }
   #sf_bottom_bar_text{
-  width: 100%;
+  width: auto;
   text-align: right;
   margin-top: 2px;
   float: right;
   padding-right: 1cm;
   color: white;
   }
-
-
+#info_baldosita{
+  position: relative;
+  float: left;
+  color: white;
+  border-left: 1px solid white;
+  padding-left: 13px;
+  width: 88%;
+}
+#sepline{
+  margin-top: 30px;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(248, 248, 248, 0.219);
+  position: relative;
+  float: left;
+}
   *{
       font-family: Calibri Light;
   }
@@ -99,12 +113,54 @@ td{
     color: white;
 }
 
-#clocky{
-    color:white;
-    line-height: 28px;
-    font-size: 1.7em;
+.lok{
+  background-color: rgb(58, 110, 89);
+  text-align: center;
+  
+}
+#clock_verg{
+  
+  border-bottom: 1px solid rgb(99, 99, 99);
+  width: 230px;
+  padding: 0;
+  margin: 0;
+  padding-top: 28%;
+  
+}
+#clockyd{
+    color:rgb(99, 99, 99);
+    line-height: 40px;
+    font-size: 6.7em;
+    padding: 0;
+}
+#clockyt{
+  color:rgb(99, 99, 99);
+  
+  
+  line-height: 0px;
+  font-size: 1.8em;
+  margin: 0;
+  padding: 0;
+  padding-left: 40px;
+  margin-top: 6px;
+}
+#divisorr{
+  width: 30%;
+  height: 1px;
+  color:rgb(99, 99, 99);
 }
 
+#clockym{
+  color:rgb(99, 99, 99);
+  line-height: 10px;
+  font-size: 2.2em;
+  padding: 0;
+}
+#clockyy{
+  color:rgb(99, 99, 99);
+  line-height: 28px;
+  font-size: 2.6em;
+}
 .navbar-fixed {
     position: relative;
     height: 40px;
@@ -247,19 +303,37 @@ td{
     width: 140px;
     margin: 0;
     padding: 0;
+    padding-left: 10px;
+    
     float: right;
   }
   #a_nav:hover{
     color: white;
   }
-
+  #a_nav_2{
+    color: rgb(196, 216, 205);
+    cursor: pointer;
+    height: 37px;
+    
+    width: 140px;
+    margin: 0;
+    padding: 0;
+    float: right;
+    transition: 0.4s;
+    border-right: 10px solid rgb(30, 30, 30);
+  }
+  #a_nav_2:hover{
+    color: white;
+    height: 42px;
+    box-shadow: -10px 4px 20px rgba(0, 0, 0, 0.74);
+  }
   
   #menu_plegable{
   
   
   z-index: 800;
   width: 100%;
-  height: 200px;
+  height: 100%;
   position: relative;
   top: -200px;
   }
@@ -269,16 +343,36 @@ td{
     background-color: rgba(0, 0, 0, 0.0);
     z-index: 150;
     width: 100%;
-    height: 100%;
+    height: auto;
     padding-bottom: -500px;
+    opacity: 0;
+    transition: opacity 2s;
     }
+  #welcom_text{
+    font-family: Calibri Light;
+     
+      color: rgb(168, 168, 168);
+      font-size: 1.25em;
+      line-height: 1em;
+    width: 80%;
     
+    }
+    .container {
+      margin: 0 auto;
+      max-width: 1280px;
+      width: 85%;
+    }
+
+    div.drag-target{
+    display: none;
+    }
     #container_block{
       position: absolute;  
-  background-color: rgba(0, 0, 0, 0.562);
+  background-color: rgba(18, 19, 19, 0.849);
   z-index: 700;
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  overflow: visible;
   padding-left: 10%;
   padding-right: 10%;
   padding-top: 20px;
@@ -286,7 +380,14 @@ td{
 
     .al{
       color: white;
+     
       
+    }
+
+    .inter_bald{
+      background-color: red;
+      width: 20vh;
+      height: 20vh;
     }
   a{
     color: white;
@@ -295,16 +396,36 @@ td{
     color: white;
   }
   .baldosa{
+    text-align: center;
     width: 20vh;
     height: 20vh;
     float: left;
-    background-color: rgb(58, 115, 141);
+    background-color: rgb(58, 141, 90);
     color: white;
-
-    margin-right: 10px;
-    margin-bottom: 10px;
+    font-size: 1.1em;
+    margin-right: 5px;
+    margin-bottom: 5px; 
+    padding-top: 3vh;
+    transition: transform 0.3s, border 0.3s, box-shadow 0.3s, text-shadow 0.4s ;
+    transform: scale(1);
+    border: 1px solid rgba(0, 0, 0,0);
+    
   }
 
+  .baldosa:hover{
+    transform: scale(1.03);
+    box-shadow: 0px 0px 40px rgba(3, 3, 3, 0.514);
+    border: 1px solid rgba(247, 247, 247, 0.932);
+    text-shadow: -5px 5px 10px rgba(0, 0, 0, 0.863);
+  }
+
+.plac_let{
+  
+  line-height: 1em;
+  font-size: 3.6em;
+  padding: 0;
+  margin: 0;
+}
   #return_btn{
     color: white;
     border-left: solid 2px white;
@@ -312,4 +433,9 @@ td{
     padding-left: 10px; 
   }
 
-  
+.prefix_log{
+  color: white;
+  margin: 0;
+  padding: 0;
+line-height: 10px;
+}
