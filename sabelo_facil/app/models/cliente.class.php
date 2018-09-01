@@ -184,6 +184,41 @@ class Cliente extends Validator{
 			return false;
 		}
 	}
+
+	public function checkCorreo(){
+		$sql = "SELECT correo FROM cliente WHERE username = ?";
+		$params = array($this->alias);
+		$data2 = Database::getRow($sql, $params);
+		if($data2){
+			$this->correo = $data2['correo'];
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function checkNombre(){
+		$sql = "SELECT nombre FROM cliente WHERE username = ?";
+		$params = array($this->alias);
+		$data3 = Database::getRow($sql, $params);
+		if($data3){
+			$this->nombres = $data3['nombre'];
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function checkApellido(){
+		$sql = "SELECT apellido FROM cliente WHERE username = ?";
+		$params = array($this->alias);
+		$data4 = Database::getRow($sql, $params);
+		if($data4){
+			$this->apellidos = $data4['apellido'];
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 	public function checkPassword(){
 		$sql = "SELECT contrasena, imagen_url, nombre FROM cliente WHERE username = ?";
 		$params = array($this->alias);
@@ -208,7 +243,7 @@ class Cliente extends Validator{
 
 	//Metodos para manejar el CRUD
 	public function getTipoDocumentos(){
-		$sql = "SELECT id_tipo_doc, nombre_tipo_doc FROM tipo_doc";
+		$sql = "SELECT ID_tipo_doc, nombre_tipo_doc FROM tipo_doc";
 		$params = array(null);
 		return Database::getRows($sql, $params);
 	}

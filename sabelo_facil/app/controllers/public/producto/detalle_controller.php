@@ -38,9 +38,9 @@ try{
 	$carrito = new Detalle;
 	if(isset($_POST['anadircarrito'])){
 		$_POST = $carrito->validateForm($_POST);
-		if($carrito->setCliente('2')){
+		if($carrito->setCliente($_SESSION['id_cliente'])){
 			if($carrito->setId_producto($_GET['id'])){
-				if(($_POST['cantidad'])<=($producto->getExistencia())){
+				
 					if($carrito->setCantidad($_POST['cantidad'])){
 						$subtotalito = (($carrito->getCantidad())*($producto->getPrecio()));
 						if($carrito->setSubtotal($subtotalito)){
@@ -54,6 +54,7 @@ try{
 										if($carrito->setSubtotal($subtotalnuevo)){
 											if($carrito->modificarrepetido()){
 												Page::showMessage(1,"Este producto ya existe en su carrito solo se aumentara la cantidad seleccionada","carrito.php");
+												alert("producto añadido repetido");
 											}else{
 												Page::showMessage(2,"ocurrio un problema al modificar producto en el carrito",null);
 											}
@@ -68,7 +69,8 @@ try{
 								}
 							}else{
 								if($carrito->createcarrito()){
-								Page::showMessage(1,"Producto agregado  al carrito  SUBTOTAL:$ $subtotalito",null);
+									Page::showMessage(1, "añadido correctamente", null);
+									Page::showMessage(1,"Producto agregado  al carrito  SUBTOTAL:$ $subtotalito",null);
 								}else{
 									Page::showMessage(2,"producto no agregado al carrito",null);
 								}
@@ -79,9 +81,7 @@ try{
 					}else{
 						Page::showMessage(2,"La cantidad Seleccionada es incorrecta",null);
 					}
-				}else{
-					Page::showMessage(3,"La cantidad seleccionada  sobrepasa las existencias ",null);
-				}
+				
 			}else{
 				Page::showMessage(3,"Por favor selecciona  un producto",null);
 			}

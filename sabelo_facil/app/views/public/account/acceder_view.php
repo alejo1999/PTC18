@@ -54,9 +54,9 @@
 					<input id='clave2' type='password' name='clave2' class='validate'>
 					<label for='clave2' data-error='Error' data-success='Bien'>Confirmar contraseña</label>
 				</div>
-				<div class='input-field col s12'>
+				<div class='input-field col s12 m6'>
 					<i class='material-icons prefix'>place</i>
-					<textarea id='direccion' name='direccion' class='materialize-textarea'></textarea>
+					<input id='direccion' type='text' name='direccion' ></input>
 					<label for='direccion'>Dirección</label>
 				</div>
 			</div>

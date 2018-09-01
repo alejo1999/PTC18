@@ -1,5 +1,6 @@
 <?php
 class Detalle extends Validator{
+
 	//Declaración de propiedades
     private $id = null;
     private $id_venta = null;
@@ -131,7 +132,7 @@ class Detalle extends Validator{
 			return false;
 		}
 	}
-	public function getTotal(){
+	    public function getTotal(){
 		return $this->total;
     }
     
@@ -171,6 +172,60 @@ class Detalle extends Validator{
 		$params = array(null);
 		return Database::getRows($sql, $params);
     }
+    public function getVentas22(){
+		$sql = "SELECT  venta.ID_venta as ventass ,cliente.nombre,cliente.apellido,cliente.correo,venta.fecha,  SUM(detalle_factura.sub_total) AS totalito
+        FROM detalle_factura
+        INNER JOIN venta ON detalle_factura.FK_ID_venta = venta.ID_venta
+        INNER JOIN producto ON detalle_factura.FK_ID_producto = producto.ID_producto
+        INNER JOIN cliente ON venta.FK_ID_cliente = cliente.ID_cliente
+        GROUP BY venta.ID_venta";
+		$params = array(null);
+		return Database::getRows($sql, $params);
+    }
+
+    public function getVentasporfecha($fechainicio,$fechafin){
+
+		$sql = "SELECT  venta.ID_venta as ventass ,cliente.nombre,cliente.apellido,cliente.correo,venta.fecha,  SUM(detalle_factura.sub_total) AS totalito
+        FROM detalle_factura 
+        INNER JOIN venta ON detalle_factura.FK_ID_venta = venta.ID_venta
+        INNER JOIN producto ON detalle_factura.FK_ID_producto = producto.ID_producto
+        INNER JOIN cliente ON venta.FK_ID_cliente = cliente.ID_cliente
+        WHERE venta.fecha BETWEEN ? AND ?
+        GROUP BY venta.ID_venta";
+
+        $params = array($fechainicio,$fechafin);
+        return Database::getRows($sql, $params);
+        
+    }
+
+    public function getSuscripcionesporfecha($fechainicio,$fechafin){
+
+		$sql = "SELECT cliente.nombre,cliente.apellido,cliente.correo,cliente.genero,cliente.FK_ID_membresia ,membresia.fecha_inicio
+        FROM cliente 
+        INNER JOIN membresia ON cliente.FK_ID_membresia = membresia.ID_membresia
+        WHERE cliente.FK_ID_membresia IS NOT null AND membresia.fecha_inicio BETWEEN ? AND ? ";
+        $params = array($fechainicio,$fechafin);
+        return Database::getRows($sql, $params);
+        
+    }
+
+    public function getcomerciosdis(){
+        $sql = "SELECT ID_comercio, nombre, Producto, correo, telefono, responsable, e.EstadoC 
+        FROM comercio INNER JOIN estado_comercio e ON e.ID_estadoC = comercio.FK_ID_estado_comercio WHERE e.ID_estadoC = '1' ";
+         $params = array(null);
+         return Database::getRows($sql, $params);
+    }
+
+    public function getcomerciospen(){
+        $sql = "SELECT ID_comercio, nombre, Producto, correo, telefono, responsable, e.EstadoC 
+        FROM comercio INNER JOIN estado_comercio e ON e.ID_estadoC = comercio.FK_ID_estado_comercio WHERE e.ID_estadoC = '2' ";
+         $params = array(null);
+         return Database::getRows($sql, $params);
+    }
+
+
+
+
     
     public function searchVenta($value){
 		$sql = "SELECT  venta.id_venta as venta,cliente.nombre_cliente,cliente.apellido,cliente.correo,venta.fecha,productos.nombre , productos.precio , detalle_factura.cantidad,detalle_factura.subtotal 
@@ -192,6 +247,31 @@ class Detalle extends Validator{
         return Database::getRows($sql,$params);
     }
 
+    public function viewcarrito2(){
+        $sql = "SELECT detalle_factura.ID_detalle ,detalle_factura.FK_ID_producto,producto.imagen_url,producto.nombre_producto,detalle_factura.cantidad,producto.precio,detalle_factura.sub_total
+		,venta.ID_venta
+        FROM detalle_factura
+        INNER JOIN producto ON detalle_factura.FK_ID_producto = producto.ID_producto
+        INNER JOIN venta on detalle_factura.FK_ID_venta = venta.ID_venta
+        WHERE detalle_factura.FK_ID_cliente = 2 AND detalle_factura.estadoventa = 1
+        AND detalle_factura.FK_ID_venta = (SELECT MAX(venta.ID_venta) FROM venta)";
+        $params = array($this->id_usuario);
+        return Database::getRows($sql,$params);
+    }
+
+    public function facturafinal (){
+        $sql="SELECT detalle_factura.ID_detalle ,detalle_factura.FK_ID_producto,producto.imagen_url,producto.nombre_producto
+        ,detalle_factura.cantidad,producto.precio,detalle_factura.sub_total,venta.ID_venta
+        FROM detalle_factura
+        INNER JOIN producto ON detalle_factura.FK_ID_producto = producto.ID_producto
+        INNER JOIN venta on detalle_factura.FK_ID_venta = venta.ID_venta
+        WHERE detalle_factura.FK_ID_cliente = 2 AND detalle_factura.estadoventa = 1
+        AND detalle_factura.FK_ID_venta = (SELECT MAX(venta.ID_venta) FROM venta)";
+        $params = array(null);
+        return Database::getRows($sql, $params);
+    }
+    
+
      public function checkTotal(){
         $sql = "SELECT SUM(sub_total) 
         FROM detalle_factura
@@ -199,11 +279,17 @@ class Detalle extends Validator{
          $params = array($this->id_usuario);
         $total = Database::getRow($sql, $params);
         if($total){
-            $this->total = $total['SUM(subtotal)'];
+            $this->total = $total['SUM(sub_total)'];
             return true;
 		}else{
 			return null;
         }
+    }
+    public function viewtotal(){
+        $sql = "SELECT SUM(detalle_factura.sub_total) AS codo FROM detalle_factura
+        WHERE detalle_factura.FK_ID_venta = (SELECT MAX(venta.ID_venta) FROM venta)";
+        $params = array(null);
+        return Database::getRows($sql,$params);
     }
     
     public function createcarrito(){
@@ -267,7 +353,7 @@ class Detalle extends Validator{
 
     }
 
-    public function getClientesTotales100(){
+    public function getClientesTotales100(){    
         $sql = "SELECT COUNT(cliente.ID_cliente) as clientesss From cliente Where cliente.estado = 0";
         $params = array(null);
         $clientesss = Database::getRow($sql, $params);

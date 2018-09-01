@@ -8,6 +8,7 @@
             print("
                     <div class='card '>
                         <div class='card-stacked'>
+                        <form method='post'>
                                 <div class='card-content col s12 m12 l12'>
                                     <div class='col s12 m7  l3 offset-l3'><img src='../../web/img/productos/".$producto->getImagen()."' height='200px'>
                                     </div>
@@ -21,7 +22,7 @@
                                     </div>
                                 </div>
                             <div class='card-action'>
-                                <form method='post'>
+                                
                                     <div class='row '>
                                     
                                         <div class='input-field col s5 m5 l2 offset-l4'>
@@ -30,7 +31,7 @@
                                             <label for='cantidad'>Cantidad</label>
                                         </div>
                                         <div class='input-field col s12 m7 l6'>
-                                        <input type='submit' class='btn_menu_action' name = 'anadircarrito' value='Añadir al carrito'>
+                                        <input type='submit' class='btn' name='anadircarrito' value='Añadir al carrito'>
                                         </div>
                                     </div>
                                 </form>

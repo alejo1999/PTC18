@@ -77,7 +77,7 @@
 			</div>
 			<div class="col s12 m3 l3">
 				<div class="card-panel ">
-					<h5 class="card-title ">Productos por proveedor</h6>
+					<h5 class="card-title ">Productos mas comentados</h6>
 					<div class="divider"></div>
 					<div class="card-action">
 						<canvas id="myChart8"  height="300"></canvas>
@@ -88,7 +88,7 @@
         
         <div class="col s12 m3 l3 ">
             <div class="card-panel ">
-                <h5 class="card-title ">Productos mas vendidos</h5>
+                <h5 class="card-title ">Clientes y membresias</h5>
                 <div class="divider"></div>
                 <div class="card-action">
                     <canvas id="myChart9"  height="300"></canvas>
@@ -98,7 +98,7 @@
 		
 		<div class="col s12 m3 l3">
 				<div class="card-panel ">
-					<h5 class="card-title ">Productos mas vendidos</h6>
+					<h5 class="card-title ">Productos con mejor valoracion</h6>
 					<div class="divider"></div>
 					<div class="card-action">
 						<canvas id="myChart10"  height="300"></canvas>
@@ -550,14 +550,15 @@
 	
 	var ctx = document.getElementById("myChart7").getContext('2d');
 	var myChart = new Chart(ctx, {
-		type: 'bar',
+		type: 'doughnut',
 		data: {
 			labels: [
 				
 				<?php
-					$sql = "SELECT proveedor.nombre_proveedor AS nombresito, COUNT(producto.nombre_producto) AS datas FROM producto 
-                    INNER JOIN proveedor ON proveedor.ID_proveedor = producto.FK_ID_proveedor
-                    GROUP by producto.FK_ID_proveedor";
+					$sql = "SELECT producto.nombre_producto AS nombresito, detalle_factura.FK_ID_producto AS datas 
+					FROM detalle_factura 
+					INNER JOIN producto ON producto.ID_producto = detalle_factura.FK_ID_producto 
+					GROUP by detalle_factura.FK_ID_producto order by cantidad DESC";
 					$params = array(null);
 					$result = Database::getRows($sql, $params);
 					foreach($result as $row){
@@ -572,9 +573,10 @@
 				data: [
 					
 					<?php
-						$sql = "SELECT proveedor.nombre_proveedor AS nombresito, COUNT(producto.nombre_producto) AS datas FROM producto 
-                        INNER JOIN proveedor ON proveedor.ID_proveedor = producto.FK_ID_proveedor
-                        GROUP by producto.FK_ID_proveedor";
+						$sql = "SELECT producto.nombre_producto AS nombresito, detalle_factura.FK_ID_producto AS datas 
+						FROM detalle_factura 
+						INNER JOIN producto ON producto.ID_producto = detalle_factura.FK_ID_producto 
+						GROUP by detalle_factura.FK_ID_producto order by cantidad DESC";
 						$params = array(null);
 						$result = Database::getRows($sql, $params);
 						foreach($result as $row){
@@ -685,17 +687,17 @@
 			
 		}
 	}, 5000);
-	
+	//Grafica de clientes con membresia!!!
 	var ctx = document.getElementById("myChart9").getContext('2d');
 	var myChart = new Chart(ctx, {
-		type: 'bar',
+		type: 'doughnut',
 		data: {
 			labels: [
 				
 				<?php
-					$sql = "SELECT proveedor.nombre_proveedor AS nombresito, COUNT(producto.nombre_producto) AS datas FROM producto 
-                    INNER JOIN proveedor ON proveedor.ID_proveedor = producto.FK_ID_proveedor
-                    GROUP by producto.FK_ID_proveedor";
+					$sql = "SELECT COUNT(*) AS datas, 
+					IF(FK_ID_membresia > 0,'Cuentas suscritas','Cuentas gratuitas')as nombresito 
+					from cliente GROUP BY nombresito ";
 					$params = array(null);
 					$result = Database::getRows($sql, $params);
 					foreach($result as $row){
@@ -710,9 +712,9 @@
 				data: [
 					
 					<?php
-						$sql = "SELECT proveedor.nombre_proveedor AS nombresito, COUNT(producto.nombre_producto) AS datas FROM producto 
-                        INNER JOIN proveedor ON proveedor.ID_proveedor = producto.FK_ID_proveedor
-                        GROUP by producto.FK_ID_proveedor";
+						$sql = "SELECT COUNT(*) AS datas,
+						 IF(FK_ID_membresia > 0,'Cuentas suscritas','Cuentas gratuitas')as nombresito 
+						 from cliente GROUP BY nombresito";
 						$params = array(null);
 						$result = Database::getRows($sql, $params);
 						foreach($result as $row){
@@ -754,17 +756,18 @@
 			
 		}
 	}, 5000);
-	
+
+	//Grafico de productos con mejor valoracion!!!!!!!!!
 	var ctx = document.getElementById("myChart10").getContext('2d');
 	var myChart = new Chart(ctx, {
-		type: 'bar',
+		type: 'doughnut',
 		data: {
 			labels: [
 				
 				<?php
-					$sql = "SELECT proveedor.nombre_proveedor AS nombresito, COUNT(producto.nombre_producto) AS datas FROM producto 
-                    INNER JOIN proveedor ON proveedor.ID_proveedor = producto.FK_ID_proveedor
-                    GROUP by producto.FK_ID_proveedor";
+					$sql = "SELECT producto.nombre_producto AS nombresito, valoracion.valoracion AS datas FROM valoracion
+                    INNER JOIN producto ON producto.ID_producto = valoracion.FK_ID_producto
+                    GROUP by valoracion.FK_ID_producto order by valoracion DESC";
 					$params = array(null);
 					$result = Database::getRows($sql, $params);
 					foreach($result as $row){
@@ -775,13 +778,13 @@
 				?>
 			],
 			datasets: [{
-				label: 'Cantidad',
+				//label: 'Valoracion',
 				data: [
 					
 					<?php
-						$sql = "SELECT proveedor.nombre_proveedor AS nombresito, COUNT(producto.nombre_producto) AS datas FROM producto 
-                        INNER JOIN proveedor ON proveedor.ID_proveedor = producto.FK_ID_proveedor
-                        GROUP by producto.FK_ID_proveedor";
+						$sql = "SELECT producto.nombre_producto AS nombresito, valoracion.valoracion AS datas FROM valoracion
+						INNER JOIN producto ON producto.ID_producto = valoracion.FK_ID_producto
+						GROUP by valoracion.FK_ID_producto order by valoracion DESC";
 						$params = array(null);
 						$result = Database::getRows($sql, $params);
 						foreach($result as $row){

@@ -39,10 +39,10 @@ class Page extends Component{
 							<li onmouseover='bal_over=5; show_info_baldosa();'><a class='baldosa' href='../materia'>		<p class='plac_let'>M</p>Materias</a></li>
 							<li onmouseover='bal_over=6; show_info_baldosa();'><a class='baldosa' href='../proveedor'>	<p class='plac_let'>P</p>Proveedores</a></li>
 							<li onmouseover='bal_over=7; show_info_baldosa();'><a class='baldosa' href='../marca'>		<p class='plac_let'>M</p>Marcas</a></li>
-							<li onmouseover='bal_over=7; show_info_baldosa();'><a class='baldosa' href='../tipo_usuario'>		<p class='plac_let'>T</p>Tipo de Usuario</a></li>
-							<li onmouseover='bal_over=7; show_info_baldosa();'><a class='baldosa' href='../cliente'>		<p class='plac_let'>C</p>Clientes</a></li>
-							<li onmouseover='bal_over=7; show_info_baldosa();'><a class='baldosa' href='../Estadistica'>		<p class='plac_let'>E</p>Estadistica</a></li>
-							<li onmouseover='bal_over=7; show_info_baldosa();'><a class='baldosa' href='../Reportes'>		<p class='plac_let'>R</p>Reportes</a></li>
+							<li onmouseover='bal_over=8; show_info_baldosa();'><a class='baldosa' href='../tipo_usuario'>		<p class='plac_let'>T</p>Tipo de Usuario</a></li>
+							<li onmouseover='bal_over=9; show_info_baldosa();'><a class='baldosa' href='../cliente'>		<p class='plac_let'>C</p>Clientes</a></li>
+							<li onmouseover='bal_over=10; show_info_baldosa();'><a class='baldosa' href='../Estadistica'>		<p class='plac_let'>E</p>Estadistica</a></li>
+							<li onmouseover='bal_over=11; show_info_baldosa();'><a class='baldosa' href='../Reportes'>		<p class='plac_let'>R</p>Reportes</a></li>
 							</ul>
 
 							<div id='sepline'> </div>
@@ -118,7 +118,7 @@ class Page extends Component{
 				</header>
 				
 			
-				<main class=''>
+				<main class='container'>
 					<h3 id='title_flat' class='center-align'>$title</h3>
 			");
 		}else{

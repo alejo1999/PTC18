@@ -1,5 +1,5 @@
 <?php
-require_once("../app/models/cliente.class.php");
+require_once("../../app/models/cliente.class.php");
 try{
     $cliente = new cliente;
     if(isset($_POST['crear'])){
@@ -54,5 +54,5 @@ try{
 catch(Exception $error){
     Page::showMessage(2, $error->getMessage(), null);
 }
-require_once("../app/views/public/account/acceder_view.php");
+require_once("../../app/views/public/account/acceder_view.php");
 ?>

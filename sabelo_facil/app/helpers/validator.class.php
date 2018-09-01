@@ -99,7 +99,15 @@ class Validator{
 			return false;
 		}
 	}
+	public function validateNumeric($value,$minimum,$maximum) {
+        if(preg_match("/^[0-9]{".$minimum.",".$maximum."}$/", $value)){
+            return true;
+        }else{
+            return false;
+        }
 
+	}
+	
 	public function validateAlphanumeric($value, $minimum, $maximum){
 		if(preg_match("/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{".$minimum.",".$maximum."}$/", $value)){
 			return true;
@@ -117,8 +125,19 @@ class Validator{
 	}
 
 	public function validatePassword($value){
-		if(strlen($value) > 5){
+		if(strlen($value) >= 8){
 			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function validatePasswordcaracter2($value){
+		if(strlen($value) >= 8){
+			if(preg_match("/^.*(?=.*\d)(?=.*\W)(?=.*[a-z])(?=.*[A-Z]).*$/", $value)){ 
+				return true;
+			}
+			
 		}else{
 			return false;
 		}

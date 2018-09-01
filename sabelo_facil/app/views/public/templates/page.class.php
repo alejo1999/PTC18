@@ -17,7 +17,8 @@ class Page extends Component{
 				<link type='text/css' rel='stylesheet' href='../../web/css/public.css'/>
 				<link type='text/css' rel='stylesheet' href='../../web/css/css_materias.css'  media='screen,projection'/>
 				<link type='text/css' rel='stylesheet' href='../../web/css/edicion_de_header_publico.css'  media='screen,projection'/>
-				<script type='text/javascript' src='../web/js/sweetalert.min.js'></script>
+				<script type='text/javascript' src='../../web/js/sweetalert.min.js'></script>
+
 				<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
 			</head>
 
@@ -40,7 +41,7 @@ class Page extends Component{
 						</div>
 						
 						<div class='col' style='margin-bottom:20px;'>
-							<a class='btn_header_p' href='../public/tienda/login.php'>Iniciar Sesión</a>
+							<a class='btn_header_p' href='../cuenta/acceder.php'>Iniciar Sesión</a>
 							<a class='btn_header_p' id='btn_T_A' onclick='cambiar_de_sitio_T_A();'>Sitio Academico</a>
 				
 						</div>
@@ -55,7 +56,7 @@ class Page extends Component{
 							<div class='col' style='margin-bottom:10px; float:right;'>
 								
 								
-								<a class='btn_menu_action'>Ayuda</a> 
+								<a class='btn_menu_action' href='factura.php'>Ayuda</a> 
 							</div>
 							
 						</div>

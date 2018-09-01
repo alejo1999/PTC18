@@ -6,6 +6,7 @@ $(document).ready(function(){
     $('.materialboxed').materialbox();
     $('.tooltipped').tooltip({delay: 50, position: 'bottom'});
     $('select').material_select();
+    $('ul.tabs').tabs();
     $('.datepicker').pickadate({
         monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
         weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mier', 'Jue', 'Vir', 'Sab'],

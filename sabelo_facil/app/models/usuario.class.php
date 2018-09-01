@@ -13,6 +13,14 @@ class Usuario extends Validator{
 	private $estado =  null;
 	private $imagen =  null;
 	private $fecha_nac = null;
+
+
+	private $tipo_usuario = null;
+
+
+	private $fecha_contrasena = null;
+
+
 	//Métodos para sobrecarga de propiedades
 	public function setId($value){
 		if($this->validateId($value)){
@@ -25,7 +33,33 @@ class Usuario extends Validator{
 	public function getId(){
 		return $this->id;
 	}
-	
+
+
+	public function setTipousuario($value){
+		if($this->validateId($value)){
+			$this->tipo_usuario = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getTipousuario(){
+		return $this->tipo_usuario;
+	}
+
+	public function setFecha_contrasena($value){
+        if($this->validateDate($value)){
+            $this->fecha_contrasena = $value;
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function getFecha_contrasena(){
+        return $this->fecha_contrasena;
+	}
+
 	public function setNombres($value){
 		if($this->validateAlphabetic($value, 1, 50)){
 			$this->nombres = $value;
@@ -40,7 +74,7 @@ class Usuario extends Validator{
 
 
 	public function setDireccion($value){
-		if($this->validateAlphabetic($value, 1, 100)){
+		if($this->validateAlphanumeric($value, 1, 100)){
 			$this->direccion = $value;
 			return true;
 		}else{
@@ -68,7 +102,7 @@ class Usuario extends Validator{
 	}
 
 	public function setDocumento($value){
-		if($this->validateId($value)){
+		if($this->validateNumeric($value,8,11)){
 			$this->documento = $value;
 			return true;
 		}else{
@@ -123,6 +157,17 @@ class Usuario extends Validator{
 			return false;
 		}
 	}
+
+	public function setClave2($value){
+		if($this->validatePasswordcaracter2($value)){
+			$this->clave = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+
 	public function getClave(){
 		return $this->clave;
 	}
@@ -172,12 +217,15 @@ class Usuario extends Validator{
 		}
 	}
 	public function checkPassword(){
-		$sql = "SELECT contrasena, imagen_url, nombre FROM administrador WHERE ID_admin = ?";
+		$sql = "SELECT contrasena, imagen_url, nombre,apellido,correo,username FROM administrador WHERE ID_admin = ?";
 		$params = array($this->id);
 		$data = Database::getRow($sql, $params);
 		if(password_verify($this->clave, $data['contrasena'])){
 			$this->nombres = $data['nombre'];
 			$this->imagen = $data['imagen_url'];
+			$this->apellidos = $data['apellido'];
+			$this->correo = $data['correo'];
+			$this->alias = $data['username'];
 			return true;
 		}else{
 			return false;
@@ -185,7 +233,7 @@ class Usuario extends Validator{
 	}
 	public function changePassword(){
 		$hash = password_hash($this->clave, PASSWORD_DEFAULT);
-		$sql = "UPDATE administrador SET contrasena = ? WHERE ID_admin = ?";
+		$sql = "UPDATE administrador SET contrasena = ? , fecha_contrasena = CURDATE() WHERE ID_admin = ?";
 		$params = array($hash, $this->id);
 		return Database::executeRow($sql, $params);
 	}
@@ -200,6 +248,14 @@ class Usuario extends Validator{
 		return Database::getRows($sql, $params);
 	}
 
+
+	public function getTipoUsuarios(){
+		$sql = "SELECT ID_tipo_usuario, nombre_tipo FROM tipo_usuario";
+		$params = array(null);
+		return Database::getRows($sql, $params);
+	}
+
+
 	public function getUsuarios(){
 		$sql = "SELECT ID_admin, nombre, apellido, correo, username,imagen_url FROM administrador ORDER BY apellido";
 		$params = array(null);
@@ -212,8 +268,8 @@ class Usuario extends Validator{
 	}
 	public function createUsuario(){
 		$hash = password_hash($this->clave, PASSWORD_DEFAULT);
-		$sql = "INSERT INTO administrador(nombre, apellido, fecha_nac, correo, contrasena, imagen_url, direccion, documento, username, FK_ID_tipo_doc, estado) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
-		$params = array($this->nombres, $this->apellidos, $this->fecha_nac, $this->correo, $hash,  $this->imagen , $this->direccion, $this->documento, $this->alias, $this->tipo_documento, 1);
+		$sql = "INSERT INTO administrador(FK_ID_tipousuario ,nombre, apellido, fecha_nac, correo, contrasena, imagen_url, direccion, documento, username, FK_ID_tipo_doc, estado,fecha_contrasena) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,CURDATE())";
+		$params = array($this->tipo_usuario,$this->nombres, $this->apellidos, $this->fecha_nac, $this->correo, $hash,  $this->imagen , $this->direccion, $this->documento, $this->alias, $this->tipo_documento, 1);
 		return Database::executeRow($sql, $params);
 	}
 	public function readUsuario(){
@@ -243,6 +299,20 @@ class Usuario extends Validator{
 		$sql = "DELETE FROM administrador WHERE ID_admin = ?";
 		$params = array($this->id);
 		return Database::executeRow($sql, $params);
+	}
+
+
+	public function checkfecha_contrasena(){
+		$sql="SELECT DATEDIFF( CURDATE(),(SELECT administrador.fecha_contrasena)) AS fecha_diferencia FROM administrador WHERE administrador.ID_admin = ?";
+		$params = array($this->id);
+		$data=Database::getRow($sql,$params);
+
+		if($data){
+			$this->fecha_contrasena = $data['fecha_diferencia'];
+			return true;
+		}else{
+			return false;
+		}
 	}
 }
 ?>

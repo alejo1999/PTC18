@@ -18,7 +18,7 @@
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>person_pin</i>
             <input id='alias' type='text' name='alias' class='validate' value='<?php print($usuario->getAlias()) ?>' required/>
-            <label for='alias'>Alias</label>
+            <label for='alias'>Nombre de Usuario</label>
         </div>
 
          <div class='input-field col s12 m6'>
@@ -39,14 +39,28 @@
         </div>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>import_contacts</i>
-                <div class='input-field col s12 m6'>
+                
                     <?php
                     Page::showSelect("Tipo de documento", "tipo_documento", $usuario->getTipoDocumento(), $usuario->getTipoDocumentos());
                     ?>
-                </div>
-          	<label for='tipo_documento'>Tipo</label>
+        </div>
+        <div class='file-field input-field col s12 m6 center-align'>
+            <div class='btn waves-effect'>
+                <span><i class='material-icons'>image</i></span>
+                <input type='file' name='archivo'/>
+            </div>
+            <div class='file-path-wrapper'>
+                <input type='text' class='file-path validate' placeholder='Seleccione una imagen de perfil '/>
+            </div> 
         </div>
 
+        <div class='input-field col s12 m6'>
+          	<i class='material-icons prefix'>assignment_ind</i>
+                
+                    <?php
+                    Page::showSelect("Tipo de Usuario", "tipo_usuario", $usuario->getTipousuario(), $usuario->getTipoUsuarios());
+                    ?>
+        </div>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>security</i>
             <input id='clave1' type='password' name='clave1' class='validate' value='<?php print($usuario->getClave()) ?>' required/>
@@ -57,16 +71,10 @@
             <input id='clave2' type='password' name='clave2' class='validate' value='<?php print($usuario->getClave()) ?>' required/>
             <label for='clave2'>Confirmar clave</label>
         </div>
-        <div class='file-field input-field col s12 m6'>
-            <div class='btn waves-effect'>
-                <span><i class='material-icons'>image</i></span>
-                <input type='file' name='archivo'/>
-            </div>
-            <div class='file-path-wrapper'>
-                <input type='text' class='file-path validate' placeholder='Seleccione una imagen'/>
-            </div> 
-        </div>
+        
     </div>
+
+
     <div class='row center-align'>
         <a href='index.php' class='btn waves-effect grey tooltipped' data-tooltip='Cancelar'><i class='material-icons'>cancel</i></a>
         <button type='submit' name='crear' class='btn waves-effect blue tooltipped' data-tooltip='Crear'><i class='material-icons'>save</i></button>
