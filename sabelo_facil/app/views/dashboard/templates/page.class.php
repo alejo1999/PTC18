@@ -118,7 +118,7 @@ class Page extends Component{
 				</header>
 				
 			
-				<main class=''>
+				<main class='container'>
 					<h3 id='title_flat' class='center-align'>$title</h3>
 			");
 		}else{
