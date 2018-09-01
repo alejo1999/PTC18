@@ -4,6 +4,8 @@
 
 ErrorDocument 404 /coffeecode/web/404.html
 ErrorDocument 403 /coffeecode/web/403.html
+ErrorDocument 404 /PTC18/sabelo_facil/web/404.html
+ErrorDocument 403 /PTC18/sabelo_facil/web/403.html
 
 # ----------------------------------------------------------------------
 # | Error prevention                                                   |

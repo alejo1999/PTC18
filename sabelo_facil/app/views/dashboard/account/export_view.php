@@ -64,7 +64,7 @@ class Backup_Database {
     /**
      * Constructor initializes database
      */
-    function __construct($host, $username, $passwd, $dbName, $charset = 'utf8')
+    function __construct($host, $username, $passwd, $dbName, $charset = 'utf8_spanish_ci')
     {
         $this->host     = $host;
         $this->username = $username;

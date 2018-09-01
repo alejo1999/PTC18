@@ -1,5 +1,6 @@
 <?php
 class Validator{
+
 	private $imageName = null;
 	private $imageError = null;
 
@@ -28,7 +29,7 @@ class Validator{
 
 	public function validateForm($fields){
 		foreach($fields as $index => $value){
-			$value = trim($value);
+			$value = htmlentities(trim($value));
 			$fields[$index] = $value;
 		}
 		return $fields;
@@ -115,6 +116,15 @@ class Validator{
 			return false;
 		}
 	}
+
+    public function validateNumeric($value,$minimum,$maximum) {
+        if(preg_match("/^[0-9]{".$minimum.",".$maximum."}$/", $value)){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
 
 	public function validateMoney($value){
 		if(preg_match("/^[0-9]+(?:\.[0-9]{1,2})?$/", $value)){
