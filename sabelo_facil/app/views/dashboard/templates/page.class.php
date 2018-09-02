@@ -23,6 +23,23 @@ class Page extends Component{
 			</head>
 			<body id='black_body'>
 		");
+
+		if (!isset($_SESSION['tiempo']))
+		{
+			  $_SESSION['tiempo']=time();
+		}
+	   else if (time() - $_SESSION['tiempo'] > 600) /*tiempo en segundos de la inactividad*/
+	   {
+
+		   session_destroy();
+		   /* Aquí redireccionas a la url especifica */
+		   header("Location: ../account/login.php");
+		   die();  
+	   }
+	   $_SESSION['tiempo']=time(); //Si hay actividad seteamos el valor al tiempo actual
+
+
+
 		if(isset($_SESSION['ID_admin'])){
 			print("
 				<div id='menu_overlay' style='display:none;'>overlay</div>
@@ -58,7 +75,7 @@ class Page extends Component{
 							<ul class='right '>
 							
 							
-								<p id='a_nav' href='#' data-activates='slide-out' class='button-collapse headersd'> Notificaciones </p>
+								<p id='a_nav' href='#' data-activates='slide-out' class='button-collapse headersd'> Mi Pefil </p>
 								<p id='a_nav_2' onclick='mostrar_panel_superior();'  class=' headersd lok'> Menú de opciones </p>
 							</ul>
 						
@@ -69,52 +86,78 @@ class Page extends Component{
 
 
 
-						<ul style='color:black' id='slide-out' class='side-nav'>
+					<ul style='color:black' id='slide-out' class='side-nav'>
 							
-						<div class='row' id='SIDE_contenedor_user'>
-							<div id='head_sides' ><a style='color:black'>Notificaciones | Menú</a></div>
-							<div id='SIDE_cu_1' class='col s7 m7 l7'>
-								<p id='nombre_user_ingresed'>$_SESSION[nombre]</p>
-								<p id='tipo_user_ingresed'>Administrador</p>
-								
-								<div class='row' style='padding:0; margin:0;'>
-									<a href='../account/profile.php' class='opc_user_side'>Ver Perfil</a>
-								</div>
-								
-								<div class='row' style='padding:0; margin:0;'>
-									<a href='../account/password.php' class='opc_user_side'>Editar contraseña</a>
-								</div>
-								<a href='../account/logout.php' class='opc_user_side' style='margin-top:10px;'>Cerrar sesión</a>
-
-								
-								
+					<div class='row' id='SIDE_contenedor_user'>
+						<div id='head_sides' ><a style='color:black'>Volver</a></div>
+						<div id='SIDE_cu_1' class='col s7 m7 l7'>
+							<p class='negrita' id='nombre_user_ingresed'>$_SESSION[username]</p>
+							<p class='negrita' id='tipo_user_ingresed'>Administrador</p>
+							
+							
+							
+							<div class='row' style='padding:0; margin:0; margin-bottom: -3px'>
+								<a href='../account/password.php' class='opc_user_side'>Editar contraseña</a>
 							</div>
+							<a href='../account/logout.php' class='opc_user_side' style='margin-top:10px;'>Cerrar sesión</a>
 
-							<div id='SIDE_cu_2' class='col s5 m5 l5'>
-							<img src='../../web/img/usuarios/$_SESSION[imagen_url]' id='imagen_side_user'>
-							</div>
+							
+							
 						</div>
 
-						<div class='row' id='SIDE_notificaciones'>
-							<h4 style='color:rgb(40,40,40); font-size:1.7em; '>Notificaciones</h4>
-							<p class='lbl_simply'>Recientes</p>
+						<div id='SIDE_cu_2' class='col s5 m5 l5'>
+						<img src='../../web/img/usuarios/$_SESSION[imagen_url]' id='imagen_side_user'>
+						</div>
+					</div>
 
-							<div class='row'>
-								<div class='col s1' id='colis1'>
-								<img src='../../web/img/icons/NewSmsICO_Small.png' >
-								</div>
-								<div class='col s1' id='colis2'>
-								+1
-								</div>
-								<div class='col s10 right-align' id='colis3'>
-								<a style='color:black;'> Actualizar</a>
-								</div>
-							</div>
-							<div class='divider'></div>														
+					<div class='row' id='SIDE_notificaciones'>
+						<h4 style='color:rgb(40,40,40); font-size:1.7em; '></h4>
+						<p class='lbl_simply'></p>
+
+						<div class='row'>
+							<div class='col s1' id='colis1'>
 							
+							</div>
+							<div class='col s1' id='colis2'>
+							
+							</div>
+							<div class='col s10 right-align' id='colis3'>
+							
+							</div>
+						</div>
+						<div class='divider'></div>	
+						<div class='row'>
+							<div class='col s6'>
+								<a style='color:black'>Nombres</a>
+								<p id='datos'>$_SESSION[nombre]</p>
+								
+							</div>
+							<div class='col s6'>
+								<a style='color:black'>Apellidos</a>
+								<p  id='datos'>$_SESSION[apellido]</p>
+							</div>
+							<div class='col s12'>
+								<a style='color:black'>Correo</a>
+								<p  id='datos'>$_SESSION[correo]</p>
+							</div>
+							<div class='col s12'>
+								<a style='color:black'>Direccion</a>
+								<p  id='datos'>$_SESSION[direccion]</p>
+							</div>
+							<div class='col s6'>
+								<a id='try'>Fecha de nacimiento</a>
+								<p  id='datos'>$_SESSION[fechanac]</p>
+							</div>
+							
+							<div class='col s6'>
+								<a id='try'>Numero de identificacion</a>
+								<p  id='datos'>$_SESSION[documento]</p>
+							</div>
+						</div>													
 						
-						</div>
-						</ul>
+					
+					</div>
+					</ul>
 				</header>
 				
 			

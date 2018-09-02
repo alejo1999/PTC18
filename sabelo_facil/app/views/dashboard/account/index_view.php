@@ -8,7 +8,7 @@
 		</div>
 
 		<div class="col">
-			<h4 id='clockym' class='center-align'>JUNIO<?php print(date('')); ?></h4>
+			<h4 id='clockym' class='center-align'><?php print(date('M')); ?></h4>
 			<h4 id='clockyy' class='center-align'><?php print(date('Y')); ?></h4>	
 		</div>
 		

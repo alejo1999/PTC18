@@ -34,7 +34,7 @@
 
            <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>import_contacts</i>
-          	<input id='documento_admin' type='text' name='documento_admin' class='validate' value='<?php print($usuario->getDocumento()) ?>' required/>
+          	<input id='documento_admin' type='number' name='documento_admin' class='validate' value='<?php print($usuario->getDocumento()) ?>' required/>
           	<label for='documento_admin'>Documento</label>
         </div>
         <div class='file-field input-field col s12 m6'>

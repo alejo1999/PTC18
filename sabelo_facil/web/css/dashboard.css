@@ -15,7 +15,25 @@ body {
 main {
     flex: 1 0 auto;
 }
+.negrita{
+  font-weight:bold;
+  font-size : 20px
+}
+#datos{
+  margin: 0;
+  padding: 0;
+  font-size: 0.95em;
+  text-align: left;
+  color: rgb(44, 84, 160);
+  line-height: 12px;
+  margin-bottom: 20px;
+  
+}
 
+#try{
+  color: black;
+  white-space: pre
+}
 footer{
   z-index: 999;
 }

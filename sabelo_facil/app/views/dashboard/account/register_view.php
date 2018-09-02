@@ -42,8 +42,10 @@
         </div>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>import_contacts</i>
-          	<input id='tipo_documento' type='text' name='tipo_documento' class='validate' value='<?php print($usuario->getTipoDocumento()) ?>' required/>
-          	<label for='tipo_documento'>Tipo</label>
+                
+                    <?php
+                    Page::showSelect("Tipo de documento", "tipo_documento", $usuario->getTipoDocumento(), $usuario->getTipoDocumentos());
+                    ?>
         </div>
 
         <div class='input-field col s12 m6'>

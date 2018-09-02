@@ -17,7 +17,7 @@ try{
                                         if($usuario->setDireccion($_POST['direccion_admin'])){                            
                                             if($usuario->setDocumento($_POST['documento_admin'])){
                                                 if($usuario->setTipoDocumento($_POST['tipo_documento'])){
-                                                    if($usuario->createUsuario()){
+                                                    if($usuario->createPrimer_Usuario()){
                                                         Page::showMessage(1, "Usuario registrado", "login.php");
                                                     }else{
                                                         throw new Exception(Database::getException());

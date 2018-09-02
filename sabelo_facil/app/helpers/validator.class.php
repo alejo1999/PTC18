@@ -110,21 +110,15 @@ class Validator{
 	}
 	
 	public function validateAlphanumeric($value, $minimum, $maximum){
-		if(preg_match("/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{".$minimum.",".$maximum."}$/", $value)){
+		if(preg_match("/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.\#\,]{".$minimum.",".$maximum."}$/", $value)){
 			return true;
 		}else{
 			return false;
 		}
 	}
 
-    public function validateNumeric($value,$minimum,$maximum) {
-        if(preg_match("/^[0-9]{".$minimum.",".$maximum."}$/", $value)){
-            return true;
-        }else{
-            return false;
-        }
 
-    }
+
 
 	public function validateMoney($value){
 		if(preg_match("/^[0-9]+(?:\.[0-9]{1,2})?$/", $value)){

@@ -272,6 +272,12 @@ class Usuario extends Validator{
 		$params = array($this->tipo_usuario,$this->nombres, $this->apellidos, $this->fecha_nac, $this->correo, $hash,  $this->imagen , $this->direccion, $this->documento, $this->alias, $this->tipo_documento, 1);
 		return Database::executeRow($sql, $params);
 	}
+	public function createPrimer_Usuario(){
+		$hash = password_hash($this->clave, PASSWORD_DEFAULT);
+		$sql = "INSERT INTO administrador(FK_ID_tipousuario ,nombre, apellido, fecha_nac, correo, contrasena,  direccion, documento, username, FK_ID_tipo_doc, estado,) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+		$params = array($this->tipo_usuario,$this->nombres, $this->apellidos, $this->fecha_nac, $this->correo, $hash, $this->direccion, $this->documento, $this->alias, $this->tipo_documento, 1);
+		return Database::executeRow($sql, $params);
+	}
 	public function readUsuario(){
 		$sql = "SELECT nombre, apellido, correo, username, fecha_nac, direccion, documento, imagen_url FROM administrador WHERE ID_admin = ?";
 		$params = array($this->id);
