@@ -8,13 +8,7 @@ class Producto extends Validator{
 	private $nombre = null;
 	private $precio = null;
 	private $imagen = null;
-<<<<<<< HEAD
 	private $descripcion = null;
-=======
-	private $categoria = null;
-	private $proveedor = null;
-	private $marca = null;
->>>>>>> 37eb9114fc83aeb028be4baca539f1898e029ea1
 	private $estado = null;
 
 	//Métodos para sobrecarga de propiedades
@@ -160,22 +154,8 @@ class Producto extends Validator{
 		return Database::getRows($sql, $params);
 	}
 	public function getCategorias(){
-<<<<<<< HEAD
-		$sql = "SELECT ID_categoria, nombre_categoria FROM categoria";
-		$params = array(null);
-		return Database::getRows($sql, $params);
-	}
-	public function getMarcas(){
-		$sql = "SELECT id_categoria, nombre_categoria FROM categorias";
-		$params = array(null);
-		return Database::getRows($sql, $params);
-	}
-	public function getProveedores(){ 
-		$sql = "SELECT id_categoria, nombre_categoria FROM categorias";
-=======
 		$sql = "SELECT categoria.ID_categoria , categoria.nombre_categoria 
 		FROM categoria ";
->>>>>>> 37eb9114fc83aeb028be4baca539f1898e029ea1
 		$params = array(null);
 		return Database::getRows($sql, $params);
 	}
