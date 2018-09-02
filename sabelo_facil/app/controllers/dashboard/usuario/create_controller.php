@@ -51,17 +51,9 @@ try{
                                             throw new Exception("Clave menor a 8 caracteres recuerda que debe contener una Mayus. un numero y caracter especial");
                                         }
                                 }else{
-<<<<<<< HEAD
                                     Page::showMessage(3,"Su correo no puede ser su contraseña porfavor cambiarlo", null);
-=======
-<<<<<<< HEAD
-                                    throw new Exception("Fecha incorrecta");
-=======
-                                    throw new Exception("Clave menor a 6 caracteres");
->>>>>>> 37eb9114fc83aeb028be4baca539f1898e029ea1
->>>>>>> 2a041750e13cb1add3a18f244e62eb4d4a8ce593
+
                                 }
-                                
                             }else{
                                 Page::showMessage(3,"Su alias no puede ser su contraseña porfavor cambiarlo", null);
                             }
