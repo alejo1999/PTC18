@@ -1,37 +1,35 @@
 <?php
-require_once("../../app/models/categoria.class.php");
+require_once("../../app/models/Comercios.class.php");
 try{
-    $categoria = new Categoria;
+    $Comercios = new Comercios;
     if(isset($_POST['crear'])){
-        $_POST = $categoria->validateForm($_POST);
-        if($categoria->setNombre($_POST['nombre'])){
-            if($categoria->setDescripcion($_POST['descripcion'])){
-                if(is_uploaded_file($_FILES['archivo']['tmp_name'])){
-                    if($categoria->setImagen($_FILES['archivo'])){
-                        if($categoria->createCategoria()){
-                            Page::showMessage(1, "Categoría creada", "index.php");
-                        }else{
-                            if($categoria->unsetImagen()){
+        $_POST = $Comercios->validateForm($_POST);
+        if($Comercios->setNombre($_POST['nombres'])){
+            if($Comercios->setResponsable($_POST['responsable'])){
+                    if($Comercios->setCorreo($_POST['correo'])){
+                        if($Comercios->setTelefono($_POST['telefono'])){
+                            
+                                if($Comercios->createComercio()){
+                                Page::showMessage(1, "Categoría creada exitosamente", "index.php");
+                                
+                              }else{
                                 throw new Exception(Database::getException());
-                            }else{
-                                throw new Exception("Elimine la imagen manualmente");
-                            }
-                        }
-                    }else{
-                        throw new Exception($categoria->getImageError());
-                    }
+                               } 
+                        }else{
+                            throw new Exception("Telefono incorrecto");
+                           }         
                 }else{
-                    throw new Exception("Seleccione una imagen");
-                }
+                    throw new Exception("Correo incorrecto");
+                   } 
             }else{
-                throw new Exception("Descripción incorrecta");
-            }            
+                throw new Exception("Responsable incorrecto");
+               }               
         }else{
-            throw new Exception("Nombre incorrecto");
+         throw new Exception("Nombre incorrecto");
         }        
     }
 }catch(Exception $error){
     Page::showMessage(2, $error->getMessage(), null);
 }
-require_once("../../app/views/dashboard/categoria/create_view.php");
+require_once("../../app/views/dashboard/Comercios/create_view.php");
 ?>

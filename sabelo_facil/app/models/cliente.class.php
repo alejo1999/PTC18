@@ -159,6 +159,7 @@ class Cliente extends Validator{
 	public function getTipoDocumento(){
 		return $this->tipo_documento;
 	}
+	
 	public function setEstado($value){
 		if($value == "1" || $value == "0"){
 			$this->estado = $value;
@@ -260,8 +261,8 @@ class Cliente extends Validator{
 	}
 	public function createCliente(){
 		$hash = password_hash($this->clave, PASSWORD_DEFAULT);
-		$sql = "INSERT INTO cliente(nombre, apellido, fecha_nacimiento, correo, contrasena, direccion, documento, username, FK_ID_tipo_doc, imagen_url) VALUES(?,?,?,?,?,?,?,?,?,?)";
-		$params = array($this->nombres, $this->apellidos, $this->fecha_nacimiento, $this->correo, $hash, $this->direccion, $this->documento, $this->alias, $this->tipo_documento, $this->imagen);
+		$sql = "INSERT INTO cliente(nombre, apellido, fecha_nacimiento, correo, contrasena, direccion, documento, username, FK_ID_tipo_doc, estado) VALUES(?,?,?,?,?,?,?,?,?,?)";
+		$params = array($this->nombres, $this->apellidos, $this->fecha_nacimiento, $this->correo, $hash, $this->direccion, $this->documento, $this->alias, $this->tipo_documento,  1);
 		return Database::executeRow($sql, $params);
 	}
 	public function readCliente(){

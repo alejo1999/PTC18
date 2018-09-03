@@ -1,4 +1,4 @@
-<form method='post' enctype='multipart/form-data'>
+<form method='post' enctype='multipart/form-data' autocomplete="off">
     <div class='row'>
         <div class='input-field col s12 m6 l6'>
           	<i class='material-icons prefix'>note_add</i>
@@ -17,7 +17,7 @@
         </div>
         <div class='input-field col s12 m6 l6'>
           	<i class='material-icons prefix'>description</i>
-          	<input id='existencia' type='text' name='existencia' class='validate' value='<?php print($cupon->getExistencia()) ?>' required/>
+          	<input id='existencia' type='number' name='existencia' class='validate' value='<?php print($cupon->getExistencia()) ?>' required/>
           	<label for='existencia'>existencia</label>
         </div>
         <div class='input-field col s12 m3 l3'>

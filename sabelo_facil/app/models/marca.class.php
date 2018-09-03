@@ -59,7 +59,7 @@ class Marca extends Validator{
 	}
 
 	public function setDireccion($value){
-		if($this->validateAlphabetic($value, 1, 50)){
+		if($this->validateAlphanumeric($value, 1, 500)){
 			$this->direccion = $value;
 			return true;
 		}else{

@@ -8,7 +8,7 @@ try{
                 if(isset($_POST['actualizar'])){
                     $_POST = $categoria->validateForm($_POST);
                     if($categoria->setNombre($_POST['nombre'])){
-                        if($categoria->setDescripcion($_POST['descripcion'])){
+
                             if(is_uploaded_file($_FILES['archivo']['tmp_name'])){
                                 if(!$categoria->setImagen($_FILES['archivo'])){
                                     throw new Exception($producto->getImageError());
@@ -18,10 +18,7 @@ try{
                                 Page::showMessage(1, "Categoría modificada", "index.php");
                             }else{
                                 throw new Exception(Database::getException());
-                            }
-                        }else{
-                            throw new Exception("Descripción incorrecta");
-                        }                        
+                            }                      
                     }else{
                         throw new Exception("Nombre incorrecto");
                     }                    

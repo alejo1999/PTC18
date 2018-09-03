@@ -10,7 +10,7 @@ try{
                     if($Marca->setDireccion($_POST['direccion_admin'])){
                         if(is_uploaded_file($_FILES['archivo']['tmp_name'])){
                             if($Marca->setImagen($_FILES['archivo'])){
-                                if($Marca->setEstado($_POST['estado'])){
+                                if($Marca->setEstado(isset($_POST['estado'])?1:0)){
                                     if($Marca->createMarcas()){
                                         Page::showMessage(1, "Marca creada", "index.php");
                                          }else{

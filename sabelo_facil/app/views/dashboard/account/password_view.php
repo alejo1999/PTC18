@@ -1,4 +1,4 @@
-<form method='post'>
+<form method='post' autocomplete="off">
     <div class='row center-align'>
         <label>CLAVE ACTUAL</label>
     </div>

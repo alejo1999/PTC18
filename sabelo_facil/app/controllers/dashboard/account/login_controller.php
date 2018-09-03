@@ -22,6 +22,16 @@ try{
 										$_SESSION['imagen_url'] = $object->getImagen();
 										$_SESSION['nombre'] = $object->getNombres();
 										$_SESSION['apellido'] = $object->getApellidos();
+										$_SESSION['ID_admin'] = $object->getId();
+										$_SESSION['username'] = $object->getAlias();
+										$_SESSION['imagen_url'] = $object->getImagen();
+										$_SESSION['nombre'] = $object->getNombres();
+										$_SESSION['apellido'] = $object->getApellidos();
+										$_SESSION['ID_admin'] = $object->getId();
+										$_SESSION['fechanac'] = $object->getFechaNac();
+										$_SESSION['correo'] = $object->getCorreo();
+										$_SESSION['direccion'] = $object->getDireccion();
+										$_SESSION['documento'] = $object->getDocumento();
 										Page::showMessage(1, "Contraseña antigua Porfavor realize un cambio a continuacion $fecha_cambio", "password.php");
 									}else if ($fecha_cambio < 90){
 										$_SESSION['ID_admin'] = $object->getId();

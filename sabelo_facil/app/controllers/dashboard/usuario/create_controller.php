@@ -3,7 +3,6 @@ require_once("../../app/models/usuario.class.php");
 try{
     $usuario = new Usuario;
     if(isset($_POST['crear'])){
-
         $_POST = $usuario->validateForm($_POST);
         if($usuario->setNombres($_POST['nombres'])){
             if($usuario->setApellidos($_POST['apellidos'])){
@@ -12,7 +11,6 @@ try{
                         if($_POST['clave1'] == $_POST['clave2']){
                             if($_POST['alias'] != $_POST['clave2']){
                                 if($_POST['correo'] != $_POST['clave2']){
-
                                     if($usuario->setClave2($_POST['clave1'])){
                                         if($usuario->setFechaNac($_POST['fecha_nac'])){
                                             if($usuario->setDireccion($_POST['direccion_admin'])){                            

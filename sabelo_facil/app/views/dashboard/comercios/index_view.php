@@ -1,6 +1,6 @@
 <main class='container'>
 <div class='row'>   
-    <form method='post'>
+    <form method='post' autocomplete="off">
         <div class='input-field col s6 m4'>
             <i class='material-icons prefix'>search</i>
             <input id='buscar' type='text' name='busqueda'/>
@@ -18,10 +18,10 @@
 	<thead>
 		<tr>
 			<th>Comercio</th>
-			<th>Producto Ofrecido</th>
 			<th>Responsable</th>
 			<th>Telefono</th>
 			<th>Correo</th>
+			<th>Estado</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -31,14 +31,13 @@
 		<tr>
 			
 			<td>$row[nombre]</td>
-			<td>$row[Producto]</td>
 			<td>$row[responsable]</td>
 			<td>$row[telefono]</td>
 			<td>$row[correo]</td>
-			
+			<td><i class='material-icons'>".($row['FK_ID_estado_comercio']?"visibility":"visibility_off")."</i></td>
 			<td>
 				<a href='update.php?id=$row[ID_comercio]' class='blue-text'><i class='material-icons'>mode_edit</i></a>
-				<a href='delete.php?id=$row[ID_comercio]' class='red-text'><i class='material-icons'>delete</i></a>
+
 			</td>
 		</tr>
 		");

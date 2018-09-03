@@ -1,42 +1,51 @@
 <?php
-require_once("../../app/models/categoria.class.php");
+require_once("../../app/models/comercios.class.php");
 try{
     if(isset($_GET['id'])){
-        $categoria = new Categoria;
-        if($categoria->setId($_GET['id'])){
-            if($categoria->readCategoria()){
+        $Comercios = new Comercios;
+        if($Comercios->setId($_GET['id'])){
+            if($Comercios->readComercio()){
                 if(isset($_POST['actualizar'])){
-                    $_POST = $categoria->validateForm($_POST);
-                    if($categoria->setNombre($_POST['nombre'])){
-                        if($categoria->setDescripcion($_POST['descripcion'])){
-                            if(is_uploaded_file($_FILES['archivo']['tmp_name'])){
-                                if(!$categoria->setImagen($_FILES['archivo'])){
-                                    throw new Exception($producto->getImageError());
-                                }
-                            }
-                            if($categoria->updateCategoria()){
-                                Page::showMessage(1, "Categoría modificada", "index.php");
+                    $_POST = $Comercios->validateForm($_POST);
+                    if($Comercios->setNombre($_POST['nombres'])){
+                        if($Comercios->setResponsable($_POST['responsable'])){
+                                if($Comercios->setCorreo($_POST['correo'])){
+                                    if($Comercios->setTelefono($_POST['telefono'])){
+                                        if($Comercios->setEstado(isset($_POST['estado'])?1:0)){
+                                            if($Comercios->updateComercio()){
+                                            Page::showMessage(1, "Comercio modificada exitosamente", "index.php");
+                                            
+                                          }else{
+                                            throw new Exception(Database::getException());
+                                           } 
+                                        }else{
+                                            throw new Exception("Estado incorrecto");
+                                           }
+                                    }else{
+                                        throw new Exception("Telefono incorrecto");
+                                       }         
                             }else{
-                                throw new Exception(Database::getException());
-                            }
+                                throw new Exception("Correo incorrecto");
+                               } 
                         }else{
-                            throw new Exception("Descripción incorrecta");
-                        }                        
+                            throw new Exception("Responsable incorrecto");
+                           }               
                     }else{
-                        throw new Exception("Nombre incorrecto");
-                    }                    
+                     throw new Exception("Nombre incorrecto");
+                    }        
                 }
+
             }else{
-                Page::showMessage(2, "Categoría inexistente", "index.php");
+                Page::showMessage(2, "Comercio inexistente", "index.php");
             }
         }else{
-            Page::showMessage(2, "Categoría incorrecta", "index.php");
+            Page::showMessage(2, "Comercio incorrecto", "index.php");
         }        
     }else{
-        Page::showMessage(3, "Seleccione categoría", "index.php");
+        Page::showMessage(3, "Seleccione Comercio", "index.php");
     }
 }catch(Exception $error){
     Page::showMessage(2, $error->getMessage(), null);
 }
-require_once("../../app/views/dashboard/categoria/update_view.php");
+require_once("../../app/views/dashboard/comercios/update_view.php");
 ?>

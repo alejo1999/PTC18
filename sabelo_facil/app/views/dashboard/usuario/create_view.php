@@ -1,4 +1,4 @@
-<form method='post'enctype='multipart/form-data'>
+<form method='post'enctype='multipart/form-data' autocomplete="off">
     <div class='row'>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>person</i>
@@ -34,7 +34,7 @@
 
            <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>import_contacts</i>
-          	<input id='documento_admin' type='text' name='documento_admin' class='validate' value='<?php print($usuario->getDocumento()) ?>' required/>
+          	<input id='documento_admin' type='number' name='documento_admin' class='validate' value='<?php print($usuario->getDocumento()) ?>' required/>
           	<label for='documento_admin'>Documento</label>
         </div>
         <div class='input-field col s12 m6'>

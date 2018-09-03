@@ -144,12 +144,12 @@ class Page extends Component{
 								<a style='color:black'>Direccion</a>
 								<p  id='datos'>$_SESSION[direccion]</p>
 							</div>
-							<div class='col s6'>
+							<div class='col s12'>
 								<a id='try'>Fecha de nacimiento</a>
 								<p  id='datos'>$_SESSION[fechanac]</p>
 							</div>
 							
-							<div class='col s6'>
+							<div class='col s12'>
 								<a id='try'>Numero de identificacion</a>
 								<p  id='datos'>$_SESSION[documento]</p>
 							</div>
@@ -198,6 +198,7 @@ class Page extends Component{
 				<script type='text/javascript' src='../../web/js/jquery-3.2.1.min.js'></script>
 				<script type='text/javascript' src='../../web/js/materialize.min.js'></script>
 				<script type='text/javascript' src='../../web/js/dashboard.js'></script>
+				<script src='https://www.google.com/recaptcha/api.js'></script>
 			</body>
 			</html>
 		");

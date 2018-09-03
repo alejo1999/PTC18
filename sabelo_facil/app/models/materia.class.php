@@ -44,17 +44,12 @@ class Materia extends Validator{
 	}
 
 	public function setEstado($value){
-		if($value){
-			if($this->validateAlphanumeric($value, 1, 200)){
-				$this->estado = $value;
-				return true;
-			}else{
-				return false;
-			}
-		}else{
-			$this->estado = null;
+		if($value == "1" || $value == "0"){
+			$this->estado = $value;
 			return true;
-		}		
+		}else{
+			return false;
+		}
 	}
 	public function getEstado(){
 		return $this->estado;
@@ -74,7 +69,7 @@ class Materia extends Validator{
 	}
 	public function createMaterias(){
 		$sql = "INSERT INTO materia(nombre_materia, descripcion, estado) VALUES(?, ?, ?)";
-		$params = array($this->nombre, $this->descripcion, 1);	
+		$params = array($this->nombre, $this->descripcion, $this->estado);	
 		return Database::executeRow($sql, $params);
 	}
 	public function readMaterias(){
