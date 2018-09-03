@@ -69,7 +69,7 @@ class Cliente extends Validator{
 	}
 
 	public function setDocumento($value){
-		if($this->validateId($value)){
+		if($this->validateNumeric($value,1,11)){
 			$this->documento = $value;
 			return true;
 		}else{
@@ -264,6 +264,7 @@ class Cliente extends Validator{
 		$params = array($this->nombres, $this->apellidos, $this->fecha_nacimiento, $this->correo, $hash, $this->direccion, $this->documento, $this->alias, $this->tipo_documento, $this->imagen);
 		return Database::executeRow($sql, $params);
 	}
+
 	public function readCliente(){
 		$sql = "SELECT nombre, apellido, correo, username, fecha_nacimiento, direccion, documento, imagen_url, estado FROM cliente WHERE ID_cliente = ?";
 		$params = array($this->id);

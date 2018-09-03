@@ -21,8 +21,12 @@
 			</div>
 		</div>
 		
-		<div class='row 'style='margin:0; padding:0;' >
-			<button type='submit' name='iniciar' class='btn-flaty waves-effect'>Aceptar</button>
+		<div class='row  center'style='margin:0; padding:0;' >
+			<button type='submit' name='iniciar' class='btn-flat waves-effect white'>Aceptar</button>
+		</div>
+		<div class=' btn-flat waves-effect'style='margin:0; padding:0;' >
+			
+			<a  class=' btn-flat waves-effect white' href="recovery.php">Recuperar contraseña</a>
 		</div>
 		<div class="row" style='margin:0; padding:0;'>
                 <h6 class="alert_text" id="lbl_error">Ingresa tu nombre de usuario<br>posteriormente verificaremos<br> tu identidad.</h6>
