@@ -427,7 +427,21 @@ td{
     transition: transform 0.3s, border 0.3s, box-shadow 0.3s, text-shadow 0.4s ;
     transform: scale(1);
     border: 1px solid rgba(0, 0, 0,0);
-    
+  }
+  .baldosap{
+    text-align: center;
+    width: 20vh;
+    height: 20vh;
+    float: left;
+    background-color: rgb(68, 105, 224);
+    color: white;
+    font-size: 1.1em;
+    margin-right: 5px;
+    margin-bottom: 5px; 
+    padding-top: 3vh;
+    transition: transform 0.3s, border 0.3s, box-shadow 0.3s, text-shadow 0.4s ;
+    transform: scale(1);
+    border: 1px solid rgba(0, 0, 0,0);
   }
 
   .baldosa:hover{

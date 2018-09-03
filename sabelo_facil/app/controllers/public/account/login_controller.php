@@ -63,6 +63,7 @@ try{
                                                 if($cliente->createcliente()){
                                                     Page::showMessage(1, "cliente creado", "index.php");
                                                 }else{
+                                                    
                                                     throw new Exception(Database::getException());
                                                 }
                                             }else{

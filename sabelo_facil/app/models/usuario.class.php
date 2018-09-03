@@ -12,10 +12,16 @@ class Usuario extends Validator{
 	private $tipo_documento =  null;
 	private $estado =  null;
 	private $imagen =  null;
-	private $fechaNac = null;
+	private $fecha_nac = null;
 	private $tipo_usuario = null;
+	private $nombre_tipo_usuario = null;
 	private $fecha_contrasena = null;
 
+
+	private $login_id = null; 
+
+	private $fecha_bloqueo = null;
+	private $codigo_auth = null;
 
 	//Métodos para sobrecarga de propiedades
 	public function setId($value){
@@ -31,6 +37,45 @@ class Usuario extends Validator{
 	}
 
 
+
+	public function setCodigo_auth($value){
+		if($this->validateAlphanumeric($value, 1, 20)){
+			$this->codigo_auth = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getCodigo_auth(){
+		return $this->codigo_auth;
+	}
+
+	Public function setLogin_id($value){
+		if($this->validateAlphanumeric($value,1,80)){
+			$this->login_id = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function setFecha_bloqueo($value){
+        if($this->validateDate($value)){
+            $this->fecha_bloqueo = $value;
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function getFecha_bloqueo(){
+        return $this->fecha_bloqueo;
+	}
+	
+	public function getLogin_id(){
+		return $this->login_id;
+	}
+
 	public function setTipousuario($value){
 		if($this->validateId($value)){
 			$this->tipo_usuario = $value;
@@ -41,6 +86,18 @@ class Usuario extends Validator{
 	}
 	public function getTipousuario(){
 		return $this->tipo_usuario;
+	}
+
+	public function setNombre_tipo_usuario($value){
+		if($this->validateAlphabetic($value, 1, 50)){
+			$this->nombre_tipo_usuario = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getNombre_tipo_usuario(){
+		return $this->nombre_tipo_usuario;
 	}
 
 	public function setFecha_contrasena($value){
@@ -202,16 +259,44 @@ class Usuario extends Validator{
 
 	//Métodos para manejar la sesión del usuario
 	public function checkAlias(){
-		$sql = "SELECT ID_admin FROM administrador WHERE username = ?";
+		$sql = "SELECT ID_admin ,login_id FROM administrador WHERE username = ?";
 		$params = array($this->alias);
 		$data = Database::getRow($sql, $params);
 		if($data){
 			$this->id = $data['ID_admin'];
+			$this->login_id = $data['login_id'];
 			return true;
 		}else{
 			return false;
 		}
 	}
+
+	public function checkCorreo(){
+		$sql = "SELECT ID_admin,login_id FROM administrador WHERE correo = ?";
+		$params = array($this->correo);
+		$data = Database::getRow($sql, $params);
+		if($data){
+			$this->id = $data['ID_admin'];
+			$this->login_id = $data['login_id'];
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	
+    public function checkNombre(){
+		$sql = "SELECT nombre FROM administrador WHERE ID_admin = ?";
+		$params = array($this->id);
+		$data = Database::getRow($sql, $params);
+		if($data){
+			$this->nombres = $data['nombre'];
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
 	public function checkPassword(){
 		$sql = "SELECT contrasena, imagen_url, nombre,apellido,correo,username, documento, fecha_nac, direccion FROM administrador WHERE ID_admin = ?";
 		$params = array($this->id);
@@ -230,12 +315,14 @@ class Usuario extends Validator{
 			return false;
 		}
 	}
+
 	public function changePassword(){
 		$hash = password_hash($this->clave, PASSWORD_DEFAULT);
 		$sql = "UPDATE administrador SET contrasena = ? , fecha_contrasena = CURDATE() WHERE ID_admin = ?";
 		$params = array($hash, $this->id);
 		return Database::executeRow($sql, $params);
 	}
+
 	public function logOut(){
 		return session_destroy();
 	}
@@ -278,7 +365,7 @@ class Usuario extends Validator{
 		return Database::executeRow($sql, $params);
 	}
 	public function readUsuario(){
-		$sql = "SELECT nombre, apellido, correo, username, fecha_nac, direccion, documento, imagen_url FROM administrador WHERE ID_admin = ?";
+		$sql = "SELECT nombre, apellido, correo, username, fecha_nac, direccion, documento, imagen_url,FK_ID_tipousuario ,codigo_auth ,login_id FROM administrador WHERE ID_admin = ?";
 		$params = array($this->id);
 		$user = Database::getRow($sql, $params);
 		if($user){
@@ -290,6 +377,9 @@ class Usuario extends Validator{
 			$this->direccion = $user['direccion'];
 			$this->documento = $user['documento'];
 			$this->imagen = $user['imagen_url'];
+			$this->tipo_usuario = $user['FK_ID_tipousuario'];
+			$this->codigo_auth =  $user['codigo_auth'];
+			$this->login_id = $user['login_id'];
 			return true;
 		}else{
 			return null;
@@ -300,20 +390,55 @@ class Usuario extends Validator{
 		$params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $this->fechanac,$this->direccion,$this->documento, $this->imagen, $this->id);
 		return Database::executeRow($sql, $params);
 	}
+
+	public function updatelogin_id(){
+		$sql = "UPDATE administrador SET administrador.login_id = ? WHERE ID_admin = ?";
+		$params = array( $this->login_id, $this->id);
+		return Database::executeRow($sql, $params); 
+	}
+
+
 	public function deleteUsuario(){
 		$sql = "DELETE FROM administrador WHERE ID_admin = ?";
 		$params = array($this->id);
 		return Database::executeRow($sql, $params);
 	}
-
+	public function changefecha_blo(){
+		$sql = "UPDATE administrador SET administrador.fecha_bloqueo = (SELECT DATE_ADD(CURDATE(), INTERVAL 1 DAY)) WHERE administrador.ID_admin = ?";
+		$params = array($this->id);
+		return Database::executeRow($sql, $params);
+	}
+	public function update_clave_google(){
+		$sql = "UPDATE administrador SET administrador.codigo_auth = ? WHERE administrador.ID_admin= ?";
+		$params = array($this->codigo_auth,$this->id);
+		return Database::executeRow($sql, $params);
+	}
 
 	public function checkfecha_contrasena(){
-		$sql="SELECT DATEDIFF( CURDATE(),(SELECT administrador.fecha_contrasena)) AS fecha_diferencia FROM administrador WHERE administrador.ID_admin = ?";
+		$sql="SELECT DATEDIFF( CURDATE(),(SELECT a.fecha_contrasena)) AS fecha_diferencia , a.FK_ID_tipousuario , t.nombre_tipo FROM administrador a
+		INNER JOIN tipo_usuario t ON a.FK_ID_tipousuario = t.ID_tipo_usuario
+		WHERE a.ID_admin = ?";
 		$params = array($this->id);
 		$data=Database::getRow($sql,$params);
 
 		if($data){
 			$this->fecha_contrasena = $data['fecha_diferencia'];
+			$this->tipo_usuario = $data['FK_ID_tipousuario'];
+			$this->nombre_tipo_usuario = $data['nombre_tipo'];
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+
+	public function checkfecha_bloqueo(){
+		$sql="SELECT DATEDIFF( CURDATE() ,(SELECT administrador.fecha_bloqueo)) AS fecha_blo FROM administrador WHERE administrador.id_admin = ? ";
+		$params = array($this->id);
+		$data2 = Database::getRow($sql,$params);
+
+		if($data2){
+			$this->fecha_bloqueo = $data2['fecha_blo'];
 			return true;
 		}else{
 			return false;
