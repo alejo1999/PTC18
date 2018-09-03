@@ -12,7 +12,6 @@ class Usuario extends Validator{
 	private $tipo_documento =  null;
 	private $estado =  null;
 	private $imagen =  null;
-<<<<<<< HEAD
 	private $fecha_nac = null;
 	private $tipo_usuario = null;
 	private $nombre_tipo_usuario = null;
@@ -20,11 +19,6 @@ class Usuario extends Validator{
 
 
 	private $login_id = null; 
-=======
-	private $fechaNac = null;
-	private $tipo_usuario = null;
-	private $fecha_contrasena = null;
->>>>>>> 75a56f47e2aaff19b7c84677ef0a9d1f57fd96e2
 
 	private $fecha_bloqueo = null;
 	private $codigo_auth = null;
@@ -403,7 +397,7 @@ class Usuario extends Validator{
 		return Database::executeRow($sql, $params); 
 	}
 
-	
+
 	public function deleteUsuario(){
 		$sql = "DELETE FROM administrador WHERE ID_admin = ?";
 		$params = array($this->id);
