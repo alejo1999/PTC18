@@ -34,19 +34,19 @@ class Categoria extends Validator{
 	
 	
 	public function setImagen($file){
-		if($this->validateImage($file, $this->imagen_url, "../../web/img/categoria/", 500, 500)){
-			$this->imagen_url = $this->getImageName();
+		if($this->validateImage($file, $this->imagen, "../../web/img/categoria/", 300000, 300000)){
+			$this->imagen = $this->getImageName();
 			return true;
 		}else{
 			return false;
 		}
 	}
 	public function getImagen(){
-		return $this->imagen_url;
+		return $this->imagen;
 	}
 	public function unsetImagen(){
-		if(unlink("../../web/img/categoria/".$this->imagen_url)){
-			$this->imagen_url = null;
+		if(unlink("../../web/img/categoria/".$this->imagen)){
+			$this->imagen = null;
 			return true;
 		}else{
 			return false;
@@ -102,19 +102,18 @@ class Categoria extends Validator{
 		return Database::getRows($sql, $params);
 	}
 	public function createCategoria(){
-		$sql = "INSERT INTO categoria(nombre_categoria, imagen_url, Estado) VALUES(?, ?, ?)";
-		$params = array($this->nombre, $this->imagen, 1);	
+		$sql = "INSERT INTO categoria(nombre_categoria, imagen_url,  Estado) VALUES(?,?,?)";
+		$params = array($this->nombre, $this->imagen,  1);	
 		return Database::executeRow($sql, $params);
 	}
 	public function readCategoria(){
-		$sql = "SELECT nombre_categoria, imagen_url, descripcion_categoria ,Estado FROM categoria WHERE ID_categoria = ?";
+		$sql = "SELECT nombre_categoria, imagen_url, Estado FROM categoria WHERE ID_categoria = ?";
 		$params = array($this->id);
 		$categoria = Database::getRow($sql, $params);
 		if($categoria){
 			$this->nombre = $categoria['nombre_categoria'];
 			$this->imagen = $categoria['imagen_url'];
 			$this->estado = $categoria['Estado'];
-			$this->descripcion = $categoria['descripcion_categoria'];
 			$this->imagen_url = $categoria['imagen_url'];
 			
 			return true;
@@ -123,8 +122,8 @@ class Categoria extends Validator{
 		}
 	}
 	public function updateCategoria(){
-		$sql = "UPDATE categoria SET nombre_categoria = ?, imagen_url = ?,descripcion_categoria = ?, Estado = ? WHERE ID_categoria = ?";
-		$params = array($this->nombre, $this->imagen,$this->descripcion, $this->estado, $this->id);
+		$sql = "UPDATE categoria SET nombre_categoria = ?, imagen_url = ?, Estado = ? WHERE ID_categoria = ?";
+		$params = array($this->nombre, $this->imagen, $this->estado, $this->id);
 		return Database::executeRow($sql, $params);
 	}
 	public function deleteCategoria(){

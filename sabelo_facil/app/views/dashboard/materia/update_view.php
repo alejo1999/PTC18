@@ -1,4 +1,4 @@
-<form method='post' enctype='multipart/form-data'>
+<form method='post' enctype='multipart/form-data' autocomplete="off">
     <div class='row'>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>note_add</i>
@@ -9,6 +9,15 @@
             <i class='material-icons prefix'>note_add</i>
             <input id='descripcion' type='text' name='descripcion' class='validate' value='<?php print($Materia->getDescripcion()) ?>' required/>
             <label for='descripcion'>Nombre</label>
+        </div>
+        <div class='switch'>
+                    <span>Estado:</span>
+                    <label>
+                        <i class='material-icons'>visibility_off</i>
+                        <input type='checkbox' name='estado' <?php print($Materia->getEstado()?"checked":"") ?>/>
+                        <span class='lever'></span>
+                        <i class='material-icons'>visibility</i>
+                    </label>
         </div>
     </div>
     <div class='row center-align'>

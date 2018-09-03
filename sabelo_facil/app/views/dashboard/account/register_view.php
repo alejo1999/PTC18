@@ -1,8 +1,8 @@
 <div class='centerlog'>
 <p id='login_pritxt'>Bienvenido</p>
-<span id='login_subtxt'><small>a continuacón se te registrara en el sistema.</small></span>
+<span id='login_subtxt'><small>a continuacón se te registrara en el sistema, el primer usuario.</small></span>
 </div>
-<form method='post'>
+<form method='post' autocomplete="off">
     <div class='row'>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>person</i>
@@ -37,7 +37,7 @@
 
            <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>import_contacts</i>
-          	<input id='documento_admin' type='text' name='documento_admin' class='validate' value='<?php print($usuario->getDocumento()) ?>' required/>
+          	<input id='documento_admin' type='number' name='documento_admin' class='validate' value='<?php print($usuario->getDocumento()) ?>' required/>
           	<label for='documento_admin'>Documento</label>
         </div>
         <div class='input-field col s12 m6'>
@@ -58,6 +58,12 @@
             <input id='clave2' type='password' name='clave2' class='validate' value='<?php print($usuario->getClave()) ?>' required/>
             <label for='clave2'>Confirmar clave</label>
         </div>
+
+        <div class="g-recaptcha col s12 m6" data-sitekey="6LcRq2YUAAAAAPf76su6EsO6DpraVU1GiROrB9Xl">
+        </div>
+
+                </div>
+               
        
     </div>
     <div class='row center-align'>

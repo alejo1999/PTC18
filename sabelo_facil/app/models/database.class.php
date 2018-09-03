@@ -7,7 +7,7 @@ class Database{
 
     private function connect(){
         $server = "localhost";
-        $database = "sabelofacil";
+        $database = "sabelofacil1";
         $username = "sabeloeasy";
         $password = "sabelo123";
         try{

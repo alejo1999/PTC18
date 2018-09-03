@@ -1,5 +1,5 @@
 <div class='row'>   
-    <form method='post'>
+    <form method='post' autocomplete="off">
         <div class='input-field col s6 m4'>
             <i class='material-icons prefix'>search</i>
             <input id='buscar' type='text' name='busqueda'/>

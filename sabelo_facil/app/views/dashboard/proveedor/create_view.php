@@ -1,4 +1,4 @@
-<form method='post' enctype='multipart/form-data'>
+<form method='post' enctype='multipart/form-data' autocomplete="off">
     <div class='row'>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>person</i>
@@ -12,13 +12,22 @@
         </div>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>call</i>
-          	<input id='telefono' type='text' name='telefono' class='validate' value='<?php print($Proveedor->getTelefono()) ?>' required/>
+          	<input id='telefono' type='number' name='telefono' class='validate' value='<?php print($Proveedor->getTelefono()) ?>' required/>
           	<label for='telefono'>Telefono</label>
         </div>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>call_split</i>
           	<input id='direccion' type='text' name='direccion' class='validate' value='<?php print($Proveedor->getDireccion()) ?>' required/>
           	<label for='direccion'>Dirección</label>
+        </div>
+        <div class='switch'>
+                    <span>Estado:</span>
+                    <label>
+                        <i class='material-icons'>visibility_off</i>
+                        <input type='checkbox' name='estado' <?php print($Proveedor->getEstado()?"checked":"") ?>/>
+                        <span class='lever'></span>
+                        <i class='material-icons'>visibility</i>
+                    </label>
         </div>
         
     </div>

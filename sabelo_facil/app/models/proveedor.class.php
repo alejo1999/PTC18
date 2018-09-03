@@ -57,7 +57,7 @@ class Proveedor extends Validator{
 	}
     
 	public function setDireccion($value){
-		if($this->validateAlphabetic($value, 1, 50)){
+		if($this->validateAlphanumeric($value, 1, 50)){
 			$this->direccion = $value;
 			return true;
 		}else{
@@ -68,18 +68,13 @@ class Proveedor extends Validator{
 		return $this->direccion;
     }
     
-    public function setEstado($value){
-		if($value){
-			if($this->validateAlphanumeric($value, 1, 200)){
-				$this->estado = $value;
-				return true;
-			}else{
-				return false;
-			}
-		}else{
-			$this->estado = null;
+	public function setEstado($value){
+		if($value == "1" || $value == "0"){
+			$this->estado = $value;
 			return true;
-		}		
+		}else{
+			return false;
+		}
 	}
 	public function getEstado(){
 		return $this->estado;
@@ -98,8 +93,8 @@ class Proveedor extends Validator{
 		return Database::getRows($sql, $params);
 	}
 	public function createProveedor(){
-		$sql = "INSERT INTO proveedor(nombre_proveedor, correo, telefono, direccion, estado) VALUES(?,?,?,?, 1)";
-		$params = array($this->nombre, $this->correo, $this->telefono, $this->direccion);
+		$sql = "INSERT INTO proveedor(nombre_proveedor, correo, telefono, direccion, estado) VALUES(?,?,?,?, ?)";
+		$params = array($this->nombre, $this->correo, $this->telefono, $this->direccion, $this-> estado);
 		return Database::executeRow($sql, $params);
 	}
 	public function readProveedor(){

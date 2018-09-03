@@ -1,5 +1,5 @@
 <div class='row'>   
-    <form method='post'>
+    <form method='post' autocomplete="off">
         <div class='input-field col s6 m4'>
             <i class='material-icons prefix'>search</i>
             <input id='buscar' type='text' name='busqueda'/>
@@ -38,7 +38,7 @@
 			<td><i class='material-icons'>".($row['estado']?"visibility":"visibility_off")."</i></td>
 			<td>
 				<a href='update.php?id=$row[ID_marca]' class='blue-text'><i class='material-icons'>mode_edit</i></a>
-				<a href='delete.php?id=$row[ID_marca]' class='red-text'><i class='material-icons'>delete</i></a>
+				
 			</td>
 		</tr>
 		");

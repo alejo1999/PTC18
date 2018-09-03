@@ -12,6 +12,7 @@ class Usuario extends Validator{
 	private $tipo_documento =  null;
 	private $estado =  null;
 	private $imagen =  null;
+<<<<<<< HEAD
 	private $fecha_nac = null;
 	private $tipo_usuario = null;
 	private $nombre_tipo_usuario = null;
@@ -19,6 +20,11 @@ class Usuario extends Validator{
 
 
 	private $login_id = null; 
+=======
+	private $fechaNac = null;
+	private $tipo_usuario = null;
+	private $fecha_contrasena = null;
+>>>>>>> 75a56f47e2aaff19b7c84677ef0a9d1f57fd96e2
 
 	private $fecha_bloqueo = null;
 	private $codigo_auth = null;
@@ -140,14 +146,14 @@ class Usuario extends Validator{
 
 	public function setFechaNac($value){
 		if($this->validateDate($value)){
-			$this->fecha_nac = $value;
+			$this->fechaNac = $value;
 			return true;
 		}else{
 			return false;
 		}
 	}
 	public function getFechaNac(){
-		$cadena = $this->fecha_nac;
+		$cadena = $this->fechaNac;
 		$buscar = '-';
 		$reemplazar = '/';
 		
@@ -298,7 +304,7 @@ class Usuario extends Validator{
 	}
 	
 	public function checkPassword(){
-		$sql = "SELECT contrasena, imagen_url, nombre,apellido,correo,username FROM administrador WHERE ID_admin = ?";
+		$sql = "SELECT contrasena, imagen_url, nombre,apellido,correo,username, documento, fecha_nac, direccion FROM administrador WHERE ID_admin = ?";
 		$params = array($this->id);
 		$data = Database::getRow($sql, $params);
 		if(password_verify($this->clave, $data['contrasena'])){
@@ -307,6 +313,9 @@ class Usuario extends Validator{
 			$this->apellidos = $data['apellido'];
 			$this->correo = $data['correo'];
 			$this->alias = $data['username'];
+			$this->documento = $data['documento'];
+			$this->fechaNac = $data['fecha_nac'];
+			$this->direccion = $data['direccion'];
 			return true;
 		}else{
 			return false;
@@ -352,13 +361,13 @@ class Usuario extends Validator{
 	public function createUsuario(){
 		$hash = password_hash($this->clave, PASSWORD_DEFAULT);
 		$sql = "INSERT INTO administrador(FK_ID_tipousuario ,nombre, apellido, fecha_nac, correo, contrasena, imagen_url, direccion, documento, username, FK_ID_tipo_doc, estado,fecha_contrasena) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,CURDATE())";
-		$params = array($this->tipo_usuario,$this->nombres, $this->apellidos, $this->fecha_nac, $this->correo, $hash,  $this->imagen , $this->direccion, $this->documento, $this->alias, $this->tipo_documento, 1);
+		$params = array($this->tipo_usuario,$this->nombres, $this->apellidos, $this->fechanac, $this->correo, $hash,  $this->imagen , $this->direccion, $this->documento, $this->alias, $this->tipo_documento, 1);
 		return Database::executeRow($sql, $params);
 	}
 	public function createPrimer_Usuario(){
 		$hash = password_hash($this->clave, PASSWORD_DEFAULT);
-		$sql = "INSERT INTO administrador(FK_ID_tipousuario ,nombre, apellido, fecha_nac, correo, contrasena,  direccion, documento, username, FK_ID_tipo_doc, estado,) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
-		$params = array($this->tipo_usuario,$this->nombres, $this->apellidos, $this->fecha_nac, $this->correo, $hash, $this->direccion, $this->documento, $this->alias, $this->tipo_documento, 1);
+		$sql = "INSERT INTO administrador(FK_ID_tipousuario ,nombre, apellido, fecha_nac, correo, contrasena,  direccion, documento, username, FK_ID_tipo_doc, estado, fecha_contrasena) VALUES(?,?,?,?,?,?,?,?,?,?,?, CURDATE())";
+		$params = array(1, $this->nombres, $this->apellidos, $this->fechaNac, $this->correo, $hash, $this->direccion, $this->documento, $this->alias, $this->tipo_documento, 1);
 		return Database::executeRow($sql, $params);
 	}
 	public function readUsuario(){
@@ -370,7 +379,7 @@ class Usuario extends Validator{
 			$this->apellidos = $user['apellido'];
 			$this->correo = $user['correo'];
 			$this->alias = $user['username'];
-			$this->fecha_nac = $user['fecha_nac'];
+			$this->fechanac = $user['fecha_nac'];
 			$this->direccion = $user['direccion'];
 			$this->documento = $user['documento'];
 			$this->imagen = $user['imagen_url'];
@@ -384,7 +393,7 @@ class Usuario extends Validator{
 	}
 	public function updateUsuario(){
 		$sql = "UPDATE administrador SET nombre = ?, apellido = ?, correo = ?, username = ?, fecha_nac =? , direccion=?, documento=?, imagen_url=? WHERE ID_admin = ?";
-		$params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $this->fecha_nac,$this->direccion,$this->documento, $this->imagen, $this->id);
+		$params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $this->fechanac,$this->direccion,$this->documento, $this->imagen, $this->id);
 		return Database::executeRow($sql, $params);
 	}
 

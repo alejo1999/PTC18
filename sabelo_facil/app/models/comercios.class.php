@@ -7,8 +7,7 @@ class Comercios extends Validator{
 	private $correo = null;
 	private $telefono = null;
 	private $responsable = null;
-	private $imagen = null;
-	private $id_estado = null;
+	private $estado = null;
 
 	//Métodos para sobrecarga de propiedades
 	public function setId($value){
@@ -89,78 +88,56 @@ class Comercios extends Validator{
 	public function getCorreo(){
 		return $this->correo;
 	}
-
-	public function setImagen($file){
-		if($this->validateImage($file, $this->imagen, "../../web/img/categorias/", 300, 300)){
-			$this->imagen = $this->getImageName();
+	public function setEstado($value){
+		if($value == "1" || $value == "0"){
+			$this->estado = $value;
 			return true;
 		}else{
 			return false;
 		}
 	}
-	public function getImagen(){
-		return $this->imagen;
-	}
-	public function unsetImagen(){
-		if(unlink("../../web/img/categorias/".$this->imagen)){
-			$this->imagen = null;
-			return true;
-		}else{
-			return false;
-		}
-	}
-
-	public function setId_estado($value){
-		if($this->validateId($value)){
-			$this->id_estado = $value;
-			return true;
-		}else{
-			return false;
-		}
-	}
-	public function getId_estado(){
-		return $this->id_estado;
+	public function getEstado(){
+		return $this->estado;
 	}
 
 	//Metodos para el manejo del CRUD
 	public function getComercios(){
-		$sql = "SELECT ID_comercio, nombre,Producto, correo, telefono, responsable,imagen_url,FK_ID_estado_comercio FROM comercio ORDER BY nombre";
+		$sql = "SELECT ID_comercio, nombre, correo, telefono, responsable, FK_ID_estado_comercio FROM comercio ORDER BY nombre";
 		$params = array(null);
 		return Database::getRows($sql, $params);
 	}
 	public function searchComercio($value){
-		$sql = "SELECT * FROM comercio WHERE nombre LIKE ? OR producto LIKE ? ORDER BY nombre";
+		$sql = "SELECT * FROM comercio WHERE nombre, responsable,telefono LIKE ? OR producto LIKE ? ORDER BY nombre";
 		$params = array("%$value%", "%$value%");
 		return Database::getRows($sql, $params);
 	}
 	public function createComercio(){
-		$sql = "INSERT INTO comercio(nombre, Producto,correo,telefono,responsable,imagen_url,FK_ID_estado_comercio) VALUES(?, ?, ?,?,?,'no hay imagen',1)";
-		$params = array($this->nombre, $this->producto, $this->correo, $this->telefono, $this->responsable);
+		$sql = "INSERT INTO comercio(nombre, correo, telefono, responsable, FK_ID_estado_comercio) VALUES(?,?,?,?,?)";
+		$params = array($this->nombre,  $this->correo, $this->telefono, $this->responsable, 1);
 		return Database::executeRow($sql, $params);
 	}
 	public function readComercio(){
-		$sql = "SELECT nombre, Producto, correo,telefono,responsable,imagen_url,FK_ID_estado_comercio FROM comercio WHERE ID_comercio = ?";
+		$sql = "SELECT nombre, correo,telefono,responsable,FK_ID_estado_comercio FROM comercio WHERE ID_comercio = ?";
 		$params = array($this->id);
 		$comercio = Database::getRow($sql, $params);
 		if($comercio){
 			$this->nombre = $comercio['nombre'];
-			$this->producto = $comercio['Producto'];
 			$this->correo = $comercio['correo'];
-			$this->correo = $comercio['telefono'];
-			$this->correo = $comercio['responsable'];
-			$this->imagen = $comercio['imagen_url'];
-			$this->imagen = $comercio['FK_ID_estado_comercio'];
+			$this->telefono = $comercio['telefono'];
+			$this->responsable = $comercio['responsable'];
+			$this->estado = $comercio['FK_ID_estado_comercio'];
 			
 			return true;
 		}else{
 			return null;
 		}
 	}
-	public function updateCategoria(){
-		$sql = "UPDATE comercio SET nombre = ?, Producto = ?, correo = ?,telefono = ?, responsable = ? WHERE ID_comercio = ?";
-		$params = array($this->nombre,$this->Producto,$this->correo,$this->telefono,$this->responsable,  $this->id);
+	public function updateComercio(){
+		$sql = "UPDATE comercio SET nombre = ?,  correo = ?,telefono = ?, responsable = ?, FK_ID_estado_comercio = ? WHERE ID_comercio = ?";
+		$params = array($this->nombre, $this->correo, $this->telefono, $this->responsable, $this->estado, $this->id);
 		return Database::executeRow($sql, $params);
 	}
+
 	public function deleteComercio(){
 		$sql = "DELETE FROM comercio WHERE ID_comercio = ?";
 		$params = array($this->id);

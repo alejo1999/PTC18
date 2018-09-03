@@ -7,7 +7,7 @@
 	</ul>
 	<!-- Formulario para nueva cuenta -->
 	<div id='cuenta'>
-		<form method='post'>
+		<form method='post' autocomplete='off'>
 			<div class='row'>
 				<div class='input-field col s12 m6'>
 					<i class='material-icons prefix'>account_box</i>
@@ -41,7 +41,7 @@
         		</div>
 				<div class='input-field col s12 m6'>
           			<i class='material-icons prefix'>import_contacts</i>
-          			<input id='documento_admin' type='text' name='documento' class='validate'/>
+          			<input id='documento_admin' type='number' name='documento' class='validate'/>
           			<label for='documento_admin'>Documento</label>
         		</div>
 				<div class='input-field col s12 m6'>
@@ -61,10 +61,10 @@
 				</div>
 			</div>
 			<div class='row center-align'>
-				<div class='col s12'>
-					<input id='condicion' type='checkbox' name='condicion'>
-					<label for='condicion'>Acepto <a href='#terminos' class="modal-trigger">términos y condiciones</a></label>
-				</div>
+			<div class="g-recaptcha col s12 m6" data-sitekey="6LcRq2YUAAAAAPf76su6EsO6DpraVU1GiROrB9Xl">
+        </div>
+			
+
 				<div class='col s12'>
 					<button type='submit' name='crear' class='btn waves-effect blue'><i class='material-icons'>send</i></button>
 				</div>
@@ -73,7 +73,7 @@
 	</div>
 	<!-- Formulario para iniciar sesión -->
 	<div id='sesion'>
-		<form method='post'>
+		<form method='post' autocomplete='off'>
 			<div class='row'>
 				<div class='input-field col s12 m6 offset-m3'>
 					<i class='material-icons prefix'>email</i>

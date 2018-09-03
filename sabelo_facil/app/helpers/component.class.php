@@ -46,6 +46,7 @@ class Component{
 					break;
 				default:
 					$text = "Ocurrió un problema, contacte al administrador :(";
+					
 			}
 		}else{
 			$text = $message;

@@ -11,14 +11,19 @@ try{
                         if($Proveedor->setCorreo($_POST['correo'])){
                             if($Proveedor->setTelefono($_POST['telefono'])){
                                 if($Proveedor->setDireccion($_POST['direccion'])){
+                                    if($Proveedor->setEstado(isset($_POST['estado'])?1:0)){
                                     if($Proveedor->updateProveedor()){
                                         Page::showMessage(1, "Proveedor actualizado", "index.php");
                                     }else{
                                         throw new Exception(Database::getException());
                                     }
                                 }else {
+                                    throw new Exception("Estado incorrecto");
+                                }
+                                }else {
                                     throw new Exception("Direccion incorrecta");
                                 }
+
                             }else{
                                 throw new Exception("Telefono incorrecto");
                             }

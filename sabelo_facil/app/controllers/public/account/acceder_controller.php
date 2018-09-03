@@ -1,9 +1,26 @@
 <?php
 require_once("../../app/models/cliente.class.php");
+require_once("../../app/libraries/recaptcha-1.0.0/php/recaptchalib.php");
 try{
     $cliente = new cliente;
     if(isset($_POST['crear'])){
         $_POST = $cliente->validateForm($_POST);
+
+
+        $secret = "6LcRq2YUAAAAACxoMymVeFWKRBYgnZUkqY6eNXhK";
+        $response = null;
+        // comprueba la clave secreta
+        $reCaptcha = new ReCaptcha($secret);
+       
+        if ($_POST["g-recaptcha-response"]) {
+            $response = $reCaptcha->verifyResponse(
+            $_SERVER["REMOTE_ADDR"],
+            $_POST["g-recaptcha-response"]
+            );
+         }
+
+         
+         if($response != null && $response->success){
         if($cliente->setNombres($_POST['nombres'])){
             if($cliente->setApellidos($_POST['apellidos'])){
                 if($cliente->setCorreo($_POST['correo'])){
@@ -49,6 +66,10 @@ try{
         }else{
             throw new Exception("Nombres incorrectos");
         }
+    }else {
+        // Si el código no es válido, lanzamos mensaje de error al usuario
+         throw new Exception("Porfavor llena el reCAPTCHA ");
+    }
     }
 }
 catch(Exception $error){

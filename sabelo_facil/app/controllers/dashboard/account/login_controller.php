@@ -24,6 +24,7 @@ try{
 					$_POST = $object->validateForm($_POST);
 				if($object->setAlias($_POST['alias'])){
 					if($object->checkAlias()){
+<<<<<<< HEAD
 
 						if($object->checkfecha_bloqueo()){
 							$fechablo = $object->getFecha_bloqueo();
@@ -83,6 +84,43 @@ try{
 
 										$_SESSION['intentos_admin'] += 1;
 										throw new Exception("Clave inexistente");
+=======
+						if($object->setClave2($_POST['clave'])){
+							if($object->checkPassword()){
+								if($object->checkfecha_contrasena()){
+
+									$fecha_cambio = $object->getFecha_contrasena();
+
+									if($fecha_cambio >= 90){
+										$_SESSION['ID_admin'] = $object->getId();
+										$_SESSION['username'] = $object->getAlias();
+										$_SESSION['imagen_url'] = $object->getImagen();
+										$_SESSION['nombre'] = $object->getNombres();
+										$_SESSION['apellido'] = $object->getApellidos();
+										$_SESSION['ID_admin'] = $object->getId();
+										$_SESSION['username'] = $object->getAlias();
+										$_SESSION['imagen_url'] = $object->getImagen();
+										$_SESSION['nombre'] = $object->getNombres();
+										$_SESSION['apellido'] = $object->getApellidos();
+										$_SESSION['ID_admin'] = $object->getId();
+										$_SESSION['fechanac'] = $object->getFechaNac();
+										$_SESSION['correo'] = $object->getCorreo();
+										$_SESSION['direccion'] = $object->getDireccion();
+										$_SESSION['documento'] = $object->getDocumento();
+										Page::showMessage(1, "Contraseña antigua Porfavor realize un cambio a continuacion $fecha_cambio", "password.php");
+									}else if ($fecha_cambio < 90){
+										$_SESSION['ID_admin'] = $object->getId();
+										$_SESSION['username'] = $object->getAlias();
+										$_SESSION['imagen_url'] = $object->getImagen();
+										$_SESSION['nombre'] = $object->getNombres();
+										$_SESSION['apellido'] = $object->getApellidos();
+										$_SESSION['ID_admin'] = $object->getId();
+										$_SESSION['fechanac'] = $object->getFechaNac();
+										$_SESSION['correo'] = $object->getCorreo();
+										$_SESSION['direccion'] = $object->getDireccion();
+										$_SESSION['documento'] = $object->getDocumento();
+										Page::showMessage(1, "Autenticación correcta $fecha_cambio", "index.php");
+>>>>>>> 75a56f47e2aaff19b7c84677ef0a9d1f57fd96e2
 									}
 								}else{
 									throw new Exception("Clave menor a 8 caracteres recuerda que debe contener una Mayus. un numero y caracter especial");

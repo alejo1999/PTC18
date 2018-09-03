@@ -3,11 +3,11 @@
 		<p id='login_pritxt'>Iniciar Sesión</p>
 		<p id='login_subtxt'>Bienvenido</p>
 	</div>
-	<form method='post'>
+	<form method='post' autocomplete='off'>
 		<div class='row' style='margin:0; padding:0;'>
 			<div class='input-field col s12 m12 'style='margin:0; padding:0;'>
 				<p class='prefix_log'>Nombre de usuario</p>
-				<input id='alias' autocomplete="off" type='text' name='alias' class='validate' value='<?php print($object->getAlias()) ?>' required/>
+				<input id='alias'  type='text' name='alias' class='validate' />
 				
 			</div>
 		
@@ -16,7 +16,7 @@
 
 			<div class='input-field col s12 m12' style='margin:0; padding:0;'>
 				<p class='prefix_log'>Contraseña</p>
-				<input id='clave' autocomplete='off' type='password' name='clave' class='validate' value='<?php print($object->getClave()) ?>' required/>
+				<input id='clave'  type='password' name='clave' class='validate' >
 				
 			</div>
 		</div>

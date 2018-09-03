@@ -1,9 +1,9 @@
 <div class="row">
     <div class='col s12 m12 l12 '>
             <div class="col s12 m4 l3">
-                <h4>Categorias</h4>
+               
             </div>
-            <form method='post'>
+            <form method='post' autocomplete="off">
                 <div class="col s10 m5 l5 ">
                         
                             <div class="input-field">
@@ -30,9 +30,8 @@
     <thead>
         <tr>
 			
-		    <th>imagen</th>
+		    <th>Imagen</th>
             <th>Nombre</th>
-            <th>Descripcion</th>
             <th>Accion</th> 
         </tr>
     </thead>
@@ -43,11 +42,10 @@
 		<tr>
 			<td><img src='../../web/img/categoria/$row[imagen_url]' class='materialboxed' width='100' height='100'></td>
 			<td>$row[nombre_categoria]</td>
-			<td>$row[descripcion_categoria]</td>
+			
             <td>
                 <a href='update.php?id=$row[ID_categoria]' class='waves-effect waves-light'><i class='material-icons white-text'>create</i></a>
-                <a href='delete.php?id=$row[ID_categoria]' id='space'onclick='borrar_producto()' class='waves-effect waves-light'href='#'><i class='material-icons red-text'>delete</i></a>
-			</td>
+            </td>
 		</tr>
 		");
 	}
