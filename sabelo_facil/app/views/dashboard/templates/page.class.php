@@ -2,8 +2,7 @@
 require_once("../../app/models/database.class.php");
 require_once("../../app/helpers/validator.class.php");
 require_once("../../app/helpers/component.class.php");
-require_once("../../app/models/tipo_usuario.class.php");
-require_once("../../app/models/usuario.class.php");
+
 class Page extends Component{
 	public static function templateHeader($title){
 		session_start();
@@ -34,13 +33,13 @@ class Page extends Component{
 
 		   session_destroy();
 		   /* Aquí redireccionas a la url especifica */
-		   Page::showMessage(4,"sesion cerrada por inactividad","../account/login.php");
-		     
+		   header("Location: ../account/login.php");
+		   die();  
 	   }
 	   $_SESSION['tiempo']=time(); //Si hay actividad seteamos el valor al tiempo actual
 
-	   	$sesionid = session_id();
-	   	echo("$sesionid"); 
+
+
 		if(isset($_SESSION['ID_admin'])){
 			print("
 				<div id='menu_overlay' style='display:none;'>overlay</div>
@@ -50,249 +49,19 @@ class Page extends Component{
 						<a id='return_btn' onclick='ocultar_panel_superior();'>Regresar</a>	
 							<ul>
 
-							");
-						$usuario = new Usuario;
-
-						if($usuario->setId($_SESSION['ID_admin'])){
-							if($usuario->readUsuario()){
-
-								$sesionadentro = $usuario->getLogin_id();
-
-								if($sesionid == $sesionadentro){
-									$tipousuario = new Tipo_usuario;
-									if($tipousuario->setId($_SESSION['ID_tipousuario'])){
-										if($tipousuario->select_tipousuarios_e()){
-			
-											if($tipousuario->get_pAdministradores() == 1){
-												print("
-												<li onmouseover='bal_over=1; show_info_baldosa();'><a class='baldosa' href='../usuario'><p class='plac_let'>A</p>Administradores</a></li>
-												");
-											} else if($tipousuario->get_pAdministradores() == 0){
-												print(" ");$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "usuario" ) {
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}else{
-												$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "usuario" ) {
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}
-			
-											if($tipousuario->get_pCategorias() == 1){
-												print("
-												<li onmouseover='bal_over=2; show_info_baldosa();'><a class='baldosa' href='../categoria'>	<p class='plac_let'>C</p>Categorías</a></li>
-												");
-											} else if($tipousuario->get_pCategorias() == 0){
-												print(" ");$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "categoria" ) {
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}else{
-												$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "categoria" ) {
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}
-			
-											if($tipousuario->get_pProductos() == 1){
-												print("
-												<li onmouseover='bal_over=3; show_info_baldosa();'><a class='baldosa' href='../producto'>		<p class='plac_let'>P</p>Productos</a></li></a>
-												");
-											} else if($tipousuario->get_pProductos() == 0){
-												print(" ");$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "producto" ) {
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}else{
-												$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "producto" ) {
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}
-			
-											if($tipousuario->get_pComercios() == 1){
-												print("
-												<li onmouseover='bal_over=4; show_info_baldosa();'><a class='baldosa' href='../comercios'>	<p class='plac_let'>C</p>Comercios</a></li>
-												");
-											} else if($tipousuario->get_pComercios() == 0){
-												print(" ");$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "comercios" ) {
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}else{
-												$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "comercios" ) {
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}
-			
-											if($tipousuario->get_pMaterias() == 1){
-												print("
-												<li onmouseover='bal_over=5; show_info_baldosa();'><a class='baldosa' href='../materia'>		<p class='plac_let'>M</p>Materias</a></li>
-												");
-											} else if($tipousuario->get_pMaterias() == 0){
-												print(" ");$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "materia" ) {
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}else{
-												$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "materia" ) {
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}
-			
-											if($tipousuario->get_pProveedores() == 1){
-												print("
-												<li onmouseover='bal_over=6; show_info_baldosa();'><a class='baldosa' href='../proveedor'>	<p class='plac_let'>P</p>Proveedores</a></li>
-												");
-											} else if($tipousuario->get_pProveedores() == 0){
-												print(" ");$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "proveedor" ) {
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}else{
-												$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "proveedor" ) {
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}
-			
-											if($tipousuario->get_pMarcas() == 1){
-												print("
-												<li onmouseover='bal_over=7; show_info_baldosa();'><a class='baldosa' href='../marca'>		<p class='plac_let'>M</p>Marcas</a></li>
-												");
-											} else if($tipousuario->get_pMarcas() == 0){
-												print(" ");$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "marca" ) {
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}else{
-												$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "marca" ) {
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}
-			
-											if($tipousuario->get_pTipos_Usuarios() == 1){
-												print("
-												<li onmouseover='bal_over=8; show_info_baldosa();'><a class='baldosa' href='../tipo_usuario'>		<p class='plac_let'>T</p>Tipo de Usuario</a></li>
-												");
-											} else if($tipousuario->get_pTipos_Usuarios() == 0){
-												print(" ");
-												$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "tipo_usuario" ) {
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}else{
-												$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "tipo_usuario" ) {
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}
-			
-											if($tipousuario->get_pPermisos() == 1){
-												print("
-												<li onmouseover='bal_over=10; show_info_baldosa();'><a class='baldosa' href='../permisos'>		<p class='plac_let'>P</p>Permisos</a></li>
-												");
-												
-											} else if($tipousuario->get_pPermisos() == 0){
-												print(" ");
-												$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "permisos" ) {
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}else{
-												$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "permisos" ) {
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}
-			
-											if($tipousuario->get_pClientes() == 1){
-												print("
-												<li onmouseover='bal_over=9; show_info_baldosa();'><a class='baldosa' href='../cliente'>		<p class='plac_let'>C</p>Clientes</a></li>
-												");
-											} else if($tipousuario->get_pClientes() == 0){
-												print(" ");
-												$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "cliente" ) {
-													echo("$filename");
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}else{
-												$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "cliente" ) {
-													echo("$filename");
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}
-			
-											if($tipousuario->get_pEstadisticas() == 1){
-												print("
-												<li onmouseover='bal_over=10; show_info_baldosa();'><a class='baldosa' href='../Estadistica'>		<p class='plac_let'>E</p>Estadistica</a></li>
-												");
-											} else if($tipousuario->get_pEstadisticas() == 0){
-												print(" ");$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "Estadistica" ) {
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}else{
-												$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "Estadistica" ) {
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}
-			
-											if($tipousuario->get_pReportes() == 1){
-												print("
-												<li onmouseover='bal_over=11; show_info_baldosa();'><a class='baldosa' href='../Reportes'>		<p class='plac_let'>R</p>Reportes</a></li>
-												");
-											} else if($tipousuario->get_pReportes() == 0){
-												print(" ");$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "Reportes" ) {
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}else{
-												$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "Reportes" ) {
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}
-			
-											
-			
-			
-			
-										}else{
-											Page::showMessage(2,"Error al recuperar los datos","../account/login.php");
-										}
-									}else{
-										Page::showMessage(2,"Porfavor inicie sesion","../account/login.php");
-									}
-								}else{
-									$usuario->logOut();
-									Page::showMessage(3,"Sesion ya iniciada en otro dispositivo revise su correo para obtener su nueva contraseña ","../account/login.php");
-								}
-
-							}else{
-								Page::showMessage(2,"Porfavor inicie sesion","../account/login.php");
-							}
-						}else{
-							Page::showMessage(2,"No existe usuario disponible","../account/login.php");
-						}
-
-						
-
-							print("
-							
+							<li onmouseover='bal_over=1; show_info_baldosa();'><a class='baldosa' href='../usuario'>		<p class='plac_let'>A</p>Administradores</a></li>
+							<li onmouseover='bal_over=2; show_info_baldosa();'><a class='baldosa' href='../categoria'>	<p class='plac_let'>C</p>Categorías</a></li>
+							<li onmouseover='bal_over=3; show_info_baldosa();'><a class='baldosa' href='../producto'>		<p class='plac_let'>P</p>Productos</a></li></a>
+							<li onmouseover='bal_over=4; show_info_baldosa();'><a class='baldosa' href='../comercios'>	<p class='plac_let'>C</p>Comercios</a></li>
+							<li onmouseover='bal_over=5; show_info_baldosa();'><a class='baldosa' href='../materia'>		<p class='plac_let'>M</p>Materias</a></li>
+							<li onmouseover='bal_over=6; show_info_baldosa();'><a class='baldosa' href='../proveedor'>	<p class='plac_let'>P</p>Proveedores</a></li>
+							<li onmouseover='bal_over=7; show_info_baldosa();'><a class='baldosa' href='../marca'>		<p class='plac_let'>M</p>Marcas</a></li>
+							<li onmouseover='bal_over=8; show_info_baldosa();'><a class='baldosa' href='../tipo_usuario'>		<p class='plac_let'>T</p>Tipo de Usuario</a></li>
+							<li onmouseover='bal_over=9; show_info_baldosa();'><a class='baldosa' href='../cliente'>		<p class='plac_let'>C</p>Clientes</a></li>
+							<li onmouseover='bal_over=10; show_info_baldosa();'><a class='baldosa' href='../Estadistica'>		<p class='plac_let'>E</p>Estadistica</a></li>
+							<li onmouseover='bal_over=11; show_info_baldosa();'><a class='baldosa' href='../Reportes'>		<p class='plac_let'>R</p>Reportes</a></li>
 							</ul>
 
-
-							");
-
-							print("
 							<div id='sepline'> </div>
 							<p id='info_baldosita'>Al pasar el puntero del mouse sobre una baldosa se mostrara una pequeña descripcion de lo que realiza la opción</p>
 					</div>				
@@ -350,7 +119,7 @@ class Page extends Component{
 							
 							</div>
 							<div class='col s1' id='colis2'>
-					     		
+							
 							</div>
 							<div class='col s10 right-align' id='colis3'>
 							
@@ -397,10 +166,11 @@ class Page extends Component{
 			");
 		}else{
 			print("
+			
 				<main class='container'>
 			");
 			$filename = basename($_SERVER['PHP_SELF']);
-			if($filename != "login.php" && $filename != "register.php" && $filename != "recovery.php" && $filename != "verificacion2.php"){
+			if($filename != "login.php" && $filename != "register.php"){
 				self::showMessage(3, "¡Debe iniciar sesión!", "../account/login.php");
 				self::templateFooter();
 				exit;

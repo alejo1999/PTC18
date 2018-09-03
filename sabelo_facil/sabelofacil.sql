@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-09-2018 a las 19:48:38
+-- Tiempo de generación: 02-09-2018 a las 04:52:33
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.1
 
@@ -63,18 +63,17 @@ CREATE TABLE `administrador` (
   `estado` tinyint(1) NOT NULL,
   `fecha_contrasena` date NOT NULL,
   `fecha_bloqueo` date NOT NULL,
-  `login_id` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `codigo_auth` varchar(18) COLLATE utf8_spanish_ci NOT NULL
+  `login_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `administrador`
 --
 
-INSERT INTO `administrador` (`ID_admin`, `FK_ID_tipousuario`, `nombre`, `apellido`, `fecha_nac`, `correo`, `contrasena`, `imagen_url`, `direccion`, `documento`, `username`, `FK_ID_tipo_doc`, `estado`, `fecha_contrasena`, `fecha_bloqueo`, `login_id`, `codigo_auth`) VALUES
-(2, 1, 'alejandro Ernesto', 'Mejia Rodriguez', '1999-10-18', 'alenetoo1999@gmail.com', '$2y$10$xohIPgA6624B9NJ00rqJDeCWnTe/LHZsNpCJCMUfiZiObVjFWqGCS', 'hola.jpg', 'mi casa', 123456789, 'Alejo99', 1, 1, '2018-09-03', '0000-00-00', '0', ''),
-(4, 2, 'ernesto', 'ccoraso', '1999-05-29', 'alejandro@gmail.com', '$2y$10$9RdkY2zIG1lGXn6ZErre3uXoKv89MgYx4bKCl19rhuLvDQ2KMyRGe', 'no hay imagen', 'su casita', 12345678, 'koko', 2, 1, '2018-07-10', '2018-09-04', '0', ''),
-(7, 1, 'carmelo', 'juliaon', '2018-08-06', 'alenetoo1999@outlook.com', '$2y$10$Mo5XZi4eXQy1H9CPhBR5V.LE7BOaOBf.R2ji4n9GxbqvXTL9HsxMC', '5b878b23aaf2d.jpg', 'urbanizacion 2', 1234567891, 'Carmelooi', 3, 1, '2018-09-03', '2018-09-02', 'oba7jmibefvrk1vvvn0o2mj5kt', 'JAW7OGZLN55LXUNC');
+INSERT INTO `administrador` (`ID_admin`, `FK_ID_tipousuario`, `nombre`, `apellido`, `fecha_nac`, `correo`, `contrasena`, `imagen_url`, `direccion`, `documento`, `username`, `FK_ID_tipo_doc`, `estado`, `fecha_contrasena`, `fecha_bloqueo`, `login_id`) VALUES
+(2, 1, 'alejandro Ernesto', 'Mejia Rodriguez', '1999-10-18', 'alenetoo1999@gmail.com', '$2y$10$jwjcY5bW77tWJ97yKvNN7OTOSUkNX6wKw695FQIKae704lNypCshG', 'hola.jpg', 'mi casa', 123456789, 'Alejo99', 1, 1, '0000-00-00', '0000-00-00', 0),
+(4, 1, 'ernesto', 'ccoraso', '1999-05-29', 'alejandro@gmail.com', '$2y$10$BdI3bThUy7VEgIJNsBLkDOJ96TW7GVhjHVBfrWMEQzgySXTe2wiX6', 'no hay imagen', 'su casita', 12345678, 'koko', 1, 1, '0000-00-00', '0000-00-00', 0),
+(7, 1, 'carmelo', 'juliaon', '2018-08-06', 'carmelo0909@gmail.com', '$2y$10$9RdkY2zIG1lGXn6ZErre3uXoKv89MgYx4bKCl19rhuLvDQ2KMyRGe', '5b878b23aaf2d.jpg', 'urbanizacion 2', 1234567891, 'Carmelooi', 3, 1, '2018-09-01', '0000-00-00', 0);
 
 -- --------------------------------------------------------
 
@@ -128,6 +127,7 @@ CREATE TABLE `cliente` (
   `FK_ID_tipo_doc` int(11) NOT NULL,
   `nombre` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `apellido` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `genero` tinyint(1) NOT NULL,
   `fecha_nacimiento` date NOT NULL,
   `direccion` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
   `documento` int(11) NOT NULL,
@@ -142,9 +142,9 @@ CREATE TABLE `cliente` (
 -- Volcado de datos para la tabla `cliente`
 --
 
-INSERT INTO `cliente` (`ID_cliente`, `FK_ID_membresia`, `FK_ID_tipo_doc`, `nombre`, `apellido`, `fecha_nacimiento`, `direccion`, `documento`, `correo`, `username`, `contrasena`, `imagen_url`, `estado`) VALUES
-(1, 1, 1, 'Roberto', 'Moran', '1999-05-03', 'su casita', 1245231254, 'willy@gmail.com', '', 'buenas tardes ', 'wiliito.jpg', 1),
-(2, 4, 1, 'Andres', 'Gomez', '1999-05-03', 'su casita', 1245231254, 'anres@gmail.com', 'andres21', '$2y$10$jwjcY5bW77tWJ97yKvNN7OTOSUkNX6wKw695FQIKae704lNypCshG', 'wiliito.jpg', 1);
+INSERT INTO `cliente` (`ID_cliente`, `FK_ID_membresia`, `FK_ID_tipo_doc`, `nombre`, `apellido`, `genero`, `fecha_nacimiento`, `direccion`, `documento`, `correo`, `username`, `contrasena`, `imagen_url`, `estado`) VALUES
+(1, 1, 1, 'Roberto', 'Moran', 0, '1999-05-03', 'su casita', 1245231254, 'willy@gmail.com', '', 'buenas tardes ', 'wiliito.jpg', 1),
+(2, 4, 1, 'Andres', 'Gomez', 0, '1999-05-03', 'su casita', 1245231254, 'anres@gmail.com', 'andres21', '$2y$10$jwjcY5bW77tWJ97yKvNN7OTOSUkNX6wKw695FQIKae704lNypCshG', 'wiliito.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -434,30 +434,17 @@ INSERT INTO `tipo_doc` (`ID_tipo_doc`, `nombre_tipo_doc`) VALUES
 CREATE TABLE `tipo_usuario` (
   `ID_tipo_usuario` int(11) NOT NULL,
   `nombre_tipo` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `estado` tinyint(1) NOT NULL,
-  `Administradores` int(1) NOT NULL DEFAULT '0',
-  `Categorias` int(1) NOT NULL DEFAULT '0',
-  `Productos` int(1) NOT NULL DEFAULT '0',
-  `Comercios` int(1) NOT NULL DEFAULT '0',
-  `Materias` int(1) NOT NULL DEFAULT '0',
-  `Proveedores` int(1) NOT NULL DEFAULT '0',
-  `Marcas` int(1) NOT NULL DEFAULT '0',
-  `TiposUsuarios` int(1) NOT NULL DEFAULT '0',
-  `Permisos` int(1) NOT NULL DEFAULT '0',
-  `Clientes` int(1) NOT NULL DEFAULT '0',
-  `Estadisticas` int(1) NOT NULL DEFAULT '0',
-  `Reportes` int(1) NOT NULL DEFAULT '0'
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `tipo_usuario`
 --
 
-INSERT INTO `tipo_usuario` (`ID_tipo_usuario`, `nombre_tipo`, `estado`, `Administradores`, `Categorias`, `Productos`, `Comercios`, `Materias`, `Proveedores`, `Marcas`, `TiposUsuarios`, `Permisos`, `Clientes`, `Estadisticas`, `Reportes`) VALUES
-(1, 'Administrador', 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0),
-(2, 'Maestro', 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0),
-(3, 'Secretario', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(4, 'Superior', 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0);
+INSERT INTO `tipo_usuario` (`ID_tipo_usuario`, `nombre_tipo`, `estado`) VALUES
+(1, 'Administrador', 1),
+(2, 'Maestro', 1),
+(3, 'Secretario', 1);
 
 -- --------------------------------------------------------
 
@@ -753,7 +740,7 @@ ALTER TABLE `tipo_doc`
 -- AUTO_INCREMENT de la tabla `tipo_usuario`
 --
 ALTER TABLE `tipo_usuario`
-  MODIFY `ID_tipo_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID_tipo_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `valoracion`
