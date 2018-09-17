@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-09-2018 a las 19:48:38
+-- Tiempo de generación: 17-09-2018 a las 16:06:46
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.1
 
@@ -53,7 +53,7 @@ CREATE TABLE `administrador` (
   `nombre` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `apellido` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `fecha_nac` date NOT NULL,
-  `correo` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `correo` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `contrasena` varchar(80) COLLATE utf8_spanish_ci NOT NULL,
   `imagen_url` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
   `direccion` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
@@ -74,7 +74,25 @@ CREATE TABLE `administrador` (
 INSERT INTO `administrador` (`ID_admin`, `FK_ID_tipousuario`, `nombre`, `apellido`, `fecha_nac`, `correo`, `contrasena`, `imagen_url`, `direccion`, `documento`, `username`, `FK_ID_tipo_doc`, `estado`, `fecha_contrasena`, `fecha_bloqueo`, `login_id`, `codigo_auth`) VALUES
 (2, 1, 'alejandro Ernesto', 'Mejia Rodriguez', '1999-10-18', 'alenetoo1999@gmail.com', '$2y$10$xohIPgA6624B9NJ00rqJDeCWnTe/LHZsNpCJCMUfiZiObVjFWqGCS', 'hola.jpg', 'mi casa', 123456789, 'Alejo99', 1, 1, '2018-09-03', '0000-00-00', '0', ''),
 (4, 2, 'ernesto', 'ccoraso', '1999-05-29', 'alejandro@gmail.com', '$2y$10$9RdkY2zIG1lGXn6ZErre3uXoKv89MgYx4bKCl19rhuLvDQ2KMyRGe', 'no hay imagen', 'su casita', 12345678, 'koko', 2, 1, '2018-07-10', '2018-09-04', '0', ''),
-(7, 1, 'carmelo', 'juliaon', '2018-08-06', 'alenetoo1999@outlook.com', '$2y$10$Mo5XZi4eXQy1H9CPhBR5V.LE7BOaOBf.R2ji4n9GxbqvXTL9HsxMC', '5b878b23aaf2d.jpg', 'urbanizacion 2', 1234567891, 'Carmelooi', 3, 1, '2018-09-03', '2018-09-02', 'oba7jmibefvrk1vvvn0o2mj5kt', 'JAW7OGZLN55LXUNC');
+(7, 1, 'carmelo', 'juliaon', '2018-08-06', 'alenetoo1999@outlook.com', '$2y$10$8BLUyFOZ3v9yTeXImv3xsemotPr2kwd7h/nm94i7AGVu1kvYRbR9.', '5b878b23aaf2d.jpg', 'urbanizacion 2', 1234567891, 'Carmelooi123', 3, 1, '2018-09-03', '2018-09-02', 'jc2br82a8if5o83m0qi6idi704', 'M2TUN6E2B6TOLKDA'),
+(11, 2, 'Daniel', 'Mejia', '2004-09-02', 'pablomoisesmejia@gmail.com', '$2y$10$8BLUyFOZ3v9yTeXImv3xsemotPr2kwd7h/nm94i7AGVu1kvYRbR9.', '5b8d8a4091416.jpg', 'avenida dos', 124526789, 'daniel1234', 1, 1, '2018-09-03', '0000-00-00', 'oba7jmibefvrk1vvvn0o2mj5kt', 'DLOWPDGNMVPE3IOW');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `anuncios`
+--
+
+CREATE TABLE `anuncios` (
+  `ID_anuncio` int(11) NOT NULL,
+  `nombre_anunciante` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `correo` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `telefono` int(11) NOT NULL,
+  `direccion` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `imagen_url` varchar(300) COLLATE utf8_spanish_ci NOT NULL,
+  `empresa_url` varchar(400) COLLATE utf8_spanish_ci NOT NULL,
+  `estado` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -144,7 +162,9 @@ CREATE TABLE `cliente` (
 
 INSERT INTO `cliente` (`ID_cliente`, `FK_ID_membresia`, `FK_ID_tipo_doc`, `nombre`, `apellido`, `fecha_nacimiento`, `direccion`, `documento`, `correo`, `username`, `contrasena`, `imagen_url`, `estado`) VALUES
 (1, 1, 1, 'Roberto', 'Moran', '1999-05-03', 'su casita', 1245231254, 'willy@gmail.com', '', 'buenas tardes ', 'wiliito.jpg', 1),
-(2, 4, 1, 'Andres', 'Gomez', '1999-05-03', 'su casita', 1245231254, 'anres@gmail.com', 'andres21', '$2y$10$jwjcY5bW77tWJ97yKvNN7OTOSUkNX6wKw695FQIKae704lNypCshG', 'wiliito.jpg', 1);
+(2, 4, 1, 'Andres', 'Gomez', '1999-05-03', 'su casita', 12452314, 'alenetoo1999@outlook.com', 'andres21', '$2y$10$8BLUyFOZ3v9yTeXImv3xsemotPr2kwd7h/nm94i7AGVu1kvYRbR9.', 'wiliito.jpg', 1),
+(3, NULL, 2, 'alejandro', 'mejia', '2004-09-10', 'mi  casa', 123456789, 'alenetoo1999@gmail.com', 'alejo99', '$2y$10$lQTQDn5iOTYTiDXeL6wzg.UQUuPrGaCv7xHyyy8zWeeWYQnz/Gybi', '', 1),
+(4, NULL, 1, 'Daniel', 'Carranza', '2004-09-16', 'avenida', 12345678, 'alenetoo1999@outloook.com', 'carranza', '$2y$10$8BLUyFOZ3v9yTeXImv3xsemotPr2kwd7h/nm94i7AGVu1kvYRbR9.', '', 1);
 
 -- --------------------------------------------------------
 
@@ -454,7 +474,7 @@ CREATE TABLE `tipo_usuario` (
 --
 
 INSERT INTO `tipo_usuario` (`ID_tipo_usuario`, `nombre_tipo`, `estado`, `Administradores`, `Categorias`, `Productos`, `Comercios`, `Materias`, `Proveedores`, `Marcas`, `TiposUsuarios`, `Permisos`, `Clientes`, `Estadisticas`, `Reportes`) VALUES
-(1, 'Administrador', 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0),
+(1, 'Administrador', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 (2, 'Maestro', 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0),
 (3, 'Secretario', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 (4, 'Superior', 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0);
@@ -536,6 +556,12 @@ ALTER TABLE `administrador`
   ADD KEY `FK_ID_tipousuario` (`FK_ID_tipousuario`);
 
 --
+-- Indices de la tabla `anuncios`
+--
+ALTER TABLE `anuncios`
+  ADD PRIMARY KEY (`ID_anuncio`);
+
+--
 -- Indices de la tabla `bitacora`
 --
 ALTER TABLE `bitacora`
@@ -555,6 +581,9 @@ ALTER TABLE `categoria`
 --
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`ID_cliente`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `correo` (`correo`),
+  ADD UNIQUE KEY `documento` (`documento`),
   ADD KEY `FK_ID_membresia` (`FK_ID_membresia`),
   ADD KEY `FK_ID_tipo_doc` (`FK_ID_tipo_doc`);
 
@@ -663,7 +692,13 @@ ALTER TABLE `venta`
 -- AUTO_INCREMENT de la tabla `administrador`
 --
 ALTER TABLE `administrador`
-  MODIFY `ID_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT de la tabla `anuncios`
+--
+ALTER TABLE `anuncios`
+  MODIFY `ID_anuncio` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `bitacora`
@@ -681,7 +716,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `ID_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `comercio`
@@ -753,7 +788,7 @@ ALTER TABLE `tipo_doc`
 -- AUTO_INCREMENT de la tabla `tipo_usuario`
 --
 ALTER TABLE `tipo_usuario`
-  MODIFY `ID_tipo_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID_tipo_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `valoracion`

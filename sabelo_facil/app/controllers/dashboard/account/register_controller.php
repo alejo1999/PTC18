@@ -31,7 +31,7 @@ try{
                             if($_POST['correo'] != $_POST['clave2']){
                             if($usuario->setAlias($_POST['alias'])){
                                 if($_POST['clave1'] == $_POST['clave2']){
-                                    if($usuario->setClave($_POST['clave1'])){
+                                    if($usuario->setClave2($_POST['clave1'])){
                                         if($usuario->setFechaNac($_POST['fecha_nac'])){
                                             if($usuario->setDireccion($_POST['direccion_admin'])){                            
                                                 if($usuario->setDocumento($_POST['documento_admin'])){
@@ -52,10 +52,10 @@ try{
                                                 throw new Exception("direccion");
                                             }
                                         }else{
-                                            throw new Exception("Fecha");
+                                            throw new Exception("Fecha incorrecta");
                                         }
                                     }else{
-                                        throw new Exception("Clave menor a 6 caracteres");
+                                        throw new Exception("Clave menor a 8 caracteres debe de llevar una mayus , un numero y un caracter especial");
                                     }
                                 }else{
                                     throw new Exception("Claves diferentes");

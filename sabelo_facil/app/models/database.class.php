@@ -60,7 +60,7 @@ class Database{
         }
     }
 }
-
+        
     //servidor, usuario de base de datos, contraseña del usuario, nombre de base de datos
 	$mysqli = new mysqli("localhost","sabeloeasy","sabelo123","sabelofacil"); 
 	

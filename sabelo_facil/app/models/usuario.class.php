@@ -12,7 +12,7 @@ class Usuario extends Validator{
 	private $tipo_documento =  null;
 	private $estado =  null;
 	private $imagen =  null;
-	private $fecha_nac = null;
+	private $fechaNac = null;
 	private $tipo_usuario = null;
 	private $nombre_tipo_usuario = null;
 	private $fecha_contrasena = null;
@@ -323,6 +323,13 @@ class Usuario extends Validator{
 		return Database::executeRow($sql, $params);
 	}
 
+	public function changePassword2(){
+		$hash = password_hash($this->clave, PASSWORD_DEFAULT);
+		$sql = "UPDATE administrador SET contrasena = ? , login_id = 0000 ,fecha_contrasena = CURDATE() WHERE ID_admin = ?";
+		$params = array($hash, $this->id);
+		return Database::executeRow($sql, $params);
+	}
+
 	public function logOut(){
 		return session_destroy();
 	}
@@ -355,7 +362,7 @@ class Usuario extends Validator{
 	public function createUsuario(){
 		$hash = password_hash($this->clave, PASSWORD_DEFAULT);
 		$sql = "INSERT INTO administrador(FK_ID_tipousuario ,nombre, apellido, fecha_nac, correo, contrasena, imagen_url, direccion, documento, username, FK_ID_tipo_doc, estado,fecha_contrasena) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,CURDATE())";
-		$params = array($this->tipo_usuario,$this->nombres, $this->apellidos, $this->fechanac, $this->correo, $hash,  $this->imagen , $this->direccion, $this->documento, $this->alias, $this->tipo_documento, 1);
+		$params = array($this->tipo_usuario,$this->nombres, $this->apellidos, $this->fechaNac, $this->correo, $hash,  $this->imagen , $this->direccion, $this->documento, $this->alias, $this->tipo_documento, 1);
 		return Database::executeRow($sql, $params);
 	}
 	public function createPrimer_Usuario(){

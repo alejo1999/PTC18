@@ -124,6 +124,16 @@ class Cliente extends Validator{
 			return false;
 		}
 	}
+
+	public function setClave2($value){
+		if($this->validatePasswordcaracter2($value)){
+			$this->clave = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 	public function getClave(){
 		return $this->clave;
 	}

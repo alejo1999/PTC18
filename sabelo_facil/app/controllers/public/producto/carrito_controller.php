@@ -42,6 +42,7 @@ try{
                     }
                 }else{
                     Page::showMessage(2, "Carrito vacio","index.php");
+                    exit();
                 }
             }else{
                 Page::showMessage(3, "Inicia sesion",null);

@@ -13,7 +13,7 @@ define("DB_HOST", 'localhost');
 define("OUTPUT_DIR", 'C:\xampp\htdocs\EXPO\PTC18\sabelo_facil\web\backup BD');	// DO NOT FORGET to set your destination folder
 define("TABLES", '*');
 
-/**
+/** 
  * Default time zone 
  * 
  * List of Supported Timezones: http://php.net/manual/en/timezones.php

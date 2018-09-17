@@ -22,7 +22,7 @@
 				<div class='input-field col s12 m6'>
 					<i class='material-icons prefix'>account_box</i>
 					<input id='alias' type='text' name='alias' class='validate'>
-					<label for='alias'>Alias</label>
+					<label for='alias'>Nombre de usuario </label>
 				</div>
 				<div class='input-field col s12 m6'>
 					<i class='material-icons prefix'>email</i>

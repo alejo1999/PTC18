@@ -48,6 +48,7 @@ try{
 												$_SESSION['ID_tipousuario']= $object->getTipousuario();
 												$_SESSION['nombre_tipousuario'] = $object->getNombre_tipo_usuario();
 												Page::showMessage(1, "Contraseña antigua Porfavor realize un cambio a continuacion $fecha_cambio", "password.php");
+												
 											}else if ($fecha_cambio < 90){
 
 												$_SESSION['ID_admin_oculto'] = $object->getId();
@@ -73,8 +74,6 @@ try{
 												}else{
 													Page::showMessage(1,"ocurrio un error con el seteo ", null);
 												}
-		
-												
 											}
 										}else{
 											throw new Exception("Error en la fecha");

@@ -4,6 +4,10 @@ require_once("../../app/helpers/validator.class.php");
 require_once("../../app/helpers/component.class.php");
 require_once("../../app/models/tipo_usuario.class.php");
 require_once("../../app/models/usuario.class.php");
+
+require_once '../../app/libraries/PHPMailer/class.phpmailer.php';
+require_once '../../app/libraries/PHPMailer/class.smtp.php';
+
 class Page extends Component{
 	public static function templateHeader($title){
 		session_start();
@@ -51,14 +55,13 @@ class Page extends Component{
 							<ul>
 
 							");
-						$usuario = new Usuario;
 
-						if($usuario->setId($_SESSION['ID_admin'])){
-							if($usuario->readUsuario()){
 
-								$sesionadentro = $usuario->getLogin_id();
 
-								if($sesionid == $sesionadentro){
+						
+							
+
+								
 									$tipousuario = new Tipo_usuario;
 									if($tipousuario->setId($_SESSION['ID_tipousuario'])){
 										if($tipousuario->select_tipousuarios_e()){
@@ -87,6 +90,7 @@ class Page extends Component{
 												print(" ");$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
 												if ($filename == "categoria" ) {
 													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
+													exit();
 												}
 											}else{
 												$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
@@ -269,19 +273,12 @@ class Page extends Component{
 											Page::showMessage(2,"Error al recuperar los datos","../account/login.php");
 										}
 									}else{
-										Page::showMessage(2,"Porfavor inicie sesion","../account/login.php");
+										Page::showMessage(2,"Porfavor inicie sesion 1","../account/login.php");
 									}
-								}else{
-									$usuario->logOut();
-									Page::showMessage(3,"Sesion ya iniciada en otro dispositivo revise su correo para obtener su nueva contraseña ","../account/login.php");
-								}
+								
 
-							}else{
-								Page::showMessage(2,"Porfavor inicie sesion","../account/login.php");
-							}
-						}else{
-							Page::showMessage(2,"No existe usuario disponible","../account/login.php");
-						}
+							
+						
 
 						
 
@@ -395,6 +392,8 @@ class Page extends Component{
 				<main class='container'>
 					<h3 id='title_flat' class='center-align'>$title</h3>
 			");
+
+		
 		}else{
 			print("
 				<main class='container'>

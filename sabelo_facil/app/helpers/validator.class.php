@@ -145,5 +145,6 @@ class Validator{
 			return false;
 		}
 	}
+	
 }
 ?>

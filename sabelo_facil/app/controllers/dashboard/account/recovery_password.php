@@ -1,8 +1,9 @@
 <?php
 
 require_once("../../app/models/usuario.class.php");
-require '../../app/libraries/PHPMailer/class.phpmailer.php';
-require '../../app/libraries/PHPMailer/class.smtp.php';
+require_once '../../app/libraries/PHPMailer/class.smtp.php';
+require_once '../../app/libraries/PHPMailer/class.phpmailer.php';
+
     try{
         $cliente = new Usuario;
         $mail = new PHPMailer;

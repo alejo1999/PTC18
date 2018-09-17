@@ -1,6 +1,19 @@
 $(document).ready(function(){
+    $('.carousel').carousel();
+    $('.carousel.carousel-slider').carousel({
+        duration: 200,
+        fullWidth: true,
+        indicators:true,
+      });
+    $('.dropdown-trigger').dropdown();
     $('.button-collapse').sideNav();
-    $('.slider').slider();
+    $('.slider').slider(
+        {
+            indicators: false,
+            interval:2000,
+            
+        }
+    );
     $('.parallax').parallax();
     $('.modal').modal();
     $('.materialboxed').materialbox();
@@ -11,7 +24,7 @@ $(document).ready(function(){
         monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
         weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mier', 'Jue', 'Vir', 'Sab'],
         selectMonths: true, // Creates a dropdown to control month
-        selectYears: 15, // Creates a dropdown of 15 years to control year,
+        selectYears: 20, // Creates a dropdown of 15 years to control year,
         today: 'Hoy',
         max: 'Today',
         clear: 'Limpiar',

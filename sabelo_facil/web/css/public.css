@@ -46,7 +46,14 @@ main {
     padding-top: 12vh;
 }
 
+.back{
+    background-color: rgb(120, 174, 155);
+    
+    align-content: center;
+    
+    
 
+}
 input[type="radio"] {
     display: none;
   }
