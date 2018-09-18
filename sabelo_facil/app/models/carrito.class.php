@@ -1,4 +1,5 @@
 <?php
+
 class Detalle extends Validator{
 
 	//Declaración de propiedades
@@ -253,7 +254,7 @@ class Detalle extends Validator{
         FROM detalle_factura
         INNER JOIN producto ON detalle_factura.FK_ID_producto = producto.ID_producto
         INNER JOIN venta on detalle_factura.FK_ID_venta = venta.ID_venta
-        WHERE detalle_factura.FK_ID_cliente = 2 AND detalle_factura.estadoventa = 1
+        WHERE detalle_factura.FK_ID_cliente = ? AND detalle_factura.estadoventa = 1
         AND detalle_factura.FK_ID_venta = (SELECT MAX(venta.ID_venta) FROM venta)";
         $params = array($this->id_usuario);
         return Database::getRows($sql,$params);

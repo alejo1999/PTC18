@@ -15,6 +15,8 @@
 
     $header2 = array('TOTAL');
     // Carga de datos
+    session_start ();
+    if($detalle->setCliente($_SESSION['id_cliente']))
     $result = $detalle->viewcarrito2();
     
     $datass = $detalle->viewtotal();

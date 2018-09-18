@@ -19,7 +19,7 @@ try{
                                         $newventa = ($detalle->getNventas());
                                         if($detalle->setId_venta($newventa)){
                                             if($detalle->setCliente($_SESSION['id_cliente'])){
-                                                if($detalle->actualizarventa()){
+                                                //if($detalle->actualizarventa()){
                                                     //Page::showMessage(1, "Compra realizada exitosamente","../../dashboard/Reportes/factura_public.php?nombre=$_SESSION[nombre]&apellido=$_SESSION[apellido]");
                                                     //empezando codigo de pagadito
                                                     $Pagadito = new Pagadito(UID, WSK);
@@ -47,9 +47,9 @@ try{
 
 
                                                     //terminando codigo de pagadito
-                                                }else{
+                                                /*}else{
                                                     Page::showMessage(2, "La Compra no se puede realizar",null);
-                                                }
+                                                }*/
                                             }else{
                                                 Page::showMessage(3, "Debe de Iniciar sesion",null);
                                             }

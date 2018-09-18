@@ -1,7 +1,7 @@
 <?php
 
  require_once('config.php');
- require_once('../app/libraries/Pagadito.php');
+ require_once('../../app/libraries/Pagadito.php');
 
 if (isset($_GET["token"]) && $_GET["token"] != "") {
 
@@ -142,39 +142,36 @@ if (isset($_GET["token"]) && $_GET["token"] != "") {
     $msgSecundario = "No se recibieron los datos correctamente.<br /> La transacci&oacute;n no fue completada.<br /><br />";
 }
 
+
+    require_once("../../app/models/carrito.class.php");
+    require'../../app/views/public/producto/confirmacion_view.php';
+
+    if(isset($_GET['finalizar'])){
+        try{
+             $detalle = new Detalle;
+                if(empty($_SESSION['id_cliente'])){
+                    Page::showMessage(4, "Inicia Sesion para poder ver tu carrito de compra",null);
+                }
+                else{
+                    if($detalle->setCliente($_SESSION['id_cliente'])){
+                        $carrito = $detalle->viewcarrito();
+                        if($detalle->setCliente($_SESSION['id_cliente'])){
+                            if($detalle->actualizarventa()){
+                                Page::showMessage(1, "Compra realizada exitosamente","../../dashboard/Reportes/factura_public.php?nombre=$_SESSION[nombre]&apellido=$_SESSION[apellido]");                        
+                            }
+                            else{
+                            Page::showMessage(2, "La Compra no se puede realizar",null);
+                            }
+                                            
+                            }
+                    }
+                    else{
+                        Page::showMessage(2, "Carrito vacio","index.php");
+                        exit();
+                    }
+                }
+    }catch(Exception $error){
+        Page::showMessage(3, $error->getMessage(), "index.php");
+    }
+    }
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Sabelo_Facil</title>
-        <meta charset="UTF-8">
-        <link type="text/css" rel="stylesheet" href="../web/css/default.css" media="screen" />
-    </head>
-    <body>
-
-
-            </div>
-        </div>
-        <div class="clear"></div>
-        <div class="wrapper">
-            <label id="inicio"></label>
-            <div class="seccion">Respuesta del Pago con Pagadito</div>
-            <div class="clear"></div>
-            <div class="row">
-                <div class="imagenCompra">
-                    <img src="../web/img/bolsa.png">
-                </div>
-                <div class="textoCompra">
-                    <label id="principal"><?= $msgPrincipal ?></label><br />
-                    <br />
-                    <label id="secundario"><?= $msgSecundario ?></label>
-                </div>
-            </div>
-            
-            <form method="get" action="productos/index.php">
-                <input type="submit" value="Volver a la Tienda" class="retorno" />
-            </form>
-
-        </div>
-    </body>
-</html>
