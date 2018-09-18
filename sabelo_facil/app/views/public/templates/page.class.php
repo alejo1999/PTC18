@@ -2,6 +2,7 @@
 require_once("../../app/models/database.class.php");
 require_once("../../app/helpers/validator.class.php");
 require_once("../../app/helpers/component.class.php");
+require_once("../../app/models/anuncio.class.php");
 class Page extends Component{
 	public static function templateHeader($title){
 		session_start();
@@ -146,61 +147,47 @@ class Page extends Component{
 
 	public static function templateFooter(){
 		print("
-				</main>
+		
+		</main>
+		
+		<div class=' back ' >
+
+			
+			<div class='container'>
+			<div class='slider' >
+				<ul class='slides'>
+		");
+		$anuncios = new Anuncio;
+
+
+		$anuncios_d = $anuncios->getAnuncios();
+
+		foreach($anuncios_d as $anuncios_dis){
 				
-						<div class=' back ' >
-
-							<!--<div class='carousel  carousel-slider ' style='max-width:900px;'>
-							// 	<a class='carousel-item' href='#one!'><img src='https://lh3.googleusercontent.com/_bl1DvvxMXUYBv_tubEuOT6Y2mQQWppNTfC09SzaxMLJRIvXYqyQbB3keTM8i8Hn2ZVWkJNp5TMkpHFkI2CGR_bl6oKRqU-ZV45v4g3lyUjAKCsU8Zz0DwEmfqWWN_kV83Ga4wS5IPMftbzuOxhQreUZ1s5aJ_sQ4ixU6FC2bCu-Js8ZeODqKD-jIE4IzQ-61AE3YpvkLA36UyOnHb3CJUZHrfXgqgVK_JBoxXwdMYnbUfUEIt1QfvproQAjTKK8-2kVSfQ-EJbLZz32oYuVylYZD8XG0bAJxDnZshkgpqfahpAOtNI6FokEaMyjlY4GS9X1cEvDiXEEt3TTZIWXuHM0mQfJ_n0pvI4IocuuiVoqynxD8cFmPmXyl7hRMqQgjlkMwzHUlnLMZ1-pHPXjvbItdGP_sbsdksXU8fY7kUnCUEWAm3OAYL3xWojaQcNTsUCQdf4trTpGeuQwUOXngLP8j0DUHODKEbz1GnUFGGmix9xc7RsN8gGAN8rXK1yoM2dtB9Qu-DB5cgH_wxOBLsQ0YB5xIdyjkyQkgtKaPB7wX36t4bdVujBBB_9PL5bhh-w62YLppcymHNJ9p4eyIGmqE4fwh1j9SZYDcAVf9Ut-x1sDt8lUsqvuENVYMpcw=w738-h943-no'></a>
-							// 	<a class='carousel-item' href='#two!'><img src='https://lorempixel.com/800/400/food/2'></a>
-							// 	<a class='carousel-item' href='#three!'><img src='https://lorempixel.com/800/400/food/3'></a>
-							// 	<a class='carousel-item' href='#four!'><img src='https://lorempixel.com/800/400/food/4'></a>
-							// </div>-->
-							<div class='container'>
-							<div class='slider' >
-
+		print("
+							<li >
+								<a href='$anuncios_dis[empresa_url]'>
+								<img  src='../../web/img/ANUNCIOS/$anuncios_dis[imagen_url]' > <!-- random image -->
+								<div class='caption center-align'>
+								<h3>$anuncios_dis[nombre_anunciante]</h3>
+								<h5 class='light grey-text text-lighten-3'>Descripcion </h5>
+								</div>
+								</a>
+							</li>
 							
-								<ul class='slides'>
-								<li >
-									<img  src='../../web/img/cupones/cup_1.jpg' > <!-- random image -->
-									<div class='caption center-align'>
-									<h3>Anuncio 1</h3>
-									<h5 class='light grey-text text-lighten-3'>Descripcion </h5>
-									</div>
-								</li>
-								<li>
-									<a
-										href='https://youtube.com' 
-									><img src='../../web/img/cupones/cup_1.jpg' > <!-- random image -->
-									<div class='caption left-align'>
-									<h3>Anuncio 2</h3>
-									<h5 class='light grey-text text-lighten-3'>Descripcion </h5></a>
-									
-									</div>
-								</li>
-								<li>
-									<img src='../../web/img/cupones/colores.jpg'> <!-- random image -->
-									<div class='caption right-align'>
-									<h3>Anuncio 3</h3>
-									<h5 class='light grey-text text-lighten-3'>Descripcion </h5>
-									</div>
-								</li>
-								<li>
-									<img src='../../web/img/cupones/cup_1.jpg'> <!-- random image -->
-									<div class='caption center-align'>
-									<h3>Anuncio 4</h3>
-									<h5 class='light grey-text text-lighten-3'>Descripcion </h5>
-									</div>
-								</li>
-								</ul>
-							</div>
-						  </div>
-						
-						</div>
+				");
+		}
+
+
+						print("
 
 					
 
-			
+						</ul>
+					</div>
+				  </div>
+				
+				</div>
 
 
 				<footer class='#00bfa5 teal darken-1'  id='footer_pub'>

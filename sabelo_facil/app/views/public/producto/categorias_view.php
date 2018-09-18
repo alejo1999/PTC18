@@ -32,6 +32,7 @@
             <div class=' col s12 m8 l10   '>
         <div class='espaciado'>");                
                    
+        
         foreach($productos as $productitos){
             print("
                 <div class='col s12 m4 l3'>
@@ -41,7 +42,7 @@
                         </div>
                         <div class='card-content'>
                             <a class='black-text card-title modal-trigger' href='detalle_producto.php?id=$productitos[ID_producto]'>$productitos[nombre_producto]</a>
-                            <span class='teal-text card-title'>$productitos[precio]</span>
+                            <span class='teal-text card-title'>Precio : $ $productitos[precio]</span>
                             <p>$productitos[descripcion]</p>
                         </div>
                     </div>    

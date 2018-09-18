@@ -18,6 +18,8 @@ class Tipo_usuario extends Validator{
 	Private $Clientes = null;
 	Private $Estadisticas = null;
 	Private $Reportes = null;
+	Private $Anuncios = null;
+
 
 	// establesco metodos de carga de las variables de permisos
 	public function set_pAdministradores($value){
@@ -104,6 +106,13 @@ class Tipo_usuario extends Validator{
 		return $this->Reportes;
 	}
 
+	public function set_pAnuncios($value){
+		$this->Anuncios = $value;
+	}
+	public function get_pAnuncios(){
+		return $this->Anuncios;
+	}
+
 	
 
 	//Métodos para sobrecarga de propiedades
@@ -180,7 +189,7 @@ class Tipo_usuario extends Validator{
 
 	public function select_tipousuarios_e()
 	{
-		$sql = "SELECT t.ID_tipo_usuario,t.nombre_tipo,t.Administradores,t.Categorias,t.Productos,t.Comercios,t.Materias,t.Proveedores,t.Marcas,t.TiposUsuarios,t.Permisos,t.Clientes,t.Estadisticas,t.Reportes From Tipo_usuario t WHERE t.ID_tipo_usuario = ?";
+		$sql = "SELECT t.ID_tipo_usuario,t.nombre_tipo,t.Administradores,t.Categorias,t.Productos,t.Comercios,t.Materias,t.Proveedores,t.Marcas,t.TiposUsuarios,t.Permisos,t.Clientes,t.Estadisticas,t.Reportes,t.Anuncios From Tipo_usuario t WHERE t.ID_tipo_usuario = ?";
 		$params = array($this->id);
 		$resultado = Database::getRow($sql, $params);
 		if($resultado)
@@ -200,6 +209,7 @@ class Tipo_usuario extends Validator{
 			$this->Clientes = $resultado['Clientes'];
 			$this->Estadisticas = $resultado['Estadisticas'];
 			$this->Reportes = $resultado['Reportes'];
+			$this->Anuncios = $resultado['Anuncios'];
 			return true;
 		}
 		else

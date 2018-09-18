@@ -117,6 +117,20 @@ class Validator{
 		}
 	}
 
+	function filtroUrl($value){
+		if(trim($value) == ''){
+			return false;
+		}else{
+			if (!filter_var($value, FILTER_VALIDATE_URL)) {
+				return false;
+			}
+			if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$value)) {
+				return false;
+			}else{
+				return true;
+			}
+		}
+	}
     
 
 	public function validateMoney($value){
