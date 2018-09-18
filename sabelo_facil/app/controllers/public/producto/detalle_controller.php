@@ -3,6 +3,8 @@ require_once("../../app/models/producto.class.php");
 require_once("../../app/models/valoracion.class.php");
 require_once("../../app/models/venta.class.php");
 require_once("../../app/models/carrito.class.php");
+require_once("config.php");
+require_once("../../app/libraries/Pagadito.php");
 try{
 	if(isset($_GET['id'])){
 		$producto = new Producto;
@@ -89,7 +91,6 @@ try{
 			Page::showMessage(2, "No esta iniciada la sesion",null);
 		}
 	}
-
 
 
 }catch(Exception $error){

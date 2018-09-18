@@ -1,0 +1,5 @@
+<?php
+//Page::templateHeader("Productos");
+require_once("../app/controllers/public/producto/confirmacion.php");
+//Page::templateFooter();
+?>
