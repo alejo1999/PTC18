@@ -264,7 +264,22 @@ class Page extends Component{
 													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
 												}
 											}
-			
+
+											if($tipousuario->get_pAnuncios() == 1){
+												print("
+												<li onmouseover='bal_over=11; show_info_baldosa();'><a class='baldosa' href='../anuncios'>		<p class='plac_let'>A</p>Anuncios</a></li>
+												");
+											} else if($tipousuario->get_pAnuncios() == 0){
+												print(" ");$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
+												if ($filename == "anuncios" ) {
+													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
+												}
+											}else{
+												$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
+												if ($filename == "anuncios" ) {
+													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
+												}
+											}
 											
 			
 			
