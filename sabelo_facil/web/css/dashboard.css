@@ -2,15 +2,25 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color: rgb(30, 30, 30)
+    background-color: rgb(250, 250, 250 );
+    background-image: url("../img/back_dash/back2.png");
+    
+     background-size: 600px;
+    
 }
 #title_flat{
-    color: white;
+    color: rgb(82, 82, 82);
     font-size: 3.2em;
     margin-top: 20px;
     padding-top: 20px;
-    line-height: 22px;
+    line-height: 26px;
     
+}
+#logo_page{
+  filter: brightness(0.3);
+  padding-top: 10px;
+  padding-left: 40px;
+  transform: scale(2.2);
 }
 main {
     flex: 1 0 auto;
@@ -40,8 +50,8 @@ footer{
 .sf_bottom_bar{
     width: 100%;
     height: 24px;
-    background-color: rgba(42, 90, 77, 0.535);
-    transition: background-color 1s;
+    background-color: rgba(38, 66, 190, 0.726);
+    transition: background-color 0.4s;
     
   }
   #sf_bottom_bar_text{
@@ -51,7 +61,19 @@ footer{
   float: right;
   padding-right: 1cm;
   color: white;
+  
+  
   }
+  #sf_bottom_bar_text_2{
+    width: auto;
+    text-align: right;
+    margin-top: 2px;
+    float: right;
+    padding-right: 1cm;
+    color: white;
+    
+    
+    }
 #info_baldosita{
   position: relative;
   float: left;
@@ -97,8 +119,8 @@ textarea.materialize-textarea {
   font-size: 1.3rem;
   margin: 10 10 20px 0;
   
-  color: rgb(230, 230, 230);
-  caret-color: rgb(175, 175, 175);
+  color: rgb(121, 121, 121);
+  caret-color: rgb(116, 116, 116);
   
 
   -webkit-box-shadow: none;
@@ -115,24 +137,30 @@ textarea.materialize-textarea {
     font-weight: normal;
     src: local('Calibri Light'), url('../fonts/calibril.woff') format('woff');
     }
-
+  
    
     table.highlight > tbody > tr:hover {
-        background-color: #3d5e4c;
+        background-color: #3d555e;
+        color: white;
+        
       }
       thead {
-        border-bottom: 1px solid #6c8d70;
+        border-bottom: 1px solid #6c808d;
       }
 
-th{
-    color: white;
-}      
-td{
-    color: white;
+.searchl{
+  background-color:#397ca3;
+  border-radius: 25px;
+  border: none;
+  padding-top: 8px;
+  height: 1.1cm;
+  width: 1.1cm;
+  
 }
 
+
 .lok{
-  background-color: rgb(58, 110, 89);
+  background-color: rgba(38, 66, 190, 0.726);
   text-align: center;
   
 }
@@ -190,7 +218,10 @@ td{
     position: fixed;
     
   }
-
+  #logo_page_btn{
+    
+    background-color: rgba(165, 19, 19, 0);
+  }
 @media only screen and (min-width: 601px) {
     nav.nav-extended .nav-wrapper {
       min-height: 40px;
@@ -203,8 +234,11 @@ td{
     .navbar-fixed {
       height: 40px;
     }
-  }
 
+ 
+  }
+ 
+ 
   .navpers{
       background-color: rgba(135, 199, 82, 0);
       border: none;
@@ -217,7 +251,9 @@ td{
     height: auto;
    margin-bottom: 30px;
   }
-  
+ .veri_text{
+   color: rgb(46, 46, 46);
+ }
   #SIDE_cu_1{
   
   
@@ -314,10 +350,10 @@ td{
   }
 
   #a_nav{
-    color: rgb(196, 216, 205);
+    color: rgb(46, 46, 46);
     cursor: pointer;
     height: 30px;
-    
+    font-size: 1.2em;
     width: 140px;
     margin: 0;
     padding: 0;
@@ -326,24 +362,27 @@ td{
     float: right;
   }
   #a_nav:hover{
-    color: white;
+    color: rgb(58, 35, 190);
   }
   #a_nav_2{
-    color: rgb(196, 216, 205);
+    color: rgb(255, 255, 255);
     cursor: pointer;
     height: 37px;
     
     width: 140px;
     margin: 0;
     padding: 0;
+    padding-left: 10px;
     float: right;
     transition: 0.4s;
-    border-right: 10px solid rgb(30, 30, 30);
+    border-right: 10px solid rgba(38, 66, 190, 0);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
   }
   #a_nav_2:hover{
     color: white;
-    height: 42px;
-    box-shadow: -10px 4px 20px rgba(0, 0, 0, 0.74);
+    
+    box-shadow: -10px 4px 20px rgba(0, 0, 0, 0.411);
   }
   
   #menu_plegable{
@@ -369,7 +408,7 @@ td{
   #welcom_text{
     font-family: Calibri Light;
      
-      color: rgb(168, 168, 168);
+      color: rgb(38, 51, 87);
       font-size: 1.25em;
       line-height: 1em;
     width: 80%;
@@ -408,17 +447,17 @@ td{
       height: 20vh;
     }
   a{
-    color: white;
+    color: rgb(255, 255, 255);
   }
   i{
-    color: white;
+    color: rgb(82, 82, 82);
   }
   .baldosa{
     text-align: center;
     width: 20vh;
     height: 20vh;
     float: left;
-    background-color: rgb(58, 141, 90);
+    background-color: rgb(58, 87, 141);
     color: white;
     font-size: 1.1em;
     margin-right: 5px;
@@ -470,4 +509,136 @@ td{
   margin: 0;
   padding: 0;
 line-height: 10px;
+}
+.btn, .btn-large,
+.btn-flat {
+  border: none;
+  border-radius: 25px;
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 2rem;
+  
+  text-transform: uppercase;
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+  
+}
+
+.btn, .btn-large {
+  text-decoration: none;
+  color: #fff;
+  background-color: #397ca3;
+  text-align: center;
+  letter-spacing: .5px;
+  -webkit-transition: .2s ease-out;
+  transition: .2s ease-out;
+  cursor: pointer;
+}
+
+.btn:hover, .btn-large:hover {
+  box-shadow: 5px 5px 10px  rgba(0, 0, 0, 0.438);
+  background-color: #397ca3;
+}
+
+
+
+@media only screen and (max-width: 601px) {
+ 
+
+  #logo_page_btn{
+    width: 100%;
+    background-color: rgb(73, 109, 175);
+    text-align: center;
+    
+    overflow: hidden;
+  }
+  #a_nav_2{
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    
+    
+    width: 50%;
+    margin: 0;
+    padding: 0;
+    height: 40px;
+    font-size: 1em;
+    
+    transition: 0.4s;
+    
+    border-radius: 0px;
+    border-right: 1px solid white;
+    background-color: rgb(70, 102, 161);
+  }
+  #a_nav_2:hover{
+    color: white;
+    
+    box-shadow: -10px 4px 20px rgba(0, 0, 0, 0.411);
+  }
+   
+  #a_nav{
+    color: rgb(46, 46, 46);
+    cursor: pointer;
+    height: 40px;
+    
+    width: 50%;
+    margin: 0;
+    padding: 0;
+    
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    
+    font-size: 1em;
+    
+    width: 50%;
+    margin: 0;
+    padding: 0;
+    
+    background-color: rgb(70, 102, 161);
+    transition: 0.4s;
+    
+    text-align: center;
+    border-radius: 0px;
+    
+  }
+
+  #a_nav:hover{
+    color: rgb(255, 255, 255);
+    box-shadow: -10px 4px 20px rgba(0, 0, 0, 0.411);
+  }
+  main{
+  padding-top: 70px;
+  }
+  
+  #sf_bottom_bar_text_2{
+    width: 100%;
+    padding-top: 0.1cm;
+    text-align: right;
+    height: 0.8cm;
+    float: right;
+    padding-right: 0.7cm;
+    color: white;
+    background-color: rgb(56, 86, 141);
+    font-size: 1.1em;
+    margin-top: 0px;
+    }
+  .sf_bottom_bar{
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: rgb(70, 102, 161);
+  }
+    nav {
+      color: #fff;
+      background-color: #ee6e73;
+      width: 100%;
+      height: 56px;
+      line-height: 40px;
+  }
+  #logo_page{
+    filter: brightness(1);
+    padding-top: 10px;
+    transform: scale(1.6);
+    padding-left: 0px;
+  }
 }

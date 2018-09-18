@@ -44,7 +44,7 @@ class Page extends Component{
 	   $_SESSION['tiempo']=time(); //Si hay actividad seteamos el valor al tiempo actual
 
 	   	$sesionid = session_id();
-	   	echo("$sesionid"); 
+	   	//echo("$sesionid"); 
 		if(isset($_SESSION['ID_admin'])){
 			print("
 				<div id='menu_overlay' style='display:none;'>overlay</div>
@@ -299,11 +299,11 @@ class Page extends Component{
 					<nav class='navpers'>
 						<div class='nav-wrapper'>
 							
-						<a href='../account/' class='left'><img src='../../web/img/logo.png' height='20'></a>
-							<ul class='right '>
-							
-							
-								<p id='a_nav' href='#' data-activates='slide-out' class='button-collapse headersd'> Mi Pefil </p>
+						<a href='../account/' id='logo_page_btn' class='left'><img id='logo_page' src='../../web/img/logo.png' height='20'></a>
+						
+						
+						<ul class=''>
+								<p id='a_nav' href='#' data-activates='slide-out' class='button-collapse headersd'> Mi Perfil </p>
 								<p id='a_nav_2' onclick='mostrar_panel_superior();'  class=' headersd lok'> Menú de opciones </p>
 							</ul>
 						
@@ -420,7 +420,7 @@ class Page extends Component{
     
     <div class='sf_bottom_bar' id='foot_col'>
 		<a href='#!' id='sf_bottom_bar_text' >Sabelofacil Dashboard  |   2018</a>
-		<a href='../../public/index.php' id='sf_bottom_bar_text' >Sitio Publico</a>
+		<a href='../../public/index.php' id='sf_bottom_bar_text_2' >Sitio Publico</a>
     </div>
 
 </footer>
