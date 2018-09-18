@@ -26,6 +26,9 @@ try{
                                                     if (AMBIENTE_SANDBOX) {
                                                      $Pagadito->mode_sandbox_on();
                                                     }
+                                                    else{
+                                                        Page::showMessage(2, "Error al conectarse con Pagadito",null);
+                                                    }
                                                     if ($Pagadito->connect()) {
 
                                                         foreach($carrito as $detalle){
