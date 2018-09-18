@@ -404,7 +404,7 @@ class Page extends Component{
 				</header>
 				
 			
-				<main class='container'>
+				<main id='main_principal'>
 					<h3 id='title_flat' class='center-align'>$title</h3>
 			");
 

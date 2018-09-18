@@ -37,25 +37,25 @@ class Page extends Component{
 					<div class='row  header_sf navbar-fixed'>
 					<nav class='header_sf '>
 						<div class='col s12 m12 l12' id='margeneado'>
-							<div class='col s12 m3 hide-on-small-only  hide-on-med-only' style='max-width:150px; '>
-								<img class='responsive-img' src='../../web/img/logos/sabelofacil-black.png' alt='pc'>
+							<div class='col s12 m3' style=' margin-top:10px;>
+							<a style='text-align:center;' href='../productos/index.php'><img class='responsive-img' id='logoli_b' src='../../web/img/logos/sabelofacil_n.png'  alt='pc'></a>
+							<a href='../productos/index.php'><img class='responsive-img' id='logoli_m' src='../../web/img/logos/mini_n.png'  alt='pc'></a>
+								
 							</div>
-							<div class='col s12 m3  hide-on-large-only ' style='width:90px;'>
-								<img class='responsive-img' src='../../web/img/logos/mini.png'  alt='mobiles'>
-							</div>
+							
 					
 							<div class='col s12 m9' id='' >
 								<div class='blocky hide-on-small-only col s12'> 
 								
 								</div>
-								<div class='col l6 center'  style='margin-bottom:20px;'>
+								<div class='col l8 left' id='buton_stand' style='margin-bottom:20px;'>
 									<a class='btn_header_p' id='btn_T_A' href='../productos/index.php' >Inicio</a>
-									<a class='btn_header_p' id='btn_T_A' onclick='cambiar_de_sitio_T_A();'>Sitio Academico</a>
-						
+									<a class='btn_header_p' id='btn_T_A' onclick=''>Sitio Academico</a>
+									<a class='btn_header_p' onclick=''>Cupones</a> 
 								</div>
 								
 								<!-- Bloque de CINTA OPCIONES DE MATERIAS ACADEMICAS -->
-								<div  class='s12 l6 center	' id='cinta_academica'>
+								<div  class='s12 l6 right	' id='cinta_academica'>
 									
 									<a class='btn_menu_action' href='carrito.php' > Carrito</a> 
 									<a class='dropdown-button btn_menu_action' data-activates='dropdown'><b>Cuenta : $_SESSION[nombre]</b></a>
@@ -75,11 +75,18 @@ class Page extends Component{
 								 
 					
 							</div>
-					
+								
 						</div>
-					</nav>
-					 
+						
+						</nav>
+						
+						<div id='butons_bar'>
+									<p class='btn_header_mini'  href='../productos/index.php' >Inicio</p>
+									<p class='btn_header_mini' onclick=''>Sitio Academico</p>
+									<p class='btn_header_mini' onclick=''>Cupones</p> 
+						</div> 
 					</div>
+					
 					
 					</header>
 						<main>
@@ -96,22 +103,21 @@ class Page extends Component{
 				<div class='row  header_sf navbar-fixed'>
 				<nav class='header_sf '>
 					<div class='col s12 m12 l12' id='margeneado'>
-						<div class='col s12 m3 hide-on-small-only  hide-on-med-only' style='max-width:140px; '>
-						<a href='../productos/index.php'><img class='responsive-img' src='../../web/img/logos/sabelofacil-black.png'  alt='pc'></a>
+						<div class='col s12 m3' style='max-width:120px; margin-top:10px; '>
+						<a href='../productos/index.php'><img class='responsive-img' src='../../web/img/logos/sabelofacil.png'  alt='pc'></a>
 							
 						</div>
-						<div class='col s12 m3  hide-on-large-only ' style='max-width:90px;'>
-						<a  href='../productos/index.php'><img class='responsive-img' src='../../web/img/logos/mini.png'  alt='mobiles'></a>
-							
-						</div>
+						
 				
 						<div class='col s12 m9' id='' >
 							<div class='blocky hide-on-small-only col s12'> 
 							
 							</div>
 							<div class='col l6 center'  style='margin-bottom:20px;'>
-								<a class='btn_header_p' id='btn_T_A' href='../cuenta/acceder.php' >Inicio de sesion</a>
-								<a class='btn_header_p' id='btn_T_A' onclick='cambiar_de_sitio_T_A();'>Sitio Academico</a> 
+								<a class='btn_header_p' href='../cuenta/acceder.php' >Inicio de sesion</a>
+								
+								<a class='btn_header_p' onclick=''>Sitio Academico</a> 
+								
 
 					
 							</div>

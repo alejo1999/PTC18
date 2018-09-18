@@ -1,16 +1,16 @@
 <div class='row'>   
     <form method='post' autocomplete="off">
-        <div class='input-field col s6 m4'>
+        <div class='input-field col s10 m4'>
             <i class='material-icons prefix'>search</i>
             <input id='buscar' type='text' name='busqueda'/>
             <label for='buscar'>Buscador</label>
         </div>
-        <div class='input-field col s6 m4'>
-            <button type='submit' name='buscar' class='btn waves-effect green tooltipped' data-tooltip='Buscar por nombre o descripción'><i class='material-icons'>check_circle</i></button>
+        <div class='input-field col s2 '>
+            <button type='submit' name='buscar' class='searchl  tooltipped' data-tooltip='Buscar por nombre'><i class='material-icons'>check_circle</i></button>
         </div>
     </form>
-    <div class='input-field center-align col s12 m4'>
-        <a href='create.php' class='btn waves-effect indigo tooltipped' data-tooltip='Crear producto'><i class='material-icons'>add_circle</i></a>
+    <div class='input-field right-align col s12 m6 '>
+        <a href='create.php' class='btn waves-effect  tooltipped' data-tooltip='Crear materia'>Añadir Nuevo</a>
     </div>
 </div>
 <table class='highlight'>

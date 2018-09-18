@@ -265,7 +265,7 @@ class Cliente extends Validator{
 		return Database::getRows($sql, $params);
 	}
 	public function searchCliente($value){
-		$sql = "SELECT ID_cliente, nombre, apellido, correo, username, imagen_url FROM cliente WHERE apellido LIKE ? OR nombre LIKE ? ORDER BY apellido";
+		$sql = "SELECT ID_cliente, nombre, apellido, correo, username, imagen_url, estado FROM cliente WHERE apellido LIKE ? OR nombre LIKE ? ORDER BY apellido";
 		$params = array("%$value%", "%$value%");
 		return Database::getRows($sql, $params);
 	}

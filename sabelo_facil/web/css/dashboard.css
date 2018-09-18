@@ -13,7 +13,7 @@ body {
     font-size: 3.2em;
     margin-top: 20px;
     padding-top: 20px;
-    line-height: 26px;
+    line-height: 38px;
     
 }
 #logo_page{
@@ -22,8 +22,13 @@ body {
   padding-left: 40px;
   transform: scale(2.2);
 }
+
 main {
+  overflow-y: auto;
+
+  overflow-x: visible;
     flex: 1 0 auto;
+    height: 90vh;
 }
 .negrita{
   font-weight:bold;
@@ -426,13 +431,15 @@ textarea.materialize-textarea {
     #container_block{
       position: absolute;  
   background-color: rgba(18, 19, 19, 0.849);
-  z-index: 700;
+  z-index: 999;
   width: 100%;
   height: 100%;
-  overflow: visible;
+  overflow-x: hidden;
+  overflow-y: auto;
   padding-left: 10%;
   padding-right: 10%;
   padding-top: 20px;
+  padding-bottom: 100px;
     }
 
     .al{
@@ -541,6 +548,11 @@ line-height: 10px;
   background-color: #397ca3;
 }
 
+#main_principal{
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
 
 
 @media only screen and (max-width: 601px) {
@@ -607,7 +619,7 @@ line-height: 10px;
     box-shadow: -10px 4px 20px rgba(0, 0, 0, 0.411);
   }
   main{
-  padding-top: 70px;
+  padding-top: 50px;
   }
   
   #sf_bottom_bar_text_2{
@@ -642,3 +654,26 @@ line-height: 10px;
     padding-left: 0px;
   }
 }
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #a7a7a7b6; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(33, 90, 196, 0.692); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(24, 97, 255, 0.658); 
+}
+

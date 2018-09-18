@@ -7,7 +7,7 @@ try{
 		$data = $Tipo_usuario->searchTipo_usuarios($_POST['busqueda']);
 		if($data){
 			$rows = count($data);
-			Page::showMessage(4, "Se encontraron $rows resuldatos", null);
+			Page::showMessage(4, "Se encontraron $rows resultados", null);
 		}else{
 			Page::showMessage(4, "No se encontraron resultados", null);
 			$data = $Tipo_usuario->getTipo_usuarios();

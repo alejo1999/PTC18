@@ -1,28 +1,21 @@
 <div class="row">
     <div class='col s12 m12 l12 '>
-            <div class="col s12 m4 l3">
-               
-            </div>
-            <form method='post' autocomplete="off">
-                <div class="col s10 m5 l5 ">
-                        
-                            <div class="input-field">
-                                <i class="material-icons prefix">search</i>
-                                <input id="icon_prefix" name='busqueda' type="text" class="validate">
-                                <label for="icon_prefix">buscar</label>
-                            </div>
-                        
-                </div>
-                <div class="col s2 m1 l2 ">
-                        <button type='submit' name='buscar' class='espaciado btn waves-effect #1de9b6 teal accent-3 tooltipped' data-tooltip='Buscar por nombre o descripción'><i class='material-icons'>check_circle</i></button>
-                </div>
-            </form>
-            <div class='col s12 m2 l2   '>
-                <!-- boton de agregar nuevos productos-->
-                        <a class=" espaciado btn-floating btn-large  waves-effect waves-light light-blue lighten-1 right " href="create.php">
-                        <i class="large material-icons">add</i>
-                        </a>
-            </div>
+            
+            <div class='row'>   
+    <form method='post' autocomplete="off">
+        <div class='input-field col s10 m4'>
+            <i class='material-icons prefix'>search</i>
+            <input id='buscar' type='text' name='busqueda'/>
+            <label for='buscar'>Buscador</label>
+        </div>
+        <div class='input-field col s2 '>
+            <button type='submit' name='buscar' class='searchl  tooltipped' data-tooltip='Buscar por nombre'><i class='material-icons'>check_circle</i></button>
+        </div>
+    </form>
+    <div class='input-field right-align col s12 m6 '>
+        <a href='create.php' class='btn waves-effect  tooltipped' data-tooltip='Crear materia'>Añadir Nuevo</a>
+    </div>
+</div>
     </div>
 </div> 
 
