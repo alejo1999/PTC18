@@ -11,19 +11,31 @@ try{
                         if($producto->setPrecio($_POST['precio'])){
                             if($producto->setDescripcion($_POST['descripcion'])){
                                 if($producto->setCategoria($_POST['categoria'])){
-                                    if($producto->setEstado(isset($_POST['estado'])?1:0)){
-                                        if(is_uploaded_file($_FILES['archivo']['tmp_name'])){
-                                            if(!$producto->setImagen($_FILES['archivo'])){
-                                                throw new Exception($producto->getImageError());
+                                    if($producto->setMarca($_POST['marca'])){
+                                        if($producto->setProveedor($_POST['proveedor'])){
+                                            if($producto->setEstado(isset($_POST['estado'])?1:0)){
+                                                if(is_uploaded_file($_FILES['archivo']['tmp_name'])){
+                                                    if(!$producto->setImagen($_FILES['archivo'])){
+                                                        throw new Exception($producto->getImageError());
+                                                    }
+                                                }
+                                                if($producto->updateProducto()){
+                                                    Page::showMessage(1, "Producto modificado", "index.php");
+                                                }else{
+                                                    if($producto->unsetImagen()){
+                                                        throw new Exception(Database::getException());
+                                                    }else{
+                                                        throw new Exception("Elimine la imagen manualmente");
+                                                    }
+                                                }
+                                            }else{
+                                                throw new Exception("Estado incorrecto");
                                             }
-                                        }
-                                        if($producto->updateProducto()){
-                                            Page::showMessage(1, "Producto modificado", "index.php");
                                         }else{
-                                            throw new Exception(Database::getException());
+                                            throw new Exception("Seleccione un proveedor");
                                         }
                                     }else{
-                                        throw new Exception("Estado incorrecto");
+                                        throw new Exception("Seleccione una marca");
                                     }
                                 }else{
                                     throw new Exception("Seleccione una categoría");

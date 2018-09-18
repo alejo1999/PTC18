@@ -20,15 +20,11 @@
             Page::showSelect("Categoría", "categoria", $producto->getCategoria(), $producto->getCategorias());
             ?>
         </div>
-        <div class='input-field col s12 m3'>
-          	<i class='material-icons prefix'>loupe</i>
-          	<input id='existencia' type='number' name='existencia' class='validate' max='999' min='1' step='any' value='<?php print($producto->getExistencia()) ?>' required/>
-          	<label for='existencia'>Existencia</label>
-        </div>
-        <div class='input-field col s12 m3'>
-          	<i class='material-icons prefix'>money_off</i>
-          	<input id='descuento' type='number' name='descuento' class='validate' max='999.99' min='0.00' step='any' value='<?php print($producto->getDescuento()) ?>' required/>
-          	<label for='descuento'>Descuento</label>
+
+        <div class='input-field col s12 m6'>
+            <?php
+            Page::showSelect("Marca", "marca", $producto->getMarca(), $producto->getMarcas());
+            ?>
         </div>
         <div class='input-field col s12 m6'>
             <?php

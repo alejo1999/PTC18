@@ -24,45 +24,12 @@ class Producto extends Validator{
 		return $this->id;
 	}
 
-	public function setMarca($value){
-		if($this->validateId($value)){
-			$this->id_marca = $value;
-			return true;
-		}else{
-			return false;
-		}
 
-	}
-	public function getMarca(){
-		return $this->id_marca;
-	}
 
-	public function setCategoria($value){
-		if($this->validateId($value)){
-			$this->id_categoria = $value;
-			return true;
-		}else{
-			return false;
-		}
 
-	}
-	public function getCategoria(){
-		return $this->id_ctegoria;
-	}
 	
 	
-	public function setProveedor($value){
-		if($this->validateId($value)){
-			$this->id_proveedor = $value;
-			return true;
-		}else{
-			return false;
-		}
 
-	}
-	public function getProveedor(){
-		return $this->id_proveedor;
-	}
 
 	public function setNombre($value){
 		if($this->validateAlphanumeric($value, 1, 50)){
@@ -102,7 +69,7 @@ class Producto extends Validator{
 	}
 
 	public function setImagen($file){
-		if($this->validateImage($file, $this->imagen, "../../web/img/productos/", 800, 800)){
+		if($this->validateImage($file, $this->imagen, "../../web/img/productos/", 80000, 80000)){
 			$this->imagen = $this->getImageName();
 			return true;
 		}else{
@@ -132,6 +99,66 @@ class Producto extends Validator{
 		return $this->estado;
 	}
 
+	//Tablas extras
+//------------------------
+	public function getCategorias(){
+		$sql = "SELECT ID_categoria, nombre_categoria 
+		FROM categoria ";
+		$params = array(null);
+		return Database::getRows($sql, $params);
+	}
+	public function setCategoria($value){
+		if($this->validateId($value)){
+			$this->id_categoria = $value;
+			return true;
+		}else{
+			return false;
+		}
+
+	}
+	public function getCategoria(){
+		return $this->id_categoria;
+	}
+	//--------------------------------------
+	public function getMarcas(){
+		$sql = "SELECT ID_marca, nombre_marca 
+		FROM marca ";
+		$params = array(null);
+		return Database::getRows($sql, $params);
+	}
+	public function setMarca($value){
+		if($this->validateId($value)){
+			$this->id_marca = $value;
+			return true;
+		}else{
+			return false;
+		}
+
+	}
+	public function getMarca(){
+		return $this->id_marca;
+	}
+	//----------------------------------
+	public function getProveedores(){
+		$sql = "SELECT ID_proveedor, nombre_proveedor 
+		FROM proveedor ";
+		$params = array(null);
+		return Database::getRows($sql, $params);
+	}
+	public function setProveedor($value){
+		if($this->validateId($value)){
+			$this->id_proveedor = $value;
+			return true;
+		}else{
+			return false;
+		}
+
+	}
+	public function getProveedor(){
+		return $this->id_proveedor;
+	}
+	//------------------------------------
+
 	//Metodos para el manejo del CRUD
 	public function getCategoriaProductos(){
 		$sql = "SELECT nombre_categoria, id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto FROM productos INNER JOIN categorias USING(id_categoria) WHERE id_categoria = ? AND estado_producto = 1 ORDER BY nombre_producto";
@@ -153,15 +180,10 @@ class Producto extends Validator{
 		$params = array("%$value%", "%$value%");
 		return Database::getRows($sql, $params);
 	}
-	public function getCategorias(){
-		$sql = "SELECT categoria.ID_categoria , categoria.nombre_categoria 
-		FROM categoria ";
-		$params = array(null);
-		return Database::getRows($sql, $params);
-	}
+
 	public function createProducto(){
-		$sql = "INSERT INTO productos(nombre_producto, descripcion_producto, precio_producto, imagen_producto, estado_producto, id_categoria) VALUES(?, ?, ?, ?, ?, ?)";
-		$params = array($this->nombre, $this->descripcion, $this->precio, $this->imagen, $this->estado, $this->categoria);
+		$sql = "INSERT INTO producto(nombre_producto, descripcion, precio, imagen_url, estado, FK_ID_categoria, FK_ID_marca, FK_ID_proveedor) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+		$params = array($this->nombre, $this->descripcion, $this->precio, $this->imagen, $this->estado, $this->id_categoria, $this->id_marca, $this->id_proveedor);
 		return Database::executeRow($sql, $params);
 	}
 	public function readProducto(){
@@ -174,9 +196,9 @@ class Producto extends Validator{
 			$this->descripcion = $producto['descripcion'];
 			$this->precio = $producto['precio'];
 			$this->imagen = $producto['imagen_url'];
-			$this->categoria = $producto['FK_ID_Categoria'];
-			$this->proveedor = $producto['FK_ID_proveedor'];
-			$this->marca = $producto['FK_ID_marca'];
+			$this->id_categoria = $producto['FK_ID_Categoria'];
+			$this->id_proveedor = $producto['FK_ID_proveedor'];
+			$this->id_marca = $producto['FK_ID_marca'];
 			$this->estado = $producto['estado'];
 			return true;
 		}else{
@@ -184,12 +206,12 @@ class Producto extends Validator{
 		}
 	}
 	public function updateProducto(){
-		$sql = "UPDATE productos SET nombre_producto = ?, descripcion_producto = ?, precio_producto = ?, imagen_producto = ?, estado_producto = ?, id_categoria = ? WHERE id_producto = ?";
-		$params = array($this->nombre, $this->descripcion, $this->precio, $this->imagen, $this->estado, $this->categoria, $this->id);
+		$sql = "UPDATE producto SET nombre_producto = ?, descripcion = ?, precio = ?, imagen_url = ?, estado = ?, FK_ID_categoria = ?, FK_ID_marca = ?, FK_ID_proveedor = ?  WHERE id_producto = ?";
+		$params = array($this->nombre, $this->descripcion, $this->precio, $this->imagen, $this->estado, $this->id_categoria, $this->id_marca, $this->id_proveedor, $this->id);
 		return Database::executeRow($sql, $params);
 	}
 	public function deleteProducto(){
-		$sql = "DELETE FROM productos WHERE id_producto = ?";
+		$sql = "DELETE FROM producto WHERE id_producto = ?";
 		$params = array($this->id);
 		return Database::executeRow($sql, $params);
 	}
