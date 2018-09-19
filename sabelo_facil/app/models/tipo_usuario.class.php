@@ -19,6 +19,8 @@ class Tipo_usuario extends Validator{
 	Private $Estadisticas = null;
 	Private $Reportes = null;
 	Private $Anuncios = null;
+	Private $Cupones = null;
+	Private $Ventas = null;
 
 
 	// establesco metodos de carga de las variables de permisos
@@ -112,6 +114,18 @@ class Tipo_usuario extends Validator{
 	public function get_pAnuncios(){
 		return $this->Anuncios;
 	}
+	public function set_pCupones($value){
+		$this->Anuncios = $value;
+	}
+	public function get_pCupones(){
+		return $this->Anuncios;
+	}
+	public function set_pVentas($value){
+		$this->Ventas = $value;
+	}
+	public function get_pVentas(){
+		return $this->Ventas;
+	}
 
 	
 
@@ -189,7 +203,7 @@ class Tipo_usuario extends Validator{
 
 	public function select_tipousuarios_e()
 	{
-		$sql = "SELECT t.ID_tipo_usuario,t.nombre_tipo,t.Administradores,t.Categorias,t.Productos,t.Comercios,t.Materias,t.Proveedores,t.Marcas,t.TiposUsuarios,t.Permisos,t.Clientes,t.Estadisticas,t.Reportes,t.Anuncios From Tipo_usuario t WHERE t.ID_tipo_usuario = ?";
+		$sql = "SELECT t.ID_tipo_usuario,t.nombre_tipo,t.Administradores,t.Categorias,t.Productos,t.Comercios,t.Materias,t.Proveedores,t.Marcas,t.TiposUsuarios,t.Permisos,t.Clientes,t.Estadisticas,t.Reportes,t.Anuncios,t.Cupones,t.Ventas From Tipo_usuario t WHERE t.ID_tipo_usuario = ?";
 		$params = array($this->id);
 		$resultado = Database::getRow($sql, $params);
 		if($resultado)
@@ -210,6 +224,8 @@ class Tipo_usuario extends Validator{
 			$this->Estadisticas = $resultado['Estadisticas'];
 			$this->Reportes = $resultado['Reportes'];
 			$this->Anuncios = $resultado['Anuncios'];
+			$this->Cupones = $resultado['Cupones'];
+			$this->Ventas = $resultado['Ventas'];
 			return true;
 		}
 		else
@@ -221,8 +237,8 @@ class Tipo_usuario extends Validator{
 
 	public function modificar_permiso()
 	{
-		$sql = "UPDATE Tipo_usuario SET Administradores=?,  Categorias = ?,Productos = ?,Comercios=?,Materias=?, Proveedores = ?, Marcas = ?,TiposUsuarios = ? ,Permisos = ?, Clientes = ?, Estadisticas = ? ,Reportes=? WHERE ID_tipo_usuario = ?";
-		$params = array($this->Administradores,$this->Categorias,$this->Productos,$this->Comercios, $this->Materias, $this->Proveedores, $this->Marcas,$this->Tipos_Usuarios,$this->Permisos, $this->Clientes,  $this->Estadisticas,$this->Reportes,  $this->id);
+		$sql = "UPDATE Tipo_usuario SET Administradores=?,  Categorias = ?,Productos = ?,Comercios=?,Materias=?, Proveedores = ?, Marcas = ?,TiposUsuarios = ? ,Permisos = ?, Clientes = ?, Estadisticas = ? ,Reportes=? ,Anuncios=?,Cupones=?,Ventas=? WHERE ID_tipo_usuario = ?";
+		$params = array($this->Administradores,$this->Categorias,$this->Productos,$this->Comercios, $this->Materias, $this->Proveedores, $this->Marcas,$this->Tipos_Usuarios,$this->Permisos, $this->Clientes,  $this->Estadisticas,$this->Reportes, $this->Anuncios,$this->Cupones,$this->Ventas,$this->id);
 		return Database::executeRow($sql, $params);
 	}
 }

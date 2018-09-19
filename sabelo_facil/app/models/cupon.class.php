@@ -183,7 +183,7 @@ class Cupon extends Validator{
 		$sql = "SELECT ID_categoria, nombre_categoria FROM categoria";
 		$params = array(null);
 		return Database::getRows($sql, $params);
-    }
+	 }
     public function getComercios(){
 		$sql = "SELECT ID_comercio, nombre FROM comercio";
 		$params = array(null);

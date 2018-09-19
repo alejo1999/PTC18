@@ -280,6 +280,54 @@ class Page extends Component{
 													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
 												}
 											}
+
+											if($tipousuario->get_pAnuncios() == 1){
+												print("
+												<li onmouseover='bal_over=11; show_info_baldosa();'><a class='baldosa' href='../anuncios'>		<p class='plac_let'>A</p>Anuncios</a></li>
+												");
+											} else if($tipousuario->get_pAnuncios() == 0){
+												print(" ");$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
+												if ($filename == "anuncios" ) {
+													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
+												}
+											}else{
+												$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
+												if ($filename == "anuncios" ) {
+													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
+												}
+											}
+
+											if($tipousuario->get_pCupones() == 1){
+												print("
+												<li onmouseover='bal_over=11; show_info_baldosa();'><a class='baldosa' href='../cupones'>		<p class='plac_let'>CU</p>Cupones</a></li>
+												");
+											} else if($tipousuario->get_pCupones() == 0){
+												print(" ");$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
+												if ($filename == "cupones" ) {
+													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
+												}
+											}else{
+												$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
+												if ($filename == "cupones" ) {
+													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
+												}
+											}
+											if($tipousuario->get_pVentas() == 1){
+												print("
+												<li onmouseover='bal_over=11; show_info_baldosa();'><a class='baldosa' href='../ventas'>		<p class='plac_let'>V</p>Ventas</a></li>
+												");
+											} else if($tipousuario->get_pVentas() == 0){
+												print(" ");$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
+												if ($filename == "ventas" ) {
+													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
+												}
+											}else{
+												$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
+												if ($filename == "ventas" ) {
+													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
+												}
+											}
+											
 											
 			
 			
