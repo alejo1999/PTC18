@@ -2,50 +2,33 @@
 require_once("../../app/models/cliente.class.php");
 try{
     if(isset($_POST['cambiar'])){
-        $usuario = new Cliente;
-        $_POST = $usuario->validateForm($_POST);
-        if($usuario->setId($_SESSION['id_cliente'])){
+        $cliente = new Cliente;
+        $_POST = $cliente->validateForm($_POST);
+        if($cliente->setId($_SESSION['id_cliente'])){
             if($_POST['clave_actual_1'] == $_POST['clave_actual_2']){
-                if($usuario->setClave($_POST['clave_actual_1'])){
-                    if($usuario->checkPassword()){
-                        
-                        $hashnuevo = $_POST['clave_nueva_2'];
-                        $hashantiguo = $usuario->getClave(); 
-                        
-                        $correouser = $usuario->getCorreo();
-                        if($hashantiguo != $hashnuevo){
-
-
-                            if($_POST['clave_nueva_1'] == $_POST['clave_nueva_2']){
-
-                                if($correouser != $_POST['clave_nueva_2'] ){
-                                    if($usuario->setClave2($_POST['clave_nueva_1'])){
-                                        if($usuario->changePassword()){
-                                            
-                                            Page::showMessage(1, "Clave cambiada", "index.php");
+                if($_POST['clave_actual_1'] != $_POST['clave_nueva_2']){
+                    $email = $cliente->getCorreo();
+                    $alias =  $cliente->getAlias();
+                    if($email != $_POST['clave_nueva_2']){
+                        if($alias != $_POST['clave_nueva_2']){
+                            if($cliente->setClave2($_POST['clave_nueva_1'])){
+                                 if($cliente->changePassword()){
+                                    Page::showMessage(1, "Clave cambiada", "perfil.php");
+                                 }else{
+                                    throw new Exception(Database::getException());
+                                 }
                                         }else{
-                                            throw new Exception(Database::getException());
-                                        }
-                                    }else{
-                                        throw new Exception("La clave debe de llevar Una MAYUS. numeros y caracteres especiales");
-                                    }
-                                }else{
-                                    throw new Exception("Su clave no debe ser igual que su correo");
-                                }
-                               
-                            }else{
-                                throw new Exception("Claves nuevas diferentes");
-                            }    
-                        }else if ($hashantiguo == $hashnuevo){
-                            throw new Exception("La clave proporcionada es parecida a una utilizada recientemente");
+                                throw new Exception("Clave nueva menor a 8 caracteres recuerda que debe contener una Mayus. un numero y caracter especial");
+                            }
+                        }else{
+                            throw new Exception("Su nueva clave no puede ser su nombre de usuario");
                         }
-                        
                     }else{
-                        throw new Exception("Clave actual incorrecta");
+                        throw new Exception("Su nueva clave no puede ser su correo");
                     }
                 }else{
-                    throw new Exception("Ingresa un valor valido");
-                }
+                    throw new Exception("Ambas contraseñas son identicas");
+                }  
             }else{
                 throw new Exception("Claves actuales diferentes");
             }

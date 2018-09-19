@@ -33,7 +33,7 @@
 
     
     <div class='row center-align'>
-    <a href="index.php" data-tooltip='Cancelar' class="waves-effect waves-light tooltipped btn  # ef5350 red aligera-2">Cancelar</a>
+    <a href="../productos/index.php" data-tooltip='Cancelar' class="waves-effect waves-light tooltipped btn  # ef5350 red aligera-2">Cancelar</a>
         <button type='submit'  name='cambiar' data-tooltip='Crear' class=" waves-effect waves-light btn teal darken-1 tooltipped">Aceptar</button>
     </div>
 </form>

@@ -244,7 +244,7 @@ class Cliente extends Validator{
 	}
 	public function changePassword(){
 		$hash = password_hash($this->clave, PASSWORD_DEFAULT);
-		$sql = "UPDATE cliente SET contrasena = ? WHERE ID_cliente = ?";
+		$sql = "UPDATE cliente SET contrasena = ? , fecha_contrasena = CURDATE() WHERE ID_cliente = ?";
 		$params = array($hash, $this->id);
 		return Database::executeRow($sql, $params);
 	}

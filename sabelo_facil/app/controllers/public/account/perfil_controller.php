@@ -15,7 +15,7 @@ try{
                                     if($usuario->setDireccion($_POST['direccion'])){
                                         if($usuario->updateCliente()){
                                             $_SESSION['correo'] = $usuario->getCorreo();
-                                            Page::showMessage(1, "Perfil modificado", "index.php");
+                                            Page::showMessage(1, "Perfil modificado", "../productos/index.php");
                                         }else{
                                             throw new Exception(Database::getException());
                                         }

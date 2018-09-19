@@ -24,7 +24,20 @@ class Page extends Component{
 			</head>
 
 			<body>
- 			");
+			 ");
+			 if (!isset($_SESSION['tiempo']))
+			 {
+				   $_SESSION['tiempo']=time();
+			 }
+			else if (time() - $_SESSION['tiempo'] > 600) /*tiempo en segundos de la inactividad*/
+			{
+	 
+				session_destroy();
+				/* Aquí redireccionas a la url especifica */
+				Page::showMessage(4,"sesion cerrada por inactividad","../cuenta/acceder.php");
+				  
+			}
+			$_SESSION['tiempo']=time(); //Si hay actividad seteamos el valor al tiempo actual
 
 			if(isset($_SESSION['id_cliente'])){
 
