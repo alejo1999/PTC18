@@ -63,7 +63,7 @@ class Page extends Component{
 								</div>
 								<div class='col l8 left' id='buton_stand' style='margin-bottom:20px;'>
 									<a class='btn_header_p' id='btn_T_A' href='../productos/index.php' >Inicio</a>
-									<a class='btn_header_p' id='btn_T_A' onclick=''>Sitio Academico</a>
+									<a class='btn_header_p' id='btn_T_A' href='../productos/sitio_acad.php'>Sitio Academico</a>
 									<a class='btn_header_p' onclick=''>Cupones</a> 
 								</div>
 								

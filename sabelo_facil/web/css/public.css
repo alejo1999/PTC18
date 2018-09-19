@@ -29,9 +29,19 @@ main {
     line-height: 20px;
     color: rgb(36, 41, 114);
   }
-
+  .btn-flaty{
+    border: none;
+    width: 90px;
+    height: 30px;
+    }
 .centerlog{
     text-align: center;
+    margin-bottom: 20px;
+}
+#contenedor_recu{
+    padding-left: 10%;
+    padding-right: 30%;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 
@@ -69,10 +79,10 @@ main {
 }
 
 .back{
-    background-color: rgb(84, 150, 112);
+    background-color: rgba(84, 150, 112, 0.00);
     
     align-content: center;
-    
+    height: 300px;
     
 
 }

@@ -285,7 +285,9 @@ box-shadow: 4px 4px 10px rgba(42, 102, 42, 0.63);
     background-color:rgb(35, 182, 96);
 }
 
-
+.slider .slides li img{
+    background-size: contain;
+}
 
 @media only screen and (max-width: 751px) {
     .header_sf{
@@ -351,3 +353,11 @@ main{
   
   
 
+.tabs{
+    background-color: transparent;
+    
+}
+.tabs .tab a{
+    color :#5D4D4D;
+    font-size: 1.2em;
+}

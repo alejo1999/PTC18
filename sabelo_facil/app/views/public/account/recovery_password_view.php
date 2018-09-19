@@ -1,4 +1,4 @@
-<div id='container2' class="row col s4 m4 l4">
+<div id='contenedor_recu' class="row col s4 m4 l4" >
 	<div class='centerlo' style='margin-bottom:26px;'>
 		<p id='login_pritxt'>Recuperacion de</p>
 		<p id='login_subtxt'>Contraseña</p>

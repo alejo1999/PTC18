@@ -2,11 +2,40 @@
 <div class='container' id='acceder'>
 	<h4 class='center-align'>ACCEDER</h4>
 	<ul class='tabs center-align'>
+	<li class='tab'><a href='#sesion'>INICIAR SESIÓN</a></li>
 		<li class='tab'><a href='#cuenta'>CREAR CUENTA</a></li>
-		<li class='tab'><a href='#sesion'>INICIAR SESIÓN</a></li>
+	
 	</ul>
-	<!-- Formulario para nueva cuenta -->
-	<div id='cuenta'>
+
+	<!-- Formulario para iniciar sesión -->
+	<div id='sesion'>
+		<form method='post' autocomplete='off'>
+			<div class='row'>
+				<div class='input-field col s12 m6 offset-m3'>
+					<i class='material-icons prefix'>email</i>
+					<input id='usuario' type='text' name='alias_usuario' class='validate'>
+					<label for='usuario' data-error='Error' data-success='Bien'>Alias</label>
+				</div>
+				<div class='input-field col s12 m6 offset-m3'>
+					<i class='material-icons prefix'>security</i>
+					<input id='clave' type='password' name='clave_usuario' class='validate'>
+					<label for='clave' data-error='Error' data-success='Bien'>Contraseña</label>
+				</div>
+
+			</div>
+			<div >
+					<p style='padding-left:5%;
+							  text-align:center;
+							  '>Para iniciar sesion, ingresa el alias y la contraseña <br>registradas anteriormente</p>
+				</div>
+			<div class='row center-align' style='margin-top:30px;'>
+				<a  class=' btn waves-effect green' href="recovery.php">Recuperar contraseña</a>
+				<button type='submit' name='iniciar' class='btn waves-effect green'><i class='material-icons'>send</i></button>
+			</div>
+		</form>
+	</div>
+		<!-- Formulario para nueva cuenta -->
+		<div id='cuenta' style='display:none;'>
 		<form method='post' autocomplete='off'>
 			<div class='row'>
 				<div class='input-field col s12 m6'>
@@ -66,29 +95,8 @@
 			
 
 				<div class='col s12'>
-					<button type='submit' name='crear' class='btn waves-effect blue'><i class='material-icons'>send</i></button>
+					<button type='submit' name='crear' class='btn waves-effect '><i class='material-icons'>send</i></button>
 				</div>
-			</div>
-		</form>
-	</div>
-	<!-- Formulario para iniciar sesión -->
-	<div id='sesion'>
-		<form method='post' autocomplete='off'>
-			<div class='row'>
-				<div class='input-field col s12 m6 offset-m3'>
-					<i class='material-icons prefix'>email</i>
-					<input id='usuario' type='text' name='alias_usuario' class='validate'>
-					<label for='usuario' data-error='Error' data-success='Bien'>Alias</label>
-				</div>
-				<div class='input-field col s12 m6 offset-m3'>
-					<i class='material-icons prefix'>security</i>
-					<input id='clave' type='password' name='clave_usuario' class='validate'>
-					<label for='clave' data-error='Error' data-success='Bien'>Contraseña</label>
-				</div>
-			</div>
-			<div class='row center-align'>
-				<a  class=' btn waves-effect blue' href="recovery.php">Recuperar contraseña</a>
-				<button type='submit' name='iniciar' class='btn waves-effect blue'><i class='material-icons'>send</i></button>
 			</div>
 		</form>
 	</div>
