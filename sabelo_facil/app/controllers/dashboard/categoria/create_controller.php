@@ -1,9 +1,13 @@
 <?php
 require_once("../../app/models/categoria.class.php");
 try{
+    //creamos la instancia de la clase
     $categoria = new Categoria;
+    //verificamos que el post exista
     if(isset($_POST['crear'])){
+        //validamos losmpost con la funcion validate form
         $_POST = $categoria->validateForm($_POST);
+        //añadimos el nombre a las variables de los modelos
         if($categoria->setNombre($_POST['nombre'])){
             if(is_uploaded_file($_FILES['archivo']['tmp_name'])){
                 if($categoria->setImagen($_FILES['archivo'])){

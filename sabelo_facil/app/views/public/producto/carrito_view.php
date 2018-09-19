@@ -49,17 +49,8 @@
     <!--Aqui termina la tabla de productos -->
       <div class='col s12 m12 l12'>
           <div class='col s12 m6 offset-m7 l6 offset-l9'>
-              <h5>Metodo de pago</h5>
-              
-              
-              <input name='group1' type='radio1' id='test1' />
-              <label for='test1'><img src='../web/img/metodo_de_pago/paypal_log.png' width='100px'></label>
-              
-              
-              <input name='group1' type='radio1' id='test2' />
-              <label for='test2'><img src='../web/img/metodo_de_pago/tarjeta-de-credito.png ' width='100px'></label>
-              
-              
+
+          
               <h4 style='color: rgb(30,140,100); font-family: calibri light; margin-top: 40px;' >Total: ".$detalle->getTotal()."</h4>
                   
     ");
