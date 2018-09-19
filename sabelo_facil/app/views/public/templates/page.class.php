@@ -37,7 +37,7 @@ class Page extends Component{
 					<div class='row  header_sf navbar-fixed'>
 					<nav class='header_sf '>
 						<div class='col s12 m12 l12' id='margeneado'>
-							<div class='col s12 m3' style=' margin-top:10px;>
+							<div class='col s12 m2' style=' margin-top:10px;>
 							<a style='text-align:center;' href='../productos/index.php'><img class='responsive-img' id='logoli_b' src='../../web/img/logos/sabelofacil_n.png'  alt='pc'></a>
 							<a href='../productos/index.php'><img class='responsive-img' id='logoli_m' src='../../web/img/logos/mini_n.png'  alt='pc'></a>
 								
@@ -81,9 +81,9 @@ class Page extends Component{
 						</nav>
 						
 						<div id='butons_bar'>
-									<p class='btn_header_mini'  href='../productos/index.php' >Inicio</p>
-									<p class='btn_header_mini' onclick=''>Sitio Academico</p>
-									<p class='btn_header_mini' onclick=''>Cupones</p> 
+									<p class='btn_header_mini'   ><a class='linko' href='../productos/index.php' style='min-height:1.2cm;min-width:33.3%;left:0;top:0; background-color:rgba(0,0,0,0); position:absolute;'></a>Inicio</p>
+									<p class='btn_header_mini'   ><a class='linko' href='../productos/Academico.php' style='min-height:1.2cm;min-width:33.3%;left:33.3%;top:0; background-color:rgba(0,0,0,0); position:absolute;'></a>Sitio Academico</p>
+									<p class='btn_header_mini'   ><a class='linko' href='../productos/cupones.php' style='min-height:1.2cm;min-width:33.3%;left:66.6%;top:0; background-color:rgba(0,0,0,0); position:absolute;'></a>Cupones</p>
 						</div> 
 					</div>
 					
@@ -96,6 +96,7 @@ class Page extends Component{
 					");
 			}else{
 				print("
+				
 				<header id='header_pub'>
 			
 			
@@ -103,8 +104,9 @@ class Page extends Component{
 				<div class='row  header_sf navbar-fixed'>
 				<nav class='header_sf '>
 					<div class='col s12 m12 l12' id='margeneado'>
-						<div class='col s12 m3' style='max-width:120px; margin-top:10px; '>
-						<a href='../productos/index.php'><img class='responsive-img' src='../../web/img/logos/sabelofacil.png'  alt='pc'></a>
+						<div class='col s12 m2' style=' margin-top:10px;>
+						<a style='text-align:center;' href='../productos/index.php'><img class='responsive-img' id='logoli_b' src='../../web/img/logos/sabelofacil_n.png'  alt='pc'></a>
+						<a href='../productos/index.php'><img class='responsive-img' id='logoli_m' src='../../web/img/logos/mini_n.png'  alt='pc'></a>
 							
 						</div>
 						
@@ -113,31 +115,29 @@ class Page extends Component{
 							<div class='blocky hide-on-small-only col s12'> 
 							
 							</div>
-							<div class='col l6 center'  style='margin-bottom:20px;'>
-								<a class='btn_header_p' href='../cuenta/acceder.php' >Inicio de sesion</a>
-								
-								<a class='btn_header_p' onclick=''>Sitio Academico</a> 
-								
-
-					
+							<div class='col l8 left' id='buton_stand' style='margin-bottom:20px;'>
+								<a class='btn_header_p' id='btn_T_A' href='../cuenta/acceder.php' >Iniciar Sesión</a>
+								<a class='btn_header_p' id='btn_T_A' onclick=''>Sitio Academico</a>
+								<a class='btn_header_p' onclick=''>Cupones</a> 
 							</div>
 							
-							<!-- Bloque de CINTA OPCIONES DE MATERIAS ACADEMICAS -->
-							<div  class='s12 l6 center	' id='cinta_academica'>
-								
-								
-								
-								
-							</div>
+						
 				
 							 
 				
 						</div>
-				
+							
 					</div>
-				</nav>
-				 
+					
+					</nav>
+					
+					<div id='butons_bar'>
+								<p class='btn_header_mini'   ><a class='linko' href='../cuenta/acceder.php' style='min-height:1.2cm;min-width:33.3%;left:0;top:0; background-color:rgba(0,0,0,0); position:absolute;'></a>Iniciar Sesión</p>
+								<p class='btn_header_mini'   ><a class='linko' href='../productos/Academico.php' style='min-height:1.2cm;min-width:33.3%;left:33.3%;top:0; background-color:rgba(0,0,0,0); position:absolute;'></a>Sitio Academico</p>
+								<p class='btn_header_mini'   ><a class='linko' href='../productos/cupones.php' style='min-height:1.2cm;min-width:33.3%;left:66.6%;top:0; background-color:rgba(0,0,0,0); position:absolute;'></a>Cupones</p>
+					</div> 
 				</div>
+				
 				
 				</header>
 					<main>
@@ -196,7 +196,7 @@ class Page extends Component{
 				</div>
 
 
-				<footer class='#00bfa5 teal darken-1'  id='footer_pub'>
+				<footer   id='footer_pub'>
 					<div class='container'>
 						<div class='row'>
 							<div class='col s12 m3 l3' style='padding-right:20px;'>
