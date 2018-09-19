@@ -64,7 +64,7 @@ class Page extends Component{
 								<div class='col l8 left' id='buton_stand' style='margin-bottom:20px;'>
 									<a class='btn_header_p' id='btn_T_A' href='../productos/index.php' >Inicio</a>
 									<a class='btn_header_p' id='btn_T_A' href='../productos/sitio_acad.php'>Sitio Academico</a>
-									<a class='btn_header_p' onclick=''>Cupones</a> 
+									<a class='btn_header_p' href='../cupones/index.php'>Cupones</a> 
 								</div>
 								
 								<!-- Bloque de CINTA OPCIONES DE MATERIAS ACADEMICAS -->
@@ -131,7 +131,7 @@ class Page extends Component{
 							<div class='col l8 left' id='buton_stand' style='margin-bottom:20px;'>
 								<a class='btn_header_p' id='btn_T_A' href='../cuenta/acceder.php' >Iniciar Sesión</a>
 								<a class='btn_header_p' id='btn_T_A' onclick=''>Sitio Academico</a>
-								<a class='btn_header_p' onclick=''>Cupones</a> 
+								<a class='btn_header_p' href='../cupones/index.php'>Cupones</a> 
 							</div>
 							
 						
