@@ -87,6 +87,7 @@
 				</div>
 			</div>
 			<div class='row center-align'>
+				<a  class=' btn waves-effect blue' href="recovery.php">Recuperar contraseña</a>
 				<button type='submit' name='iniciar' class='btn waves-effect blue'><i class='material-icons'>send</i></button>
 			</div>
 		</form>

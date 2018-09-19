@@ -11,7 +11,7 @@ try{
 				if($object->checkAlias()){
 					if($object->checkNombre()){
 						if($object->checkApellido()){
-							if($object->checkCorreo()){
+							
 								if($object->setClave($_POST['clave_usuario'])){
 									if($object->checkPassword()){
 										$_SESSION['id_cliente'] = $object->getId();
@@ -25,9 +25,7 @@ try{
 								}else{
 									throw new Exception("Clave menor a 6 caracteres");
 								}
-							}else{
-								throw new Exception("Correo incorrecto");
-							}
+							
 						}else{
 							throw new Exception("apellido incorrecto");
 						}

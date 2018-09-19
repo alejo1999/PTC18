@@ -196,12 +196,14 @@ class Cliente extends Validator{
 		}
 	}
 
+
 	public function checkCorreo(){
-		$sql = "SELECT correo FROM cliente WHERE username = ?";
-		$params = array($this->alias);
-		$data2 = Database::getRow($sql, $params);
-		if($data2){
-			$this->correo = $data2['correo'];
+		$sql = "SELECT ID_cliente,login_id FROM cliente WHERE correo = ?";
+		$params = array($this->correo);
+		$data = Database::getRow($sql, $params);
+		if($data){
+			$this->id = $data['ID_cliente'];
+			$this->login_id = $data['login_id'];
 			return true;
 		}else{
 			return false;
