@@ -285,6 +285,19 @@ box-shadow: 4px 4px 10px rgba(42, 102, 42, 0.63);
     background-color:rgb(35, 182, 96);
 }
 
+#ventas{
+    background-color:rgb(35, 182, 96);
+    border-radius: 15px;
+}
+#venta{
+    border-radius: 15px;
+
+}
+#venta:hover{
+    background-color: rgb(28, 136, 73);
+    border-radius: 15px;
+}
+
 .slider .slides li img{
     background-size: contain;
 }

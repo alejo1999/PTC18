@@ -298,7 +298,7 @@ class Usuario extends Validator{
 	}
 	
 	public function checkPassword(){
-		$sql = "SELECT contrasena, imagen_url, nombre,apellido,correo,username, documento, fecha_nac, direccion FROM administrador WHERE ID_admin = ?";
+		$sql = "SELECT contrasena, imagen_url, nombre,apellido,correo,username, documento, fecha_nac, direccion ,codigo_auth FROM administrador WHERE ID_admin = ?";
 		$params = array($this->id);
 		$data = Database::getRow($sql, $params);
 		if(password_verify($this->clave, $data['contrasena'])){
@@ -310,6 +310,7 @@ class Usuario extends Validator{
 			$this->documento = $data['documento'];
 			$this->fechaNac = $data['fecha_nac'];
 			$this->direccion = $data['direccion'];
+			$this->codigo_auth= $data['codigo_auth'];
 			return true;
 		}else{
 			return false;

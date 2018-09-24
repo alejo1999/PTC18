@@ -22,6 +22,7 @@ class Page extends Component{
 				<link type='text/css' rel='stylesheet' href='../../web/css/material_icons.css'/>
 				<link type='text/css' rel='stylesheet' href='../../web/css/dashboard.css'/>
 				<link type='text/css' rel='stylesheet' href='../../web/css/sabeloflat.css'/>
+				<link type='text/css' rel='stylesheet' href='../../web/css/jquery.dataTables.min.css'/>
 				<script type='text/javascript' src='../../web/js/Chart.bundle.js'></script>
 				<script type='text/javascript' src='../../web/js/sweetalert.min.js'></script>
 				<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
@@ -281,34 +282,18 @@ class Page extends Component{
 												}
 											}
 
-											if($tipousuario->get_pAnuncios() == 1){
-												print("
-												<li onmouseover='bal_over=11; show_info_baldosa();'><a class='baldosa' href='../anuncios'>		<p class='plac_let'>A</p>Anuncios</a></li>
-												");
-											} else if($tipousuario->get_pAnuncios() == 0){
-												print(" ");$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "anuncios" ) {
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}else{
-												$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "anuncios" ) {
-													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
-												}
-											}
-
 											if($tipousuario->get_pCupones() == 1){
 												print("
-												<li onmouseover='bal_over=11; show_info_baldosa();'><a class='baldosa' href='../cupones'>		<p class='plac_let'>CU</p>Cupones</a></li>
+												<li onmouseover='bal_over=11; show_info_baldosa();'><a class='baldosa' href='../cupon'>		<p class='plac_let'>CU</p>Cupones</a></li>
 												");
 											} else if($tipousuario->get_pCupones() == 0){
 												print(" ");$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "cupones" ) {
+												if ($filename == "cupon" ) {
 													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
 												}
 											}else{
 												$filename = basename(dirname($_SERVER['PHP_SELF']),"/");
-												if ($filename == "cupones" ) {
+												if ($filename == "cupon" ) {
 													Page::showMessage(2, "Acceso Prohibido", "../account/index.php");
 												}
 											}
@@ -491,6 +476,9 @@ class Page extends Component{
 				<script type='text/javascript' src='../../web/js/materialize.min.js'></script>
 				<script type='text/javascript' src='../../web/js/dashboard.js'></script>
 				<script src='https://www.google.com/recaptcha/api.js'></script>
+
+				<script type='text/javascript' src='../../web/js/jquery.dataTables.min.js'></script>
+            <script type='text/javascript' src='../../web/js/tabla.js'></script>
 			</body>
 			</html>
 		");

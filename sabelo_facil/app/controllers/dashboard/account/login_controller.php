@@ -64,16 +64,23 @@ try{
 												$_SESSION['ID_tipousuario']= $object->getTipousuario();
 												$_SESSION['nombre_tipousuario'] = $object->getNombre_tipo_usuario();
 
+												$co_auth = $object->getCodigo_auth();
+												echo($co_auth);
 
-												if($object->setCodigo_auth($llave)){
-													if($object->update_clave_google()){
-														Page::showMessage(1, "Completa la segunda parte de la autenticacion  ", "verificacion2.php");
+												if(empty($co_auth)){
+													if($object->setCodigo_auth($llave)){
+														if($object->update_clave_google()){
+															Page::showMessage(1, "Completa la segunda parte de la autenticacion  ", "verificacion2.php");
+														}else{
+															Page::showMessage(1,"ocurrio un error en actualizar la llave ", null);
+														}
 													}else{
-														Page::showMessage(1,"ocurrio un error en actualizar la llave ", null);
+														Page::showMessage(1,"ocurrio un error con el seteo ", null);
 													}
 												}else{
-													Page::showMessage(1,"ocurrio un error con el seteo ", null);
+													Page::showMessage(1, "Completa la segunda parte de la autenticacion  ", "verificacion2.php");
 												}
+												
 											}
 										}else{
 											throw new Exception("Error en la fecha");

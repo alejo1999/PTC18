@@ -3,7 +3,7 @@ class Categoria extends Validator{
     //Declaracion de proipedades 
     private $id = null;
 	private $nombre = null;
-	private $imagen_url = null;
+	private $imagen = null;
     private $descripcion = null;
     private $estado = null;
     //mmetodos para poder llenar las propiedades

@@ -38,12 +38,12 @@
         <div class='col s12 m6 l2 offset-l1'>
             <p>
                 <div class='switch'>
-                    <span class='white-text'>Limite:</span>
+                    <span class='black-text'>Limite:</span>
                     <label>
-                    <i class="material-icons white-text">indeterminate_check_box</i>
+                    <i class="material-icons black-text">indeterminate_check_box</i>
                         <input type='checkbox' name='limite' <?php print($cupon->getLimite()?"checked":"") ?>/>
                         <span class='lever'></span>
-                        <i class="material-icons white-text">check_box</i>
+                        <i class="material-icons black-text">check_box</i>
                     </label>
                 </div>
             </p>
@@ -52,7 +52,7 @@
         <div class='col s12 m6 l3'>
             <p>
                 <div class='switch'>
-                    <span class='white-text'>Estado:</span>
+                    <span class='black-text'>Estado:</span>
                     <label>
                         <i class='material-icons'>visibility_off</i>
                         <input type='checkbox' name='estado' <?php print($cupon->getEstado()?"checked":"") ?>/>

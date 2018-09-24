@@ -165,6 +165,16 @@ class Producto extends Validator{
 		$params = array($this->categoria);
 		return Database::getRows($sql, $params);
 	}
+
+	public function getCategoriaProductos2(){
+		$sql = "SELECT categoria.nombre_categoria, producto.nombre_producto,producto.imagen_url, producto.nombre_producto, producto.descripcion, producto.precio FROM producto 
+		INNER JOIN categoria ON producto.FK_ID_Categoria = categoria.ID_categoria
+		WHERE categoria.ID_categoria = ? AND producto.estado = 1 ORDER BY producto.nombre_producto";
+		$params = array($this->id_categoria);
+		return Database::getRows($sql, $params);
+	}
+
+
 	public function getProductos(){
 		$sql = "SELECT producto.ID_producto, producto.imagen_url, producto.nombre_producto, producto.descripcion, producto.precio, categoria.nombre_categoria, producto.estado 
 		FROM producto 
@@ -175,6 +185,44 @@ class Producto extends Validator{
 		$params = array(null);
 		return Database::getRows($sql, $params);
 	}
+
+	public function getProductosporcategoria($empieza, $por_pagina){
+		$sql = "SELECT producto.ID_producto, producto.imagen_url, producto.nombre_producto, producto.descripcion, producto.precio, categoria.nombre_categoria, producto.estado 
+		FROM producto 
+		INNER JOIN categoria ON producto.FK_ID_Categoria =categoria.ID_categoria 
+		INNER JOIN proveedor ON producto.FK_ID_proveedor = proveedor.ID_proveedor
+		INNER JOIN marca ON producto.FK_ID_marca = marca.ID_marca
+        WHERE categoria.ID_categoria = ? AND producto.estado = 1
+		ORDER BY producto.nombre_producto
+		LIMIT $empieza, $por_pagina";
+		$params = array($this->id_categoria);
+		return Database::getRows($sql, $params);
+	}
+
+	public function getProductosporcategoria2($empieza, $por_pagina){
+		$sql = "SELECT producto.ID_producto, producto.imagen_url, producto.nombre_producto, producto.descripcion, producto.precio, categoria.nombre_categoria, producto.estado 
+		FROM producto 
+		INNER JOIN categoria ON producto.FK_ID_Categoria =categoria.ID_categoria 
+		INNER JOIN proveedor ON producto.FK_ID_proveedor = proveedor.ID_proveedor
+		INNER JOIN marca ON producto.FK_ID_marca = marca.ID_marca
+        WHERE  producto.estado = 1
+		ORDER BY producto.nombre_producto
+		LIMIT $empieza, $por_pagina";
+		$params = array($this->id_categoria);
+		return Database::getRows($sql, $params);
+	}
+	// public function getCategoriaProductos2($empieza, $por_pagina){
+	// 	$query = "SELECT categoria.nombre_categoria, productos.id_producto,productos.imagen, productos.nombre, productos.descripcion, productos.precio FROM productos 
+	// 	INNER JOIN categoria ON productos.fk_id_categoria = categoria.id_categoria
+	// 	WHERE id_categoria = ? AND estado = 1 
+	// 	ORDER BY nombre
+	// 	LIMIT $empieza, $por_pagina";
+	// 	$params = array($this->id_categoria);
+	// 	return Database::getRows($query, $params);
+	// }
+
+
+	
 	public function searchProducto($value){
 		$sql = "SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, nombre_categoria, estado_producto FROM productos INNER JOIN categorias USING(id_categoria) WHERE nombre_producto LIKE ? OR descripcion_producto LIKE ? ORDER BY nombre_producto";
 		$params = array("%$value%", "%$value%");

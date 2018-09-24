@@ -26,7 +26,7 @@ try{
                         $tipousuario->set_pCategorias(0);
                     }
 
-                    if(isset($_POST['Productos'])){ //(isset($_POST['usuarios']))? $tipousuario->set_usuarios(1) : $tipousuario->set_usuarios(0);
+                    if(isset($_POST['Productos'])){ 
                         $tipousuario->set_pProductos(1);
                     } else{
                         $tipousuario->set_pProductos(0);
@@ -83,6 +83,18 @@ try{
                         $tipousuario->set_pReportes(1);
                     } else{
                         $tipousuario->set_pReportes(0);
+                    }
+
+                    if(isset($_POST['Anuncios'])){ 
+                        $tipousuario->set_pAnuncios(1);
+                    } else{
+                        $tipousuario->set_pAnuncios(0);
+                    }
+
+                    if(isset($_POST['Cupones'])){ 
+                        $tipousuario->set_pCupones(1);
+                    } else{
+                        $tipousuario->set_pCupones(0);
                     }
 
                     if($tipousuario->modificar_permiso()){

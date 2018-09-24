@@ -10,7 +10,7 @@
 
             $name_projects = "Sabelo Facil";
             $sesionid = session_id();
-	        echo("$sesionid"); 
+	        
 
         if($cliente->setId($_SESSION['ID_admin_oculto'])){
             $cliente->readUsuario();

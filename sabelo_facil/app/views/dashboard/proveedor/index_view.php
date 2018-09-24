@@ -13,7 +13,7 @@
         <a href='create.php' class='btn waves-effect  tooltipped' data-tooltip='Crear materia'>Añadir Nuevo</a>
     </div>
 </div>
-<table class='highlight'>
+<table class='highlight'  id='mi_tabla' >
 	<thead>
 		<tr>
 			

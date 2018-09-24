@@ -1,10 +1,15 @@
 <?php
 require_once("../../app/models/producto.class.php");
 try{
+    //creamos la instacion de productos 
     $producto = new Producto;
+    //verificamos que el post crear existe 
     if(isset($_POST['crear'])){
+        //validamos los post con la funcion validateform
         $_POST = $producto->validateForm($_POST);
+        // añadimos el nombre a las variables  de los modelos 
         if($producto->setNombre($_POST['nombre'])){
+            // añadimos valor precio a la varible de el modelo
             if($producto->setPrecio($_POST['precio'])){
                 if($producto->setDescripcion($_POST['descripcion'])){
                     if($producto->setCategoria($_POST['categoria'])){

@@ -19,7 +19,7 @@
     </div>
 </div> 
 
-<table class=' highlight responsive-table centered '>
+<table class=' highlight responsive-table centered '   id='mi_tabla' >
     <thead>
         <tr>
 			

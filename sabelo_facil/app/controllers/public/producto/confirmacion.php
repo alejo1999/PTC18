@@ -154,20 +154,32 @@ if (isset($_GET["token"]) && $_GET["token"] != "") {
                 }
                 else{
                     if($detalle->setCliente($_SESSION['id_cliente'])){
-                        $carrito = $detalle->viewcarrito();
-                        if($detalle->setCliente($_SESSION['id_cliente'])){
-                            if($detalle->actualizarventa()){
-                                Page::showMessage(1, "Compra realizada exitosamente","../../dashboard/Reportes/factura_public.php?nombre=$_SESSION[nombre]&apellido=$_SESSION[apellido]");                        
-                            }
-                            else{
-                            Page::showMessage(2, "La Compra no se puede realizar",null);
-                            }
-                                            
-                            }
-                    }
-                    else{
-                        Page::showMessage(2, "Carrito vacio","index.php");
-                        exit();
+                        if($detalle->realizarcompra()){
+                            if($detalle->ventasactuales()){
+                                $newventa = ($detalle->getNventas());
+                                if($detalle->setId_venta($newventa)){
+                                    $carrito = $detalle->viewcarrito();
+                                    if($detalle->setCliente($_SESSION['id_cliente'])){
+                                        if($detalle->actualizarventa()){
+                                        // Page::showMessage(1, "Compra realizada exitosamente","../../dashboard/Reportes/factura_public.php?nombre=$_SESSION[nombre]&apellido=$_SESSION[apellido]");                        
+                                        Page::showMessage(1, "Compra realizada exitosamente","../productos/index.php");       
+                                        exit();                 
+                                        }
+                                        else{
+                                        Page::showMessage(2, "La Compra no se puede realizar",null);
+                                        }
+                                                        
+                                        }
+                                }else{
+                                    Page::showMessage(2, "Error al obtener el numero de venta",null);
+                                }
+                            }   
+                        }else{
+                            Page::showMessage(2, "Error al obtener los datos del cliente ",null);
+                        }
+                    }else{
+                    Page::showMessage(2, "Carrito vacio","index.php");
+                    exit();
                     }
                 }
     }catch(Exception $error){

@@ -88,6 +88,11 @@ class Venta extends Validator{
 
 	}
 
+	public function ventasrealizadas(){
+		$sql="SELECT venta.ID_venta, venta.fecha,venta.FK_ID_cliente ,(SELECT COUNT(detalle_factura.ID_detalle) FROM detalle_factura WHERE detalle_factura.FK_ID_cliente = venta.FK_ID_cliente AND detalle_factura.estadoventa = 1 AND detalle_factura.FK_ID_venta = venta.ID_venta) as items FROM venta WHERE venta.FK_ID_cliente = ? ORDER BY venta.fecha DESC";
+		$params= array($this->id_usuario);
+		return Database::getRows($sql,$params);
+	} 
 	public function ventasPublic(){
 		$sql = "SELECT  venta.fecha,productos.imagen,productos.nombre , productos.precio , detalle_factura.cantidad,detalle_factura.subtotal 
 		FROM detalle_factura

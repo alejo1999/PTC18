@@ -260,15 +260,24 @@ class Detalle extends Validator{
         return Database::getRows($sql,$params);
     }
 
-    public function facturafinal (){
+    public function detalle_venta(){
+        $sql="SELECT producto.nombre_producto,producto.precio,producto.imagen_url,detalle_factura.cantidad,detalle_factura.sub_total 
+        FROM detalle_factura 
+        INNER JOIN producto ON detalle_factura.FK_ID_producto = producto.ID_producto
+        WHERE detalle_factura.FK_ID_venta = ? AND detalle_factura.estadoventa = 1 AND detalle_factura.FK_ID_cliente = ?";
+        $params=array($this->id_venta,$this->id_usuario);
+        return Database::getRows($sql,$params);
+    }
+
+    public function facturafinal(){
         $sql="SELECT detalle_factura.ID_detalle ,detalle_factura.FK_ID_producto,producto.imagen_url,producto.nombre_producto
         ,detalle_factura.cantidad,producto.precio,detalle_factura.sub_total,venta.ID_venta
         FROM detalle_factura
         INNER JOIN producto ON detalle_factura.FK_ID_producto = producto.ID_producto
         INNER JOIN venta on detalle_factura.FK_ID_venta = venta.ID_venta
-        WHERE detalle_factura.FK_ID_cliente = 2 AND detalle_factura.estadoventa = 1
+        WHERE detalle_factura.FK_ID_cliente = ? AND detalle_factura.estadoventa = 1
         AND detalle_factura.FK_ID_venta = (SELECT MAX(venta.ID_venta) FROM venta)";
-        $params = array(null);
+        $params = array($this->id_usuario);
         return Database::getRows($sql, $params);
     }
     
@@ -286,6 +295,20 @@ class Detalle extends Validator{
 			return null;
         }
     }
+    public function checkTotalventa(){
+        $sql = "SELECT SUM(detalle_factura.sub_total) as totalito
+        FROM detalle_factura
+        WHERE detalle_factura.FK_ID_cliente = ? AND detalle_factura.estadoventa = 1 AND detalle_factura.FK_ID_venta = ?";
+         $params = array($this->id_usuario,$this->id_venta);
+        $total = Database::getRow($sql, $params);
+        if($total){
+            $this->total = $total['totalito'];
+            return true;
+		}else{
+			return null;
+        }
+    }
+
     public function viewtotal(){
         $sql = "SELECT SUM(detalle_factura.sub_total) AS codo FROM detalle_factura
         WHERE detalle_factura.FK_ID_venta = (SELECT MAX(venta.ID_venta) FROM venta)";

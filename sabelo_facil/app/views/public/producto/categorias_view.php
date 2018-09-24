@@ -18,7 +18,7 @@
         foreach($categorias as $caterin){
             print("
                 
-                    <a style='border-radius: 25px;' class='btn-large black-text collapsible-header waves-effect waves-light'>
+                    <a href='index.php?id=$caterin[ID_categoria]' style='border-radius: 25px;' class='btn-large black-text collapsible-header waves-effect waves-light'>
                         <h6>$caterin[nombre_categoria]</h6>
                     </a>
                 
@@ -52,6 +52,32 @@
                     
                  ?>   
 
+                </div>
+
+                <div class="col s12 m12 l12 center">
+                  <?php
+                  //seleccionar todo de la tabla usuarios
+                  $resultado=$producto->getCategoriaProductos2();
+
+                  //Contar el total de registros
+                  $total_registros = count($resultado);
+
+                  //usando ceil para dividir el total de registros entre $por_pagina este ultimo es de 5
+                  $total_paginas = ceil($total_registros / $por_pagina);
+
+                  //link a primera pagina
+                  print("<ul class='pagination'><li class='waves-effect'><a href='index.php?id=".$producto->getCategoria()."&pagina=1'><i class='material-icons'>chevron_left</i></a></li>");
+
+                  for ($i=1; $i<=$total_paginas; $i++) {
+
+                  print("<li class='waves-effect teal lighten-2'><a href='index.php?id=".$producto->getCategoria()."&pagina=".$i."'>".$i."</a></li>");
+                  
+                  };
+                  
+                  // link a la ultima pagina
+                  print("<li class='waves-effect'><a href='index.php?id=".$producto->getCategoria()."&pagina=$total_paginas'><i class='material-icons'>chevron_right</i></a></li></ul>");
+                  
+                  ?>
                 </div>
             </div>
 

@@ -10,24 +10,44 @@ try{
                     if($cupon->setNombre($_POST['nombre'])){
                         if($cupon->setPrecio($_POST['precio'])){
                             if($cupon->setDescripcion($_POST['descripcion'])){
-                                if($cupon->setCategoria($_POST['categoria'])){
-                                    if($cupon->setEstado(isset($_POST['estado'])?1:0)){
-                                        if(is_uploaded_file($_FILES['archivo']['tmp_name'])){
-                                            if(!$cupon->setImagen($_FILES['archivo'])){
-                                                throw new Exception($cupon->getImageError());
+
+                                if($cupon->setExistencia($_POST['existencia'])){
+
+                                    if($cupon->setFechainicio($_POST['fecha_inicio'])){
+                                        if($cupon->setFechafinal($_POST['fecha_final'])){
+
+                                            if($cupon->setcomercio($_POST['comercio'])){
+                                                if($cupon->setLimite(isset($_POST['limite'])?1:0)){
+                                                    if($cupon->setCategoria($_POST['categoria'])){
+                                                        if($cupon->setEstado(isset($_POST['estado'])?1:0)){
+                                                            if($cupon->updateCupon()){
+                                                                Page::showMessage(1, "Cupon modificado", "index.php");
+                                                            }else{
+                                                                throw new Exception(Database::getException());
+                                                            }
+                                                        }else{
+                                                            throw new Exception("Estado incorrecto");
+                                                        }
+                                                    }else{
+                                                        throw new Exception("Seleccione una categoría");
+                                                    }
+                                                }else{
+            
+                                                }
+                                            }else{
+        
                                             }
-                                        }
-                                        if($cupon->updateCupon()){
-                                            Page::showMessage(1, "Cupon modificado", "index.php");
                                         }else{
-                                            throw new Exception(Database::getException());
+    
                                         }
                                     }else{
-                                        throw new Exception("Estado incorrecto");
+
                                     }
+                                    
                                 }else{
-                                    throw new Exception("Seleccione una categoría");
+                                    throw new Exception("existencia incorrecta");
                                 }
+                                
                             }else{
                                 throw new Exception("Descripción incorrecta");
                             }

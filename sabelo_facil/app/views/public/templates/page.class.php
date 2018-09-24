@@ -77,7 +77,7 @@ class Page extends Component{
 										<ul id='dropdown' class='dropdown-content' style='border-radius: 14px;'>
 											<li><a href='../cuenta/perfil.php'>Editar perfil</a></li>
 											<li><a href='../cuenta/cambiar_contrasena.php'>Cambiar clave</a></li>
-											<li><a href='../cuenta/ventas.php'>Compras realizadas</a></li>
+											<li><a href='../cuenta/comprasrealizadas.php'>Compras realizadas</a></li>
 											<li><a href='../cuenta/salir.php'>Cerrar Sesion</a></li>
 										</ul>
 									

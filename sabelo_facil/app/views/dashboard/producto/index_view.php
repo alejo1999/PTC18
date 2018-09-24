@@ -13,7 +13,7 @@
         <a href='create.php' class='btn waves-effect indigo tooltipped' data-tooltip='Crear producto'><i class='material-icons'>add_circle</i></a>
     </div>
 </div>
-<table class='highlight'>
+<table class='highlight' id='mi_tabla' >
 	<thead>
 		<tr>
 			<th>IMAGEN</th>

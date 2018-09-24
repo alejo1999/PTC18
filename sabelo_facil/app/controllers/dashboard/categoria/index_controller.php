@@ -1,6 +1,17 @@
 <?php
 require_once("../../app/models/categoria.class.php");
 try{
+	$por_pagina=8;
+	if (isset($_GET["pagina"])) {
+	$pagina = $_GET["pagina"];
+	}
+	else {
+	$pagina=1;
+	}
+	// la pagina inicia en 0 y se multiplica $por_pagina
+	$empieza = ($pagina-1) * $por_pagina;
+
+
 	$categoria = new Categoria;
 	if(isset($_POST['buscar'])){
 		$_POST = $categoria->validateForm($_POST);

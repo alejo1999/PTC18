@@ -46,7 +46,7 @@
 	foreach($data as $row){
 		print("
 		<tr>
-            <td>$row[nombre]</td>
+            <td>$row[nombre_cupon]</td>
             <td>$row[nombre_categoria]</td>
             <td>$row[nombre]</td>
             <td>$row[precio]</td>
@@ -54,6 +54,7 @@
 			<td>$row[fecha_inicio]</td>
 			<td>$row[fecha_final]</td>
             <td><i class='material-icons'>".($row['estado']?"visibility":"visibility_off")."</i></td>
+            
             <td>
                 <a href='update.php?id=$row[ID_cupon]' class='waves-effect waves-light'><i class='material-icons white-text'>create</i></a>
                 
